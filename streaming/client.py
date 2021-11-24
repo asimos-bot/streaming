@@ -11,7 +11,7 @@ host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
 port = 1100
-message = b'Hello'
+message = b'{"id":"hello mr", "command":"STREAM_VIDEO", "arg":"sample2.mp4"}'
 
 client_socket.sendto(message,(host_ip,port))
 fps,st,frames_to_count,cnt = (0,0,20,0)
