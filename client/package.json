@@ -1,0 +1,20 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Janela de uma aplicação de streaming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Thauan Corrêa",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^16.0.2"
+  },
+  "dependencies": {
+    "screenshot-desktop": "^1.12.7",
+    "uuid": "^8.3.2",
+    "webcamjs": "^1.0.26"
+  }
+}

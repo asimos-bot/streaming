@@ -2,3 +2,5 @@ pyenv
 */*.log
 */__pycache__
 __pycache__
+
+client/node_modules/
