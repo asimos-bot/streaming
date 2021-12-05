@@ -1,5 +1,7 @@
 var WebCamera  = require('webcamjs');
 const screenshot = require('screenshot-desktop');
+var socket = require('socket.io-client')('Api');
+const { v4: uuidv4 } = require('uuid');
 let enabled = false;
 var interval;
 
@@ -16,16 +18,25 @@ document.getElementById("camButton").addEventListener('click',function(){
 },false);
 
 
-function startStream() {
+document.getElementById("startStream").addEventListener('click',function(event) {
+    var uuid = uuidv4();
+    socket.emit("join-message", uuid);
+    event.reply("uuid", uuid);
+
     interval = setInterval(function() {
         screenshot().then((img) => {
-            var imgStr = new Buffer(img).toString('base64');
+            var imgStr = new ArrayBuffer(img).toString('base64');
             var obj = {};
             obj.image = imgStr;
+            obj.room = uuid;
+
+            socket.emit("screen-data", JSON.stringify(obj));
         }). catch((e) => { console.log(e)})
     }, 100)  
-}
+});
     
 function closeStream() {
     clearInterval(interval);
 }
+
+
