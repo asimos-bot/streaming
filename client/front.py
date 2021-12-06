@@ -20,13 +20,14 @@ def playVideoButton():
 
 def listVideoButton():
     saveButton = ttk.Button(text="Listar Videos", master=window, command = service.listVideos,style="C.TButton")
-    saveButton.place(x=20,y=110,width=80,height=20)
+    saveButton.place(x=20,y=20,width=80,height=20)
 
 # Função que cria o loop da janela
 def start():
     window.title("Redes 2")
     window.geometry("500x300")
     listVideoButton()
+    playVideoButton()
     window.mainloop()
 
 start()
