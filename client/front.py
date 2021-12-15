@@ -13,14 +13,24 @@ pressedButtonColor = '#474747'
 ttk.Style().configure("BW.TLabel", foreground=fontColor)
 ttk.Style().map("C.TButton",anchor="center")
 
+def reciveListVideos():
+    msg = service.listVideos()
+    print(msg)
+    listVideos = ttk.Label(text=msg)
+    listVideos.place(x=20,y=70,width=100,height=100)
+
+
+def playVideo():
+    video = service.playVideos()
+
 
 def playVideoButton():
-    searchButton = ttk.Button(text="Streamar Video", master=window, command = service.playVideos,style="TButton")
-    searchButton.place(x=20,y=40,width=80,height=20)
+    playButton = ttk.Button(text="Streamar Video", master=window, command = playVideo ,style="TButton")
+    playButton.place(x=20,y=40,width=80,height=20)
 
 def listVideoButton():
-    saveButton = ttk.Button(text="Listar Videos", master=window, command = service.listVideos,style="C.TButton")
-    saveButton.place(x=20,y=20,width=80,height=20)
+    listButton = ttk.Button(text="Listar Videos", master=window, command = reciveListVideos,style="C.TButton")
+    listButton.place(x=20,y=20,width=80,height=20)
 
 # Função que cria o loop da janela
 def start():
