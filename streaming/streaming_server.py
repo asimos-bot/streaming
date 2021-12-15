@@ -40,8 +40,10 @@ class StreamingServer():
         hostname = socket.gethostname()
         ip = socket.gethostbyname(hostname)
         logging.basicConfig(
-                filename='srv.log',
-                encoding='utf-8',
+                handlers=[
+                    logging.FileHandler(filename='srv.log',
+                    encoding='utf-8',
+                )],
                 format="%(asctime)s|%(levelname)s:{}({}:{}):%(message)s".format(hostname, ip, port),
                 datefmt='%m/%d/%Y|%H:%M:%S',
                 level=loglevel)
