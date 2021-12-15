@@ -16,7 +16,7 @@ ttk.Style().map("C.TButton",anchor="center")
 def reciveListVideos():
     msg = service.listVideos()
     print(msg)
-    listVideos = ttk.Label(text=msg)
+    listVideos = ttk.Label(window,textvariable=msg)
     listVideos.place(x=20,y=70,width=100,height=100)
 
 

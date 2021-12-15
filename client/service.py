@@ -5,7 +5,6 @@ localIP = "0.0.0.0"
 localPort = 1100
 __BUFFSIZE = 65536
 
-# Create a datagram socket
 socketServerFront = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
 def listVideos ():
