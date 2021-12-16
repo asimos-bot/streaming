@@ -18,7 +18,7 @@ style.configure("TButton", font =
                 foreground = red,borderwidth=4,anchor="center")
 style.configure('LabelList',fontColor=red)
 
-def reciveListVideos():
+def receiveListVideos():
     posX = 230
     posY = 200
     listOfVideos = service.listVideos()
@@ -34,7 +34,7 @@ def playVideo(videoTitle):
     #renderizar o broadCast?
 
 def listVideoButton():
-    listButton = ttk.Button(text="Listar", master=window, command = reciveListVideos,style="TButton")
+    listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
     listButton.place(width=80,height=20)
     listButton.pack(pady=6)
 
