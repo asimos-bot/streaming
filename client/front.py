@@ -1,4 +1,5 @@
 import cv2
+from client.service import streamVideo
 import service
 from tkinter import *
 from tkinter import ttk
@@ -19,7 +20,6 @@ style.configure("TButton", font =
                ('calibri',10,'bold'),
                 foreground = red,borderwidth=4,anchor="center")
 style.configure('LabelList',fontColor=red)
-stopVideo = False
 
 def receiveListVideos():
     listOfVideos = service.listVideos()
@@ -31,6 +31,7 @@ def receiveListVideos():
 def playVideo(videoTitle):
     main_label = Label(window)
     main_label.pack()
+    print("DEBUG",streamVideo(videoTitle))
     cap = cv2.VideoCapture(service.streamVideo(videoTitle))
     ret, frame = cap.read()
     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
@@ -40,8 +41,6 @@ def playVideo(videoTitle):
     main_label.tk_img = tk_img
     main_label.after(20, playVideo(videoTitle))
    
-    
-
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
     listButton.place(width=80,height=20)

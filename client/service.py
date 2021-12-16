@@ -1,5 +1,9 @@
-import socket
+from tkinter import Frame
+import cv2
 import json
+import socket
+import numpy as np
+import base64
 
 localIP = "0.0.0.0"
 localPort = 1100
@@ -18,8 +22,11 @@ def streamVideo(video):
     socketServerFront.connect_ex((localIP,localPort))
     socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg1':video }), 'utf-8'), ('0.0.0.0', 1100))
     video = socketServerFront.recvfrom(__BUFFSIZE)
+    data = base64.b64decode(socketServerFront,' /')
+    npdata = np.fromstring(data,dtype=np.uint8)
+    frame = cv2.imdecode(npdata,1)
     socketServerFront.close()
-    return video
+    return frame
 
 def stopVideo():
     socketServerFront.connect_ex((localIP,localPort))
