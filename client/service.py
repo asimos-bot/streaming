@@ -14,8 +14,13 @@ def listVideos ():
     socketServerFront.close()
     return msg
 
-def playVideos(video):
+def streamVideo(video):
     socketServerFront.connect_ex((localIP,localPort))
-    socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg1':video}), 'utf-8'), ('0.0.0.0', 1100))
+    socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg1':video }), 'utf-8'), ('0.0.0.0', 1100))
     
+    socketServerFront.close()
+
+def stopVideo():
+    socketServerFront.connect_ex((localIP,localPort))
+    socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STOP_STREAM'}), 'utf-8'), ('0.0.0.0', 1100))
     socketServerFront.close()

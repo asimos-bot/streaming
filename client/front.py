@@ -29,9 +29,10 @@ def receiveListVideos():
         posY+=40
 
 def playVideo(videoTitle):
-    print('Titulo quando eu clico',videoTitle)
-    playedVideo = service.playVideos(videoTitle)
+    print('Botão clicado',videoTitle)
+    playedVideo = service.streamVideo(videoTitle)
     #renderizar o broadCast?
+    
 
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
