@@ -1,7 +1,9 @@
+import cv2
+import service
 from tkinter import *
 from tkinter import ttk
-from tkinter import font
-import service
+from PIL import ImageTk, Image
+
 
 window = Tk()
 style= ttk.Style()
@@ -17,21 +19,27 @@ style.configure("TButton", font =
                ('calibri',10,'bold'),
                 foreground = red,borderwidth=4,anchor="center")
 style.configure('LabelList',fontColor=red)
+stopVideo = False
 
 def receiveListVideos():
-    posX = 230
-    posY = 200
     listOfVideos = service.listVideos()
-    for video in listOfVideos:
-        videoButton = ttk.Button(text=video, master=window)
-        videoButton["command"] = lambda videoTitle=video: playVideo(videoTitle)
-        videoButton.place(x=posX,y=posY,width=50,height=25)
-        posY+=40
+    defaultValue = StringVar(window)
+    defaultValue.set(listOfVideos[0])
+    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : playVideo(videoTitle))
+    optionsVideos.pack()
 
 def playVideo(videoTitle):
-    print('Botão clicado',videoTitle)
-    playedVideo = service.streamVideo(videoTitle)
-    #renderizar o broadCast?
+    main_label = Label(window)
+    main_label.pack()
+    cap = cv2.VideoCapture(service.streamVideo(videoTitle))
+    ret, frame = cap.read()
+    cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
+    img = Image.fromarray(cv2image)
+    tk_img = ImageTk.PhotoImage(image=img)
+    main_label.configure(image=tk_img)
+    main_label.tk_img = tk_img
+    main_label.after(20, playVideo(videoTitle))
+   
     
 
 def listVideoButton():

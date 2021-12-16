@@ -17,8 +17,9 @@ def listVideos ():
 def streamVideo(video):
     socketServerFront.connect_ex((localIP,localPort))
     socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg1':video }), 'utf-8'), ('0.0.0.0', 1100))
-    
+    video = socketServerFront.recvfrom(__BUFFSIZE)
     socketServerFront.close()
+    return video
 
 def stopVideo():
     socketServerFront.connect_ex((localIP,localPort))
