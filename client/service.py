@@ -22,10 +22,9 @@ def streamVideo(video):
     socketServerFront.connect_ex((localIP,localPort))
     socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg1':video }), 'utf-8'), ('0.0.0.0', 1100))
     video = socketServerFront.recvfrom(__BUFFSIZE)
-    data = base64.b64decode(socketServerFront,' /')
+    data = base64.b64decode(video,' /')
     npdata = np.fromstring(data,dtype=np.uint8)
     frame = cv2.imdecode(npdata,1)
-    socketServerFront.close()
     return frame
 
 def stopVideo():

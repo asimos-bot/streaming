@@ -4,6 +4,7 @@ import service
 from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
+from threading import Thread
 
 
 window = Tk()
@@ -28,10 +29,9 @@ def receiveListVideos():
     optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : playVideo(videoTitle))
     optionsVideos.pack()
 
-def playVideo(videoTitle):
+def showVideo(videoTitle):
     main_label = Label(window)
     main_label.pack()
-    print("DEBUG",streamVideo(videoTitle))
     cap = cv2.VideoCapture(service.streamVideo(videoTitle))
     ret, frame = cap.read()
     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
@@ -40,6 +40,13 @@ def playVideo(videoTitle):
     main_label.configure(image=tk_img)
     main_label.tk_img = tk_img
     main_label.after(20, playVideo(videoTitle))
+
+def playAudio(videoTitle):
+    print(videoTitle)
+
+def playVideo(videoTitle):
+    Thread(target=showVideo(videoTitle)).start()
+    Thread(target=playAudio(videoTitle)).start()
    
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
