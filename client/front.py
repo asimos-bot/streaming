@@ -21,8 +21,7 @@ style.configure('LabelList',fontColor=red)
 def reciveListVideos():
     posX = 230
     posY = 200
-    #listOfVideos = service.listVideos()
-    listOfVideos = ['Teste1','Teste2']
+    listOfVideos = service.listVideos()
     for video in listOfVideos:
         videoButton = ttk.Button(text=video, master=window)
         videoButton["command"] = lambda videoButton=videoButton: playVideo(video)
