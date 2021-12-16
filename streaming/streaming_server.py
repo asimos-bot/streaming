@@ -1,5 +1,6 @@
 import socket, enum, json, os
-import cv2, wave, pyaudio, imutils, base64, logging
+import cv2, wave, pyaudio, imutils, base64, logging, subprocess, time, wave
+import pickle, struct
 import numpy as np
 from user import User
 
@@ -16,6 +17,7 @@ class StreamQuality():
 class StreamingServer():
 
     __BUFF_SIZE=65536
+    CHUNK = 1024
 
     def __init__(self, port, loglevel=logging.INFO):
         self.api_commands = {
@@ -65,6 +67,9 @@ class StreamingServer():
         self.__server_lock.acquire()
         self.__server.sendto(packet, client_addr)
         self.__server_lock.release()
+    def extract_audio(self, file_name):
+        command = "ffmpeg -i ./videos/{0}.mp4 -vn ./videos/{0}.wav -y".format(file_name.split(".")[0])
+        subprocess.call(command, shell=True)
     def close_stream(self, key):
         self.__stream_lock.acquire()
         if key in self.__active_streams.keys():
@@ -75,6 +80,7 @@ class StreamingServer():
         res=None
         if user.name not in self.__active_streams.keys():
             res = self.__active_streams[user.name] = Stream(self, user, video, quality)
+            self.extract_audio(video)
         self.__stream_lock.release()
         return res
     def recvfrom(self):
@@ -106,7 +112,7 @@ class StreamingServer():
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
         stream = self.add_stream(user, packet["arg"], StreamQuality.VIDEO_240P)
-        stream.broadcast()
+        stream.broadcast(packet["arg"].split(".")[0])
         stream.close()
     def user_information(self, packet, user):
         logging.info("USER_INFORMATION called by '{}'".format(user.name))
@@ -152,6 +158,7 @@ class Stream():
         self.video = cv2.VideoCapture("videos/" + video)
         self.quality = quality
         self.server = server
+        self.audio_sample_rate = 0
     @property
     def owner(self):
         return self.__owner
@@ -173,10 +180,23 @@ class Stream():
         # send to user
         self.server.sendto(message, client_addr)
         return True
-    def broadcast(self):
+    def send_stream_audio(self, client_addr, wf):
+        data = wf.readframes(StreamingServer.CHUNK)
+        self.server.sendto(data, client_addr)
+        time.sleep(0.8*StreamingServer.CHUNK/self.audio_sample_rate)
+        return True
+    def broadcast(self, filename):
+        wf = wave.open("./videos/{}.wav".format(filename), 'rb')
+        self.audio_sample_rate = wf.getframerate()
+        p = pyaudio.PyAudio()
+        stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                    channels=wf.getnchannels(),
+                    rate=wf.getframerate(),
+                    input=True,
+                    frames_per_buffer=StreamingServer.CHUNK)
         while self.video.isOpened():
             for user in self.active_users:
-                if not self.send_stream_piece(user.addr):
+                if not (self.send_stream_piece(user.addr) or self.send_stream_audio(user.addr, wf)):
                     return
 
 if __name__ == "__main__":
