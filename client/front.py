@@ -24,13 +24,13 @@ def reciveListVideos():
     listOfVideos = service.listVideos()
     for video in listOfVideos:
         videoButton = ttk.Button(text=video, master=window)
-        videoButton["command"] = lambda videoButton=videoButton: playVideo(video)
+        videoButton["command"] = lambda videoTitle=video: playVideo(videoTitle)
         videoButton.place(x=posX,y=posY,width=50,height=25)
         posY+=40
 
 def playVideo(videoTitle):
     print('Titulo quando eu clico',videoTitle)
-    #playedVideo = service.playVideos(videoTitle)
+    playedVideo = service.playVideos(videoTitle)
     #renderizar o broadCast?
 
 def listVideoButton():
