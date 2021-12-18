@@ -4,6 +4,10 @@ import queue
 import os
 import time
 import base64
+import wave
+import pickle
+import pyaudio
+import struct
 from multiprocessing import Lock
 from concurrent.futures import ThreadPoolExecutor
 
@@ -32,7 +36,7 @@ class Video():
         self.__video_is_running_lock = Lock()
 
         with ThreadPoolExecutor(max_workers=3) as executor:
-            #executor.submit(self.audio_stream)
+            executor.submit(self.audio_stream)
             executor.submit(self.video_stream_gen)
             executor.submit(self.video_stream)        
     @property
@@ -74,12 +78,13 @@ class Video():
         cv2.namedWindow('TRANSMITTING VIDEO')
         cv2.moveWindow('TRANSMITTING VIDEO', 10, 30)
 
-        while True:#not self.queue.empty() and self.video_is_running:
+        while self.video_is_running:#not self.queue.empty() and self.video_is_running:
             frame = self.queue.get()
             encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
             message = base64.b64encode(buffer)
             for client in self.active_users:
-                self.sendto(message, client.addr)
+                self.sendto(b'v' + message, client.addr)
+                print(len(message))
             frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             if cnt == frames_to_count:
                 try:
@@ -96,3 +101,19 @@ class Video():
             cv2.imshow('TRANSMITTING VIDEO', frame)
             key = cv2.waitKey(int(1000*self.TS)) & 0xFF
         self.video_is_running = False
+
+    def audio_stream(self):
+        wf = wave.open("temp.wav", 'rb')
+        p = pyaudio.PyAudio()
+        stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                        channels=wf.getnchannels(),
+                        rate=wf.getframerate(),
+                        input=True,
+                        frames_per_buffer=Video.__CHUNK)
+
+        while self.video_is_running:
+            data = wf.readframes(Video.__CHUNK)
+            a = pickle.dumps(data)
+            message = struct.pack("Q",len(a))+a
+            for client in self.active_users:
+                self.sendto(b'a' + message, client.addr)
