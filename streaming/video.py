@@ -78,12 +78,9 @@ class Video():
             frame = self.queue.get()
             encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
             message = base64.b64encode(buffer)
-            print("1")
             for client in self.active_users:
-                print("3")
                 self.sendto(message, client.addr)
-            frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLE)
-            print("2")
+            frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             if cnt == frames_to_count:
                 try:
                     fps = (frames_to_count/(time.time()-st))
