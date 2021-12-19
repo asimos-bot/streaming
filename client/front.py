@@ -1,10 +1,5 @@
-import cv2
 import service
-from tkinter import *
-from tkinter import ttk
-from PIL import ImageTk, Image
-import base64
-import numpy as np
+from tkinter import Tk, ttk, StringVar, OptionMenu
 
 window = Tk()
 style= ttk.Style()
@@ -27,14 +22,9 @@ def receiveListVideos():
     listOfVideos = list(listOfVideos[0])
     defaultValue = StringVar(window)
     defaultValue.set(listOfVideos[0])
-    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : showVideo(videoTitle))
+    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : service.showVideo(videoTitle, window))
     optionsVideos.pack()
 
-def showVideo(videoTitle):
-    service.video_stream(videoTitle)
-
-    
-   
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
     listButton.place(width=80,height=20)
@@ -46,5 +36,4 @@ def start():
     window.geometry("500x300")
     listVideoButton()
     window.mainloop()
-
 start()
