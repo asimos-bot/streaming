@@ -16,8 +16,6 @@ host_ip = socket.gethostbyname(host_name)
 print(host_ip)
 port = 11000
 message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4"}'
-FPS = 30
-TS = 0.5/FPS
 client_socket.sendto(message,(host_ip,port))
 
 video_queue = queue.Queue() # MAXSIZE OK?
@@ -25,7 +23,6 @@ audio_queue = queue.Queue()
 
 
 def separate_data():
-    global FPS
     while True:
         packet, addr = client_socket.recvfrom(BUFF_SIZE) # LINHA PROBLEMÁTICA
 
@@ -34,13 +31,14 @@ def separate_data():
                 video_queue.put(packet[1:])
             elif packet[:1] == b'a':
                 audio_queue.put(packet[1:])
+        else:
+            print("nothing")
 
 def video_stream():
    
-    global TS
     cv2.namedWindow('RECEIVING VIDEO')        
     cv2.moveWindow('RECEIVING VIDEO', 10,360) 
-    fps,st,frames_to_count,cnt = (0,0,10,0)
+    fps,st,frames_to_count,cnt = (0,0,30,0)
     while True:
         data = base64.b64decode(video_queue.get(),' /')
         npdata = np.fromstring(data,dtype=np.uint8)
@@ -51,20 +49,13 @@ def video_stream():
                 fps = (frames_to_count/(time.time() - st))
                 st = time.time()
                 cnt = 0
-                if fps > FPS:
-                    TS += 0.001
-                elif fps < FPS:
-                    TS -= 0.001
-                else:
-                    pass
             except:
                 pass
         cnt+=1
-        print(fps)
         frame = cv2.putText(frame,'CLIENT FPS: '+ str(fps),(10,40),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,0,255),2)
         cv2.imshow("RECEIVING VIDEO",frame)
         #cv2.imshow('TRANSMITTING VIDEO', frame)
-        cv2.waitKey(int(1000*TS))
+        cv2.waitKey(1)
 
     client_socket.close()
     cv2.destroyAllWindows() 
