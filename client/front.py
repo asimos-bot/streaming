@@ -3,8 +3,8 @@ import service
 from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
-from threading import Thread
-
+import base64
+import numpy as np
 
 window = Tk()
 style= ttk.Style()
@@ -27,26 +27,13 @@ def receiveListVideos():
     listOfVideos = list(listOfVideos[0])
     defaultValue = StringVar(window)
     defaultValue.set(listOfVideos[0])
-    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : playVideo(videoTitle))
+    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : showVideo(videoTitle))
     optionsVideos.pack()
 
 def showVideo(videoTitle):
-    main_label = Label(window)
-    main_label.pack()
-    cap = cv2.VideoCapture(service.streamVideo(videoTitle))
-    ret, frame = cap.read()
-    cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
-    img = Image.fromarray(cv2image)
-    tk_img = ImageTk.PhotoImage(image=img)
-    main_label.configure(image=tk_img)
-    main_label.tk_img = tk_img
-    main_label.after(20, playVideo(videoTitle))
+    service.video_stream(videoTitle)
 
-def playAudio(videoTitle):
-    print(videoTitle)
-
-def playVideo(videoTitle):
-    print(videoTitle)
+    
    
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
