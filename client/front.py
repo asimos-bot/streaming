@@ -1,8 +1,10 @@
 import service
-from tkinter import Tk, ttk, StringVar, OptionMenu
+from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
 
 window = Tk()
 style= ttk.Style()
+f1 = Frame(window)
+l1 = Label(f1)
 
 # Constantes de cor da interface
 backgroundColor = '#221F1F'
@@ -22,7 +24,7 @@ def receiveListVideos():
     listOfVideos = list(listOfVideos[0])
     defaultValue = StringVar(window)
     defaultValue.set(listOfVideos[0])
-    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : service.showVideo(videoTitle, window))
+    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : service.showVideo(videoTitle, l1))
     optionsVideos.pack()
 
 def listVideoButton():
