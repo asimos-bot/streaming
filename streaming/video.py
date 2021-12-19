@@ -8,6 +8,7 @@ import wave
 import pickle
 import pyaudio
 import subprocess
+import math
 import struct
 from multiprocessing import Lock
 from concurrent.futures import ThreadPoolExecutor
@@ -82,8 +83,18 @@ class Video():
         BREAK=True
         self.video.release()
 
+    def _round(self, x):
+        if abs(x) < 1:
+            if x < 0:
+                x = -1
+            elif x > 0:
+                x = 1
+            else:
+                return 0
+        return x
+
     def video_stream(self):
-        fps, st, frames_to_count, cnt = (0, 0, 1, 0)
+        fps, st, frames_to_count, cnt = (self.FPS, time.time(), 5, 0)
 
         while self.video_is_running:#not self.queue.empty() and self.video_is_running:
             frame = self.queue.get()
@@ -97,17 +108,20 @@ class Video():
                     fps = (frames_to_count/(time.time()-st))
                     st = time.time()
                     cnt = 0
+                    diff = (fps - self.FPS)**2
                     if fps > self.FPS:
-                        self.TS += 0.001
+                        self.TS += 0.0001 * self._round(diff)
                     elif fps < self.FPS:
-                        self.TS -= 0.001
+                        self.TS -= 0.0008 * self._round(diff)
                     else:
                         pass
+                    if(self.TS < 0): self.TS = -self.TS
                 except:
                     pass
             cnt+=1
             #cv2.imshow('TRANSMITTING VIDEO', frame)
-            cv2.waitKey(int(1000*self.TS))
+            #cv2.waitKey(int(1000*self.TS))
+            time.sleep(self.TS)
         self.video_is_running = False
 
     def audio_stream(self):

@@ -80,7 +80,6 @@ class StreamingServer():
         res=None
         if user.name not in self.__active_streams.keys():
             vd = video.Video(video_filename, user, quality[0], quality[1], self.sendto)
-            self.extract_audio(video_filename)
             res = self.__active_streams[user.name] = stream.Stream(user, vd)
         self.__stream_lock.release()
         return res
