@@ -51,7 +51,7 @@ class StreamingServer():
                 format="%(asctime)s|%(levelname)s:{}({}:{}):%(message)s".format(hostname, ip, port),
                 datefmt='%m/%d/%Y|%H:%M:%S',
                 level=loglevel)
-
+                
     def setup_server(self, port):
         # get UDP socket
         srv = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

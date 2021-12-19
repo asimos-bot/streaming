@@ -1,5 +1,4 @@
 import cv2
-from client.service import streamVideo
 import service
 from tkinter import *
 from tkinter import ttk
@@ -24,6 +23,8 @@ style.configure('LabelList',fontColor=red)
 
 def receiveListVideos():
     listOfVideos = service.listVideos()
+    listOfVideos = list(listOfVideos.values())
+    listOfVideos = list(listOfVideos[0])
     defaultValue = StringVar(window)
     defaultValue.set(listOfVideos[0])
     optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : playVideo(videoTitle))
@@ -45,8 +46,7 @@ def playAudio(videoTitle):
     print(videoTitle)
 
 def playVideo(videoTitle):
-    Thread(target=showVideo(videoTitle)).start()
-    Thread(target=playAudio(videoTitle)).start()
+    print(videoTitle)
    
 def listVideoButton():
     listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
