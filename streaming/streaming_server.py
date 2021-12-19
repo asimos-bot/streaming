@@ -69,6 +69,10 @@ class StreamingServer():
     def sendto(self, packet, client_addr):
         self.__server.sendto(packet, client_addr)
 
+    def extract_audio(self, file_name):
+        command = "ffmpeg -i ./videos/{0}.mp4 -vn ./videos/{0}.wav -y".format(file_name.split(".")[0])
+        subprocess.call(command, shell=True)
+
     def close_stream(self, key):
         self.__stream_lock.acquire()
         if key in self.__active_streams.keys():
@@ -82,6 +86,7 @@ class StreamingServer():
         if user.name not in self.__active_streams.keys():
             vd = video.Video("videos/" + video_filename, user, quality[0], quality[1], self.sendto)
             res = self.__active_streams[user.name] = stream.Stream(user, vd)
+            # self.extract_audio(video_filename)
         self.__stream_lock.release()
         return res
 
@@ -116,7 +121,6 @@ class StreamingServer():
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
         stream = self.add_stream(user, packet["arg"], StreamQuality.VIDEO_240P)
-        stream.broadcast(packet["arg"].split(".")[0]) # type: ignore
         stream.close() # type: ignore
 
     def user_information(self, packet, user):

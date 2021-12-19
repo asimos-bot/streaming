@@ -75,16 +75,15 @@ class Video():
 
     def video_stream(self):
         fps, st, frames_to_count, cnt = (0, 0, 1, 0)
-        cv2.namedWindow('TRANSMITTING VIDEO')
-        cv2.moveWindow('TRANSMITTING VIDEO', 10, 30)
 
         while self.video_is_running:#not self.queue.empty() and self.video_is_running:
             frame = self.queue.get()
             encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
             message = base64.b64encode(buffer)
             for client in self.active_users:
+                print("antes_srv")
                 self.sendto(b'v' + message, client.addr)
-                print(len(message))
+                print("depois_srv")
             frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             if cnt == frames_to_count:
                 try:
@@ -98,12 +97,12 @@ class Video():
                 except:
                     pass
             cnt+=1
-            cv2.imshow('TRANSMITTING VIDEO', frame)
             key = cv2.waitKey(int(1000*self.TS)) & 0xFF
         self.video_is_running = False
 
-    def audio_stream(self):
-        wf = wave.open("temp.wav", 'rb')
+    def audio_stream(self, filename):
+
+        wf = wave.open("temp.wav", 'rb') # TODO: trocar por filename
         p = pyaudio.PyAudio()
         stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
                         channels=wf.getnchannels(),
