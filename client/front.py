@@ -2,6 +2,8 @@ import service
 from tkinter import Tk, ttk, StringVar, OptionMenu
 
 window = Tk()
+width= window.winfo_screenwidth() 
+height= window.winfo_screenheight()
 style= ttk.Style()
 
 # Constantes de cor da interface
@@ -33,7 +35,7 @@ def listVideoButton():
 # Função que cria o loop da janela
 def start():
     window.title("Redes 2")
-    window.geometry("500x300")
+    window.geometry("%dx%d" % (width, height))    
     listVideoButton()
     window.mainloop()
 start()
