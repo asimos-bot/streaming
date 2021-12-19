@@ -7,6 +7,7 @@ import base64
 import wave
 import pickle
 import pyaudio
+import subprocess
 import struct
 from multiprocessing import Lock
 from concurrent.futures import ThreadPoolExecutor
@@ -20,11 +21,12 @@ class Video():
 
     def __init__(self, filename: str, owner: user.User, width: int, height: int, sendto):
         self.sendto = sendto
-        self.video = cv2.VideoCapture(filename)
+        self.filename = filename
+        self.video = cv2.VideoCapture("videos/" + filename)
         self.width = width
         self.height = height
         self.FPS = self.video.get(cv2.CAP_PROP_FPS)
-        self.TS = (0.5/self.FPS)
+        self.TS = 0.5/self.FPS
         self.BREAK = False
         self.total_num_frames = int(self.video.get(cv2.CAP_PROP_FRAME_COUNT))
         self.duration_secs = float(self.total_num_frames) / float(self.FPS)
@@ -35,10 +37,17 @@ class Video():
         self.__video_is_running = True
         self.__video_is_running_lock = Lock()
 
+        self.extract_audio(filename)
+
         with ThreadPoolExecutor(max_workers=3) as executor:
             executor.submit(self.audio_stream)
             executor.submit(self.video_stream_gen)
-            executor.submit(self.video_stream)        
+            executor.submit(self.video_stream)
+
+    def extract_audio(self, file_name):
+        command = "ffmpeg -i ./videos/{0} -vn ./videos/{0}.wav -y".format(file_name)
+        subprocess.call(command, shell=True)
+
     @property
     def active_users(self):
         self.__active_users_lock.acquire()
@@ -81,10 +90,8 @@ class Video():
             encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
             message = base64.b64encode(buffer)
             for client in self.active_users:
-                print("antes_srv")
                 self.sendto(b'v' + message, client.addr)
-                print("depois_srv")
-            frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            #frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             if cnt == frames_to_count:
                 try:
                     fps = (frames_to_count/(time.time()-st))
@@ -92,23 +99,20 @@ class Video():
                     cnt = 0
                     if fps > self.FPS:
                         self.TS += 0.001
-                    elif fps > self.FPS:
+                    elif fps < self.FPS:
                         self.TS -= 0.001
+                    else:
+                        pass
                 except:
                     pass
             cnt+=1
-            key = cv2.waitKey(int(1000*self.TS)) & 0xFF
+            #cv2.imshow('TRANSMITTING VIDEO', frame)
+            cv2.waitKey(int(1000*self.TS))
         self.video_is_running = False
 
-    def audio_stream(self, filename):
+    def audio_stream(self):
 
-        wf = wave.open("temp.wav", 'rb') # TODO: trocar por filename
-        p = pyaudio.PyAudio()
-        stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                        channels=wf.getnchannels(),
-                        rate=wf.getframerate(),
-                        input=True,
-                        frames_per_buffer=Video.__CHUNK)
+        wf = wave.open("{}.wav".format("videos/" + self.filename), 'rb') # TODO: trocar por filename
 
         while self.video_is_running:
             data = wf.readframes(Video.__CHUNK)

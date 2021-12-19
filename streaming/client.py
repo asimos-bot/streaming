@@ -15,20 +15,19 @@ host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
 port = 11000
-message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"sample2.mp4"}'
-
+message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4"}'
+FPS = 30
+TS = 0.5/FPS
 client_socket.sendto(message,(host_ip,port))
 
-video_queue = queue.Queue(maxsize=10) # MAXSIZE OK?
-audio_queue = queue.Queue(maxsize=10)
+video_queue = queue.Queue() # MAXSIZE OK?
+audio_queue = queue.Queue()
 
 
 def separate_data():
+    global FPS
     while True:
-        print("antes")
         packet, addr = client_socket.recvfrom(BUFF_SIZE) # LINHA PROBLEMÁTICA
-        print("packet: ", packet)
-        print("depois")
 
         if len(packet)>1: # checar cond
             if packet[:1] == b'v':
@@ -37,35 +36,36 @@ def separate_data():
                 audio_queue.put(packet[1:])
 
 def video_stream():
-    
+   
+    global TS
     cv2.namedWindow('RECEIVING VIDEO')        
     cv2.moveWindow('RECEIVING VIDEO', 10,360) 
-    fps,st,frames_to_count,cnt = (0,0,20,0)
+    fps,st,frames_to_count,cnt = (0,0,10,0)
     while True:
-        if not video_queue.empty():
-            data = base64.b64decode(video_queue.get(0),' /')
-            npdata = np.fromstring(data,dtype=np.uint8)
-    
-            frame = cv2.imdecode(npdata,1)
-            frame = cv2.putText(frame,'CLIENT FPS: '+str(fps),(10,40),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,0,255),2)
-            cv2.imshow("RECEIVING VIDEO",frame)
-        key = cv2.waitKey(1) & 0xFF
-    
-        if key == ord('q'):
-            client_socket.close()
-            os._exit(1)
-            break
+        data = base64.b64decode(video_queue.get(),' /')
+        npdata = np.fromstring(data,dtype=np.uint8)
 
+        frame = cv2.imdecode(npdata,1)
         if cnt == frames_to_count:
             try:
-                fps = round(frames_to_count/(time.time()-st))
-                st=time.time()
-                cnt=0
+                fps = (frames_to_count/(time.time() - st))
+                st = time.time()
+                cnt = 0
+                if fps > FPS:
+                    TS += 0.001
+                elif fps < FPS:
+                    TS -= 0.001
+                else:
+                    pass
             except:
                 pass
         cnt+=1
-        
-            
+        print(fps)
+        frame = cv2.putText(frame,'CLIENT FPS: '+ str(fps),(10,40),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,0,255),2)
+        cv2.imshow("RECEIVING VIDEO",frame)
+        #cv2.imshow('TRANSMITTING VIDEO', frame)
+        cv2.waitKey(int(1000*TS))
+
     client_socket.close()
     cv2.destroyAllWindows() 
 
@@ -79,13 +79,12 @@ def audio_stream():
                     output=True,
                     frames_per_buffer=CHUNK)
                     
-    # create socket
-    data = b""
+    data = b''
     payload_size = struct.calcsize("Q")
     while True:
         try:
             while len(data) < payload_size:
-                packet = audio_queue.get(0) # client_socket.recv(4*1024) # 4K
+                packet = audio_queue.get() # client_socket.recv(4*1024) # 4K
                 if not packet: 
                     break
                 data+=packet
@@ -93,7 +92,7 @@ def audio_stream():
             data = data[payload_size:]
             msg_size = struct.unpack("Q",packed_msg_size)[0]
             while len(data) < msg_size:
-                data += audio_queue.get(0) # client_socket.recv(4*1024)
+                data += audio_queue.get() # client_socket.recv(4*1024)
 
             # TODO: verificar se tamanho recebido é ok ou grande demais
 
@@ -110,7 +109,7 @@ def audio_stream():
     os._exit(1)
 
 from concurrent.futures import ThreadPoolExecutor
-with ThreadPoolExecutor(max_workers=2) as executor:
-    executor.submit(separate_data)
+with ThreadPoolExecutor(max_workers=3) as executor:
     executor.submit(video_stream)
     executor.submit(audio_stream)
+    executor.submit(separate_data)
