@@ -1,5 +1,5 @@
 import service
-from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
+from tkinter import Tk, Variable, ttk, StringVar, OptionMenu, Frame, Label
 
 class ClientGUI:
 
@@ -11,7 +11,7 @@ class ClientGUI:
 
     def __init__(self, client_ip, client_port, server_ip, server_port):
         self.setupWidgets()
-        self.service = service.ClientService(client_ip, client_port, server_ip, server_port)
+        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label)
         self.setupStyle()
         self.start()
 
@@ -27,6 +27,7 @@ class ClientGUI:
         self.frame.config(bg="black")
         self.label.grid(row=600, column=0, padx=10, pady=2)
         self.label.pack()
+        self.videoSelected = ''
 
     def setupStyle(self):
         # Criação da estilização da interface
@@ -43,8 +44,12 @@ class ClientGUI:
         listOfVideos = list(listOfVideos[0])
         defaultValue = StringVar(self.window)
         defaultValue.set(listOfVideos[0])
-        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle, self.label))
+        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle))
         optionsVideos.pack()
+        excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: service.stopVideo(self.videoSelected)  ,style="TButton")
+        excludeButton.place(x=(self.width//2),y=100)
+        playButton = ttk.Button(text="Play",master=self.window,command= service.showVideo(self.videoSelected,self.l1))
+        playButton.place(x=(self.width//2)+ 100,y=100)
 
     def listVideoButton(self):
         listButton = ttk.Button(text="Listar", master=self.window, command = self.receiveListVideos,style="TButton")
