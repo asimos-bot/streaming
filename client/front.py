@@ -8,7 +8,9 @@ style= ttk.Style()
 f1 = Frame(window)
 l1 = Label(f1)
 f1.place(x=30, y=100)
+f1.config(bg="black")
 l1.grid(row=600, column=0, padx=10, pady=2)
+l1.pack()
 
 # Constantes de cor da interface
 backgroundColor = '#221F1F'

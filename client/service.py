@@ -52,15 +52,13 @@ def video_stream(label):
         cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
 
         try:
-            print("VAI RENDERIZAR NÂO, P&*@?")
             imgtk = ImageTk.PhotoImage(image=Image.fromarray(cv2image))
+            print("VAI RENDERIZAR NÂO, P&*@?")
+            label.configure(image=imgtk)
+            label.image = imgtk 
         except:
             print("TO PULANDO ESSE ENTÂO")
-            time.sleep(10)
             continue
-        label.imgtk = imgtk 
-        label.configure(image=imgtk)
-        label.pack()
 
 def showVideo(videoTitle, label):
     socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,6000))
