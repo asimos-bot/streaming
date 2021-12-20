@@ -3,8 +3,7 @@ import cv2
 import json
 import socket
 import numpy as np
-import queue
-import time, os
+import threading, queue
 import base64
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -44,7 +43,7 @@ def video_stream(label):
     while video_queue.empty():
         pass
 
-    while not video_queue.empty():
+    while True:
         data = base64.b64decode(video_queue.get(),' /')
         npdata = np.fromstring(data,dtype = np.uint8)
         print("pos npdata")
@@ -63,7 +62,11 @@ def video_stream(label):
 def showVideo(videoTitle, label):
     socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,6000))
 
-    from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        executor.submit(separate_data)
-        executor.submit(video_stream, label)
+    t1 = threading.Thread(target=separate_data)
+    t2 = threading.Thread(target=video_stream, args=(label, ))
+    
+    t1.setDaemon(True) # daemon = True for background jobs
+    t2.setDaemon(True)
+
+    t1.start()
+    t2.start()
