@@ -8,6 +8,7 @@ import pyaudio,pickle,struct
 import time, os
 import base64
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 __BUFFSIZE = 65536
 
@@ -37,26 +38,33 @@ def separate_data():
                 #print("audio queue:", audio_queue.qsize())
                 pass
 
-def video_stream(window):
+def video_stream(label):
 
-    time.sleep(3)
+    while video_queue.empty():
+        pass
+
     while not video_queue.empty():
-        print("getting from queue...")
         data = base64.b64decode(video_queue.get(),' /')
-        print("got from queue")
         npdata = np.fromstring(data,dtype = np.uint8)
         print("pos npdata")
         frame = cv2.imdecode(npdata, 1)
-        print("criação do frame")
-        label = ttk.Label(window, image=frame)
-        label.pack()
-    print("acabou")
+        cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
 
-def showVideo(videoTitle, window):
+        try:
+            print("VAI RENDERIZAR NÂO, P&*@?")
+            imgtk = ImageTk.PhotoImage(image=Image.fromarray(cv2image))
+        except:
+            print("TO PULANDO ESSE ENTÂO")
+            time.sleep(10)
+            continue
+        label.imgtk = imgtk 
+        label.configure(image=imgtk)
+        label.pack()
+
+def showVideo(videoTitle, label):
     socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,port))
 
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(separate_data)
-        executor.submit(video_stream, window)
-   
+        executor.submit(video_stream, label)

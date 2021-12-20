@@ -108,7 +108,7 @@ class Video():
                     fps = (frames_to_count/(time.time()-st))
                     st = time.time()
                     cnt = 0
-                    diff = (fps - self.FPS)**2
+                    diff = (fps - self.FPS)
                     if fps > self.FPS:
                         self.TS += 0.0001 * self._round(diff)
                     elif fps < self.FPS:
