@@ -24,7 +24,7 @@ audio_queue = queue.Queue()
 
 def separate_data():
     while True:
-        packet, addr = client_socket.recvfrom(BUFF_SIZE) # LINHA PROBLEMÁTICA
+        packet, addr = client_socket.recvfrom(BUFF_SIZE)
 
         if len(packet)>1: # checar cond
             if packet[:1] == b'v':
@@ -54,7 +54,6 @@ def video_stream():
         cnt+=1
         frame = cv2.putText(frame,'CLIENT FPS: '+ str(fps),(10,40),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,0,255),2)
         cv2.imshow("RECEIVING VIDEO",frame)
-        #cv2.imshow('TRANSMITTING VIDEO', frame)
         cv2.waitKey(1)
 
     client_socket.close()
@@ -75,15 +74,15 @@ def audio_stream():
     while True:
         try:
             while len(data) < payload_size:
-                packet = audio_queue.get() # client_socket.recv(4*1024) # 4K
-                if not packet: 
+                packet = audio_queue.get()
+                if not packet:
                     break
                 data+=packet
             packed_msg_size = data[:payload_size]
             data = data[payload_size:]
             msg_size = struct.unpack("Q",packed_msg_size)[0]
             while len(data) < msg_size:
-                data += audio_queue.get() # client_socket.recv(4*1024)
+                data += audio_queue.get()
 
             # TODO: verificar se tamanho recebido é ok ou grande demais
 
