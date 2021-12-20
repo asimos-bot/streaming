@@ -1,47 +1,62 @@
 import service
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
 
-window = Tk()
-width= window.winfo_screenwidth() 
-height= window.winfo_screenheight()
-style= ttk.Style()
-f1 = Frame(window)
-l1 = Label(f1)
-f1.place(x=30, y=100)
-f1.config(bg="black")
-l1.grid(row=600, column=0, padx=10, pady=2)
-l1.pack()
+class ClientGUI:
 
-# Constantes de cor da interface
-backgroundColor = '#221F1F'
-fontColor = '#F5F5F1'
-red = '#E50914'
+    # Constantes de cor da interface
+    backgroundColor = '#221F1F'
+    fontColor = '#F5F5F1'
+    red = '#E50914'
 
-# Criação da estilização da interface
-window.configure(background=backgroundColor)
-style.configure("TButton", font =
-               ('calibri',10,'bold'),
-                foreground = red,borderwidth=4,anchor="center")
-style.configure('LabelList',fontColor=red)
 
-def receiveListVideos():
-    listOfVideos = service.listVideos()
-    listOfVideos = list(listOfVideos.values())
-    listOfVideos = list(listOfVideos[0])
-    defaultValue = StringVar(window)
-    defaultValue.set(listOfVideos[0])
-    optionsVideos = OptionMenu(window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : service.showVideo(videoTitle, l1))
-    optionsVideos.pack()
+    def __init__(self, client_ip, client_port, server_ip, server_port):
+        self.setupWidgets()
+        self.service = service.ClientService(client_ip, client_port, server_ip, server_port)
+        self.setupStyle()
+        self.start()
 
-def listVideoButton():
-    listButton = ttk.Button(text="Listar", master=window, command = receiveListVideos,style="TButton")
-    listButton.place(width=80,height=20)
-    listButton.pack(pady=6)
+    def setupWidgets(self):
 
-# Função que cria o loop da janela
-def start():
-    window.title("Redes 2")
-    window.geometry("%dx%d" % (width, height))    
-    listVideoButton()
-    window.mainloop()
-start()
+        self.window = Tk()
+        self.width= self.window.winfo_screenwidth() 
+        self.height= self.window.winfo_screenheight()
+        self.style = ttk.Style()
+        self.frame = Frame(self.window)
+        self.label = Label(self.frame)
+        self.frame.place(x=30, y=100)
+        self.frame.config(bg="black")
+        self.label.grid(row=600, column=0, padx=10, pady=2)
+        self.label.pack()
+
+    def setupStyle(self):
+        # Criação da estilização da interface
+        self.window.configure(background=ClientGUI.backgroundColor)
+        self.style.configure("TButton", font =
+                       ('calibri',10,'bold'),
+                        foreground = ClientGUI.red,borderwidth=4,anchor="center")
+        self.style.configure('LabelList',fontColor=ClientGUI.red)
+
+
+    def receiveListVideos(self):
+        listOfVideos = self.service.listVideos()
+        listOfVideos = list(listOfVideos.values())
+        listOfVideos = list(listOfVideos[0])
+        defaultValue = StringVar(self.window)
+        defaultValue.set(listOfVideos[0])
+        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle, self.label))
+        optionsVideos.pack()
+
+    def listVideoButton(self):
+        listButton = ttk.Button(text="Listar", master=self.window, command = self.receiveListVideos,style="TButton")
+        listButton.place(width=80,height=20)
+        listButton.pack(pady=6)
+
+    # Função que cria o loop da janela
+    def start(self):
+        self.window.title("Redes 2")
+        self.window.geometry("%dx%d" % (self.width, self.height))    
+        self.listVideoButton()
+        self.window.mainloop()
+
+if __name__ == "__main__":
+    ClientGUI('127.0.0.1', 5050, '127.0.0.1', 6000)
