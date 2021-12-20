@@ -124,9 +124,12 @@ class Video():
 
         wf = wave.open("{}.wav".format("videos/" + self.filename), 'rb') # TODO: trocar por filename
 
+        sample_rate = wf.getframerate()
+
         while self.video_is_running:
             data = wf.readframes(Video.__CHUNK)
             a = pickle.dumps(data)
             message = struct.pack("Q",len(a))+a
             for client in self.active_users:
                 self.sendto(b'a' + message, client.addr)
+                time.sleep(0.8*Video.__CHUNK/sample_rate)
