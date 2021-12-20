@@ -6,9 +6,7 @@ import time
 import base64
 import wave
 import pickle
-import pyaudio
 import subprocess
-import math
 import struct
 from multiprocessing import Lock
 from concurrent.futures import ThreadPoolExecutor

@@ -4,7 +4,6 @@ import json
 import socket
 import numpy as np
 import queue
-import pyaudio,pickle,struct
 import time, os
 import base64
 from tkinter import ttk
@@ -16,12 +15,14 @@ socketServerFront = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 socketServerFront.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, __BUFFSIZE)
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
-port = 11000
+port = 5050
+socketServerFront.bind((host_ip, port))
+
 video_queue = queue.Queue() 
 audio_queue = queue.Queue()
 
 def listVideos ():
-    socketServerFront.sendto( bytes(json.dumps({'id': "user1", 'command': 'LIST_VIDEOS'}), 'utf-8'), (host_ip,port))
+    socketServerFront.sendto( bytes(json.dumps({'id': 'user1', 'command': 'LIST_VIDEOS'}), 'utf-8'), (host_ip,6000))
     msg, _ = socketServerFront.recvfrom(__BUFFSIZE)
     msg = json.loads(msg)
     return msg
@@ -62,7 +63,7 @@ def video_stream(label):
         label.pack()
 
 def showVideo(videoTitle, label):
-    socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,port))
+    socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,6000))
 
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=2) as executor:

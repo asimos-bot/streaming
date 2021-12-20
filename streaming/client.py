@@ -11,10 +11,10 @@ BUFF_SIZE = 65536
 BREAK = False
 client_socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 client_socket.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF,BUFF_SIZE)
+port = 6000
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
-port = 11000
 message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4"}'
 client_socket.sendto(message,(host_ip,port))
 

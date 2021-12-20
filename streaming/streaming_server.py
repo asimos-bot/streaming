@@ -157,4 +157,4 @@ if __name__ == "__main__":
                 return arg.split('=')[1]
         return "INFO" # default
     loglevel = parse_loglevel_from_cli(sys.argv)
-    streaming = StreamingServer(11000, loglevel)
+    streaming = StreamingServer(6000, loglevel)
