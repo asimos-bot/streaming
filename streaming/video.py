@@ -106,21 +106,19 @@ class Video():
             if cnt == frames_to_count:
                 try:
                     fps = (frames_to_count/(time.time()-st))
-                    st = time.time()
-                    cnt = 0
-                    diff = (fps - self.FPS)
-                    if fps > self.FPS:
-                        self.TS += 0.0001 * self._round(diff)
-                    elif fps < self.FPS:
-                        self.TS -= 0.0008 * self._round(diff)
+                    st=time.time()
+                    cnt=0
+                    if fps>self.FPS:
+                        self.TS+=0.001
+                    elif fps<self.FPS:
+                        self.TS-=0.001
                     else:
                         pass
-                    if(self.TS < 0): self.TS = -self.TS
                 except:
                     pass
             cnt+=1
             #cv2.imshow('TRANSMITTING VIDEO', frame)
-            #cv2.waitKey(int(1000*self.TS))
+            # cv2.waitKey(int(2000*self.TS))
             time.sleep(self.TS)
         self.video_is_running = False
 
