@@ -11,7 +11,7 @@ class ClientGUI:
 
     def __init__(self, client_ip, client_port, server_ip, server_port):
         self.setupWidgets()
-        self.service = service.ClientService(client_ip, client_port, server_ip, server_port)
+        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label)
         self.setupStyle()
         self.start()
 
@@ -43,7 +43,7 @@ class ClientGUI:
         listOfVideos = list(listOfVideos[0])
         defaultValue = StringVar(self.window)
         defaultValue.set(listOfVideos[0])
-        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle, self.label))
+        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle))
         optionsVideos.pack()
 
     def listVideoButton(self):
