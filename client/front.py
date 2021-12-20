@@ -5,6 +5,8 @@ window = Tk()
 style= ttk.Style()
 f1 = Frame(window)
 l1 = Label(f1)
+f1.place(x=30, y=100)
+l1.grid(row=600, column=0, padx=10, pady=2)
 
 # Constantes de cor da interface
 backgroundColor = '#221F1F'

@@ -44,23 +44,21 @@ def video_stream(label):
         pass
 
     while not video_queue.empty():
-        print("getting from queue...")
         data = base64.b64decode(video_queue.get(),' /')
-        print("got from queue")
         npdata = np.fromstring(data,dtype = np.uint8)
-        print("npdata is okdoqui")
         frame = cv2.imdecode(npdata, 1)
-        print("O FRAME É NOSSO")
-        npdata = np.fromstring(data,dtype=np.uint8)
-        frame = cv2.imdecode(npdata,1)
-
         cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
-        img = Image.fromarray(cv2image)
-        imgtk = ImageTk.PhotoImage(image=img)
-        label.imgtk = imgtk
+
+        try:
+            print("VAI RENDERIZAR NÂO, P&*@?")
+            imgtk = ImageTk.PhotoImage(image=Image.fromarray(cv2image))
+        except:
+            print("TO PULANDO ESSE ENTÂO")
+            time.sleep(10)
+            continue
+        label.imgtk = imgtk 
         label.configure(image=imgtk)
-        #label.after(10, show_frame)
-    print("acabou")
+        label.pack()
 
 def showVideo(videoTitle, label):
     socketServerFront.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'),(host_ip,port))
@@ -69,4 +67,3 @@ def showVideo(videoTitle, label):
     with ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(separate_data)
         executor.submit(video_stream, label)
-   
