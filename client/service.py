@@ -46,6 +46,7 @@ def video_stream(label):
     while not video_queue.empty():
         data = base64.b64decode(video_queue.get(),' /')
         npdata = np.fromstring(data,dtype = np.uint8)
+        print("pos npdata")
         frame = cv2.imdecode(npdata, 1)
         cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
 

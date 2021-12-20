@@ -2,6 +2,8 @@ import service
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
 
 window = Tk()
+width= window.winfo_screenwidth() 
+height= window.winfo_screenheight()
 style= ttk.Style()
 f1 = Frame(window)
 l1 = Label(f1)
@@ -37,7 +39,7 @@ def listVideoButton():
 # Função que cria o loop da janela
 def start():
     window.title("Redes 2")
-    window.geometry("500x300")
+    window.geometry("%dx%d" % (width, height))    
     listVideoButton()
     window.mainloop()
 start()
