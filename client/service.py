@@ -20,7 +20,7 @@ socketServerFront.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 port = 5050
-socketServerFront.bind((host_ip, port))
+#socketServerFront.bind((host_ip, port))
 
 video_queue = queue.Queue() 
 audio_queue = queue.Queue()
