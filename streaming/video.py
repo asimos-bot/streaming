@@ -132,4 +132,4 @@ class Video():
             message = struct.pack("Q",len(a))+a
             for client in self.active_users:
                 self.sendto(b'a' + message, client.addr)
-                time.sleep(0.8*Video.__CHUNK/sample_rate)
+            time.sleep(0.8*Video.__CHUNK/sample_rate)
