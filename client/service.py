@@ -119,23 +119,23 @@ class ClientService:
                         output=True,
                         frames_per_buffer=CHUNK)
                         
-        data = b''
+        self.data = b''
         payload_size = struct.calcsize("Q")
         while self.threads_are_running:
             try:
-                while len(data) < payload_size:
+                while len(self.data) < payload_size:
                     packet = self.audio_queue.get() # client_socket.recv(4*1024) # 4K
                     if not packet: 
                         break
-                    data+=packet
-                self.packed_msg_size = data[:payload_size]
-                self.data = data[payload_size:]
+                    self.data+=packet
+                self.packed_msg_size = self.data[:payload_size]
+                self.data = self.data[payload_size:]
                 msg_size = struct.unpack("Q",self.packed_msg_size)[0]
-                while len(data) < msg_size:
-                    data += self.audio_queue.get() # client_socket.recv(4*1024)
+                while len(self.data) < msg_size:
+                    self.data += self.audio_queue.get() # client_socket.recv(4*1024)
 
-                self.frame_data = data[:msg_size]
-                self.data  = data[msg_size:]
+                self.frame_data = self.data[:msg_size]
+                self.data  = self.data[msg_size:]
                 self.stream.write(pickle.loads(self.frame_data))
             except:
                   break
