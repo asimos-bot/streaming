@@ -110,7 +110,7 @@ class StreamingServer():
 
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
-        self.add_stream(user, packet["arg"], StreamQuality[packet['resolution']].value)
+        self.add_stream(user, packet["arg"], StreamQuality['VIDEO_{}P'.format(packet['resolution'])])
         # stream.close() # type: ignore
 
     def user_information(self, packet, user):
