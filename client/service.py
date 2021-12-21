@@ -112,6 +112,7 @@ class ClientService:
             '''
             # resize the best we can taking the screen size into consideration
             resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
+            print(img.width, img.height, img.width * resize_ratio, img.height * resize_ratio)
             img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
 
             imgtk = ImageTk.PhotoImage(image=img)
