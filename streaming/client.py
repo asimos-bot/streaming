@@ -15,7 +15,8 @@ port = 6000
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
-message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4", "resolution": 240}'
+# message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"saint_pepsi.mp4", "resolution": 240}'
+message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"nba.mp4", "resolution": 240}'
 client_socket.sendto(message,(host_ip,port))
 
 video_queue = queue.Queue() # MAXSIZE OK?
@@ -52,7 +53,6 @@ def video_stream():
             except:
                 pass
         cnt+=1
-        frame = cv2.putText(frame,'CLIENT FPS: '+ str(fps),(10,40),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,0,255),2)
         cv2.imshow("RECEIVING VIDEO",frame)
         cv2.waitKey(1)
 
