@@ -36,6 +36,7 @@ class Video():
 
         self.extract_audio(filename)
 
+    def start(self):
         with ThreadPoolExecutor(max_workers=3) as executor:
             executor.submit(self.audio_stream)
             executor.submit(self.video_stream_gen)

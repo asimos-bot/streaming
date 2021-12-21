@@ -143,5 +143,5 @@ class ClientService:
  
         self.start_receiving_transmission()
 
-    def stopVideo(self,videoTitle):
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STOP_VIDEO','arg': videoTitle}), 'utf-8'), self.server_addr)
+    def stopVideo(self):
+        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)

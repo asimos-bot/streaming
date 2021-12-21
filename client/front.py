@@ -46,10 +46,8 @@ class ClientGUI:
         defaultValue.set(listOfVideos[0])
         optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle))
         optionsVideos.pack()
-        excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: service.stopVideo(self.videoSelected)  ,style="TButton")
+        excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: self.service.stopVideo()  ,style="TButton")
         excludeButton.place(x=(self.width//2),y=100)
-        playButton = ttk.Button(text="Play",master=self.window,command= service.showVideo(self.videoSelected,self.l1))
-        playButton.place(x=(self.width//2)+ 100,y=100)
 
     def listVideoButton(self):
         listButton = ttk.Button(text="Listar", master=self.window, command = self.receiveListVideos,style="TButton")
