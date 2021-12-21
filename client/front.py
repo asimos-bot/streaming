@@ -1,5 +1,6 @@
 import service
-from tkinter import Tk, Variable, ttk, StringVar, OptionMenu, Frame, Label
+import tkinter
+from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
 
 class ClientGUI:
 
@@ -7,7 +8,6 @@ class ClientGUI:
     backgroundColor = '#221F1F'
     fontColor = '#F5F5F1'
     red = '#E50914'
-
 
     def __init__(self, client_ip, client_port, server_ip, server_port):
         self.setupWidgets()
@@ -23,11 +23,15 @@ class ClientGUI:
         self.style = ttk.Style()
         self.frame = Frame(self.window)
         self.label = Label(self.frame)
-        self.frame.place(x=30, y=100)
+        self.frame.pack(side=tkinter.BOTTOM, pady = 10, padx = 10, fill='both')
         self.frame.config(bg="black")
-        self.label.grid(row=600, column=0, padx=10, pady=2)
         self.label.pack()
-        self.videoSelected = ''
+
+        self.excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: self.service.stopVideo()  ,style="TButton")
+        self.excludeButton.pack(side=tkinter.TOP, pady = 10)
+
+        self.optionsVideos = OptionMenu(self.window, StringVar(), "--")
+        self.optionsVideos.pack(side=tkinter.TOP, pady = 10)
 
     def setupStyle(self):
         # Criação da estilização da interface
@@ -37,30 +41,22 @@ class ClientGUI:
                         foreground = ClientGUI.red,borderwidth=4,anchor="center")
         self.style.configure('LabelList',fontColor=ClientGUI.red)
 
-
     def receiveListVideos(self):
         listOfVideos = self.service.listVideos()
         listOfVideos = list(listOfVideos.values())
         listOfVideos = list(listOfVideos[0])
         defaultValue = StringVar(self.window)
         defaultValue.set(listOfVideos[0])
-        optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle))
-        optionsVideos.pack()
-        excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: service.stopVideo(self.videoSelected)  ,style="TButton")
-        excludeButton.place(x=(self.width//2),y=100)
-        playButton = ttk.Button(text="Play",master=self.window,command= service.showVideo(self.videoSelected,self.l1))
-        playButton.place(x=(self.width//2)+ 100,y=100)
 
-    def listVideoButton(self):
-        listButton = ttk.Button(text="Listar", master=self.window, command = self.receiveListVideos,style="TButton")
-        listButton.place(width=80,height=20)
-        listButton.pack(pady=6)
+        self.optionsVideos.destroy()
+        self.optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle))
+        self.optionsVideos.pack(side=tkinter.TOP, pady = 10)
 
     # Função que cria o loop da janela
     def start(self):
         self.window.title("Redes 2")
         self.window.geometry("%dx%d" % (self.width, self.height))    
-        self.listVideoButton()
+        self.receiveListVideos()
         self.window.mainloop()
 
 if __name__ == "__main__":
