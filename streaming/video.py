@@ -15,10 +15,9 @@ import user
 
 class Video():
 
-    __BUFF_SIZE=65536
     __CHUNK = 1024
 
-    def __init__(self, filename: str, owner: user.User, width: int, height: int, sendto):
+    def __init__(self, filename: str,  user: user.User, width: int, height: int, sendto):
         self.sendto = sendto
         self.filename = filename
         self.video = cv2.VideoCapture("videos/" + filename)
@@ -31,8 +30,7 @@ class Video():
         self.duration_secs = float(self.total_num_frames) / float(self.FPS)
         self.d = self.video.get(cv2.CAP_PROP_POS_MSEC)
         self.queue = queue.Queue(maxsize=10)
-        self.__active_users = [owner]
-        self.__active_users_lock = Lock()
+        self.active_users = [user]
         self.__video_is_running = True
         self.__video_is_running_lock = Lock()
 
@@ -47,17 +45,17 @@ class Video():
         command = "ffmpeg -i ./videos/{0} -vn ./videos/{0}.wav -y".format(file_name)
         subprocess.call(command, shell=True)
 
-    @property
-    def active_users(self):
-        self.__active_users_lock.acquire()
-        l = self.__active_users.copy()
-        self.__active_users_lock.release()
-        return l
-    @active_users.setter
-    def active_users(self, value):
-        self.__active_users_lock.acquire()
-        self.__active_users = value
-        self.__active_users_lock.release()
+    # @property
+    # def active_users(self):
+    #     self.__active_users_lock.acquire()
+    #     l = self.__active_users.copy()
+    #     self.__active_users_lock.release()
+    #     return l
+    # @active_users.setter
+    # def active_users(self, value):
+    #     self.__active_users_lock.acquire()
+    #     self.__active_users = value
+    #     self.__active_users_lock.release()
     @property
     def video_is_running(self):
         self.__video_is_running_lock.acquire()
