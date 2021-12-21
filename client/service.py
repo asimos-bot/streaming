@@ -151,11 +151,11 @@ class ClientService:
             except:
                   break
 
-    def showVideo(self, videoTitle):
+    def showVideo(self, videoTitle,quality):
         self.videoTitle = videoTitle
         if( self.threads_are_running ):
             self.stop_receiving_transmission()
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle}), 'utf-8'), self.server_addr)
+        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution':quality}), 'utf-8'), self.server_addr)
  
         self.start_receiving_transmission()
 
