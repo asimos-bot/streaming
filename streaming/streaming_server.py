@@ -1,17 +1,21 @@
-import socket, enum, json, os
-import cv2, wave, pyaudio, imutils, base64, logging
+import socket, json, os
+import cv2, wave, pyaudio, imutils, base64, logging, subprocess, time, wave
+import pickle, struct
 import numpy as np
-from user import User
+
+import user
+import video
+from enum import Enum
 
 # don't use 'threading' module, as it doesn't really create other threads except
 # when one is waiting for an I/O response
 # (https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python)
-from multiprocessing import Process, Lock
+from multiprocessing import Process # , Lock
 
-class StreamQuality():
-    VIDEO_720P=[1280, 720],
-    VIDEO_480P=[854, 480],
-    VIDEO_240P=[426, 240]
+class StreamQuality(Enum):
+    VIDEO_720P=(1280, 720),
+    VIDEO_480P=(854, 480),
+    VIDEO_240P=(426, 240)
 
 class StreamingServer():
 
@@ -22,17 +26,17 @@ class StreamingServer():
             "LIST_VIDEOS": self.list_videos,
             "STREAM_VIDEO": self.stream_video,
             "USER_INFORMATION": self.user_information,
-            "STOP_STREAM": self.stop_stream,
+            "PARAR_STREAMING": self.stop_stream,
             "PLAY_STREAM_TO_GROUP": self.play_stream_to_group
         }
         # dictionary with stream owners as keys and streams as values
-        self.__active_streams = dict()
-        self.__stream_lock = Lock()
+        self.active_streams = dict()
+        # self.__stream_lock = Lock()
         # setup logging service
         self.setup_logging(port, loglevel)
         # setup UDP server
         self.__server = self.setup_server(port)
-        self.__server_lock = Lock()
+        # self.__server_lock = Lock()
         logging.info("Listening for streaming clients at UDP socket")
         self.server_main_loop()
 
@@ -40,12 +44,14 @@ class StreamingServer():
         hostname = socket.gethostname()
         ip = socket.gethostbyname(hostname)
         logging.basicConfig(
-                filename='srv.log',
-                encoding='utf-8',
+                handlers=[
+                    logging.FileHandler(filename='srv.log',
+                    encoding='utf-8',
+                )],
                 format="%(asctime)s|%(levelname)s:{}({}:{}):%(message)s".format(hostname, ip, port),
                 datefmt='%m/%d/%Y|%H:%M:%S',
                 level=loglevel)
-
+                
     def setup_server(self, port):
         # get UDP socket
         srv = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -59,32 +65,32 @@ class StreamingServer():
         # localhost would be able to access the server
         srv.bind(('', port))
         return srv
+
     def sendto(self, packet, client_addr):
-        self.__server_lock.acquire()
         self.__server.sendto(packet, client_addr)
-        self.__server_lock.release()
     def close_stream(self, key):
-        self.__stream_lock.acquire()
-        if key in self.__active_streams.keys():
-            self.__active_streams.pop(key)
-        self.__stream_lock.release()
-    def add_stream(self, user, video, quality):
-        self.__stream_lock.acquire()
-        res=None
-        if user.name not in self.__active_streams.keys():
-            res = self.__active_streams[user.name] = Stream(self, user, video, quality)
-        self.__stream_lock.release()
-        return res
+        if key in self.active_streams.keys():
+            self.active_streams[key].video_is_running(False)
+            self.active_streams.pop(key)
+
+    def add_stream(self, user, video_filename, quality):
+        # self.__stream_lock.acquire()
+        if user.name not in self.active_streams.keys():
+            vd = video.Video(video_filename, user, quality[0], quality[1], self.sendto)
+            self.active_streams[user.name] = vd
+            vd.start()
+        # self.__stream_lock.release()
+        return vd
+
     def recvfrom(self):
         msg = b''
         addr = b''
-        self.__server_lock.acquire()
         try:
             msg, addr = self.__server.recvfrom(StreamingServer.__BUFF_SIZE)
         except BlockingIOError:
             pass
-        self.__server_lock.release()
         return msg, addr
+
     def get_json(self, data):
 
         try:
@@ -101,22 +107,24 @@ class StreamingServer():
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
         video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('videos')))
         self.sendto(bytes(json.dumps({"videos": video_list}), 'utf-8'), user.addr)
+
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
-        stream = self.add_stream(user, packet["arg"], StreamQuality.VIDEO_240P)
-        stream.broadcast()
-        stream.close()
+        self.add_stream(user, packet["arg"], StreamQuality['VIDEO_{}P'.format(packet['resolution'])])
+        # stream.close() # type: ignore
+
     def user_information(self, packet, user):
         logging.info("USER_INFORMATION called by '{}'".format(user.name))
         logging.warning("USER_INFORMATION is not implemented yet!")
-        pass
+
     def stop_stream(self, packet, user):
-        logging.info("STOP_STREAM called by '{}'".format(user.name))
-        logging.warning("STOP_STREAM is not implemented yet!")
-        pass
+        print("close_stream", user.name)
+        self.close_stream(user.name)
+
     def play_stream_to_group(self, packet, user):
         logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
         logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
+
     def server_main_loop(self):
 
         '''
@@ -133,49 +141,8 @@ class StreamingServer():
             packet = self.get_json(msg)
             if packet == None:
                 continue
-            print(packet)
-            user = User(packet["id"], client_addr)
-            Process(target=self.api_commands[packet['command']], args=(packet, user)).start()
-
-class Stream():
-
-    class StreamState(enum.Enum):
-        PAUSED=1,
-        UNPAUSED=2,
-
-    def __init__(self, server: StreamingServer, owner : User, video: str, quality : StreamQuality):
-        # constant
-        self.__owner = owner
-        self.active_users = [owner]
-        self.video = cv2.VideoCapture("videos/" + video)
-        self.quality = quality
-        self.server = server
-    @property
-    def owner(self):
-        return self.__owner
-    @owner.setter
-    def owner(self, value):
-        raise Exception("Stream.owner is supposed to be a constant value!")
-    def close(self):
-        self.server.close_stream(self.owner)
-    def send_stream_piece(self, client_addr):
-        # get frame
-        _, frame = self.video.read()
-        # resize it to desired quality
-        if not isinstance(frame, np.ndarray): return False
-        frame = imutils.resize(frame, width=self.quality[0], height=self.quality[1])
-        # get it as jpg
-        _, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
-        # base64 encode it
-        message = base64.b64encode(buffer)
-        # send to user
-        self.server.sendto(message, client_addr)
-        return True
-    def broadcast(self):
-        while self.video.isOpened():
-            for user in self.active_users:
-                if not self.send_stream_piece(user.addr):
-                    return
+            client = user.User(packet["id"], client_addr)
+            Process(target=self.api_commands[packet['command']], args=(packet, client)).start()
 
 if __name__ == "__main__":
     import sys
@@ -185,4 +152,4 @@ if __name__ == "__main__":
                 return arg.split('=')[1]
         return "INFO" # default
     loglevel = parse_loglevel_from_cli(sys.argv)
-    streaming = StreamingServer(1100, loglevel)
+    streaming = StreamingServer(6000, loglevel)
