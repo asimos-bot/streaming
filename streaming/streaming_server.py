@@ -69,12 +69,14 @@ class StreamingServer():
     def sendto(self, packet, client_addr):
         self.__server.sendto(packet, client_addr)
     def close_stream(self, key):
+        print("ACTIVE STREAMS:", self.active_streams)
         if key in self.active_streams.keys():
-            self.active_streams[key].video_is_running(False)
+            self.active_streams[key].video_is_running = False
             self.active_streams.pop(key)
 
     def add_stream(self, user, video_filename, quality):
         # self.__stream_lock.acquire()
+        vd = None
         if user.name not in self.active_streams.keys():
             vd = video.Video(video_filename, user, quality.value[0], quality.value[1], self.sendto)
             self.active_streams[user.name] = vd
@@ -92,7 +94,6 @@ class StreamingServer():
         return msg, addr
 
     def get_json(self, data):
-
         try:
             packet = json.loads(data.decode('utf-8'))
         except json.JSONDecodeError:
@@ -141,6 +142,7 @@ class StreamingServer():
             packet = self.get_json(msg)
             if packet == None:
                 continue
+            print(packet)
             client = user.User(packet["id"], client_addr)
             Process(target=self.api_commands[packet['command']], args=(packet, client)).start()
 
