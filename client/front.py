@@ -8,7 +8,7 @@ class ClientGUI:
     backgroundColor = '#221F1F'
     fontColor = '#F5F5F1'
     red = '#E50914'
-    quality = 0
+    quality = 240
 
     def __init__(self, client_ip, client_port, server_ip, server_port):
         self.setupWidgets()

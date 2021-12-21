@@ -13,8 +13,8 @@ from enum import Enum
 from multiprocessing import Process # , Lock
 
 class StreamQuality(Enum):
-    VIDEO_720P=(1280, 720),
-    VIDEO_480P=(854, 480),
+    VIDEO_720P=(1280, 720)
+    VIDEO_480P=(854, 480)
     VIDEO_240P=(426, 240)
 
 class StreamingServer():
@@ -76,7 +76,7 @@ class StreamingServer():
     def add_stream(self, user, video_filename, quality):
         # self.__stream_lock.acquire()
         if user.name not in self.active_streams.keys():
-            vd = video.Video(video_filename, user, quality[0], quality[1], self.sendto)
+            vd = video.Video(video_filename, user, quality.value[0], quality.value[1], self.sendto)
             self.active_streams[user.name] = vd
             vd.start()
         # self.__stream_lock.release()
