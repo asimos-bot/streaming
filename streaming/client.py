@@ -15,7 +15,7 @@ port = 6000
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
-message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4"}'
+message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"andre_marques_religion.mp4", "resolution": 240}'
 client_socket.sendto(message,(host_ip,port))
 
 video_queue = queue.Queue() # MAXSIZE OK?
@@ -32,7 +32,7 @@ def separate_data():
             elif packet[:1] == b'a':
                 audio_queue.put(packet[1:])
         else:
-            print("nothing")
+            pass
 
 def video_stream():
    
