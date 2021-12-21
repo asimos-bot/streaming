@@ -8,6 +8,7 @@ import pyaudio
 import struct
 import pickle
 from PIL import Image, ImageTk
+from tkinter import Widget
 
 class ClientService:
 
@@ -23,6 +24,7 @@ class ClientService:
         self.socket.bind(self.client_addr)
 
         self.widget = widget
+        self.videoTitle = ""
 
         self.video_queue = queue.Queue() 
         self.audio_queue = queue.Queue()
@@ -101,7 +103,19 @@ class ClientService:
             frame = cv2.imdecode(npdata, 1)
             cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
 
-            imgtk = ImageTk.PhotoImage(image=Image.fromarray(cv2image))
+            img = Image.fromarray(cv2image)
+
+            '''
+            # resize the best we can taking the screen size into consideration
+            resize_ratio = min(self.widget.winfo_screenwidth()/img.width, self.widget.winfo_screenheight()/img.height)
+            img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
+            '''
+            # resize the best we can taking the screen size into consideration
+            resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
+            print(img.width, img.height, img.width * resize_ratio, img.height * resize_ratio)
+            img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
+
+            imgtk = ImageTk.PhotoImage(image=img)
             self.widget.configure(image=imgtk)
             self.widget.image = imgtk 
 
@@ -137,9 +151,11 @@ class ClientService:
             except:
                   break
 
-    def showVideo(self, videoTitle):
-        self.video_is_running = True
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': videoTitle}), 'utf-8'), self.server_addr)
+    def showVideo(self, videoTitle,quality):
+        self.videoTitle = videoTitle
+        if( self.threads_are_running ):
+            self.stop_receiving_transmission()
+        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution':quality}), 'utf-8'), self.server_addr)
  
         self.start_receiving_transmission()
 
