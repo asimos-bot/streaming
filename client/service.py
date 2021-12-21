@@ -22,6 +22,7 @@ class ClientService:
         self.socket.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ClientService.__BUFFSIZE)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind(self.client_addr)
+        self.socket.settimeout(2)
 
         self.widget = widget
         self.videoTitle = ""
@@ -29,33 +30,20 @@ class ClientService:
         self.video_queue = queue.Queue() 
         self.audio_queue = queue.Queue()
 
-        self.__threads_are_running = False
-        self.__threads_are_running_lock = threading.Lock()
-
-    @property
-    def threads_are_running(self):
-        self.__threads_are_running_lock.acquire()
-        a = self.__threads_are_running
-        self.__threads_are_running_lock.release()
-        return a
-    @threads_are_running.setter
-    def threads_are_running(self, value):
-        self.__threads_are_running_lock.acquire()
-        self.__threads_are_running = value
-        self.__threads_are_running_lock.release()
+        self.threads_are_running = False
 
     def start_receiving_transmission(self):
 
         self.video_queue = queue.Queue()
         self.audio_queue = queue.Queue()
 
-        self.separation_thread = threading.Thread(target=self.video_stream)
+        self.separation_thread = threading.Thread(target=self.separate_data)
+        self.video_thread = threading.Thread(target=self.video_stream)
         self.audio_thread = threading.Thread(target=self.audio_stream)
-        self.video_thread = threading.Thread(target=self.separate_data)
 
-        self.separation_thread.setDaemon(True) # daemon = True for background jobs
-        self.audio_thread.setDaemon(True)
-        self.video_thread.setDaemon(True)
+        #self.separation_thread.setDaemon(True) # daemon = True for background jobs
+        #self.audio_thread.setDaemon(True)
+        #self.video_thread.setDaemon(True)
 
         self.threads_are_running = True
 
@@ -67,12 +55,12 @@ class ClientService:
 
         self.threads_are_running = False
 
+        self.video_queue = queue.Queue()
+        self.audio_queue = queue.Queue()
+
         self.separation_thread.join()
         self.audio_thread.join()
         self.video_thread.join()
-
-        self.video_queue = queue.Queue()
-        self.audio_queue = queue.Queue()
 
     def listVideos (self):
         self.socket.sendto( bytes(json.dumps({'id': 'user1', 'command': 'LIST_VIDEOS'}), 'utf-8'), self.server_addr)
@@ -82,28 +70,31 @@ class ClientService:
 
     def separate_data(self):
         while self.threads_are_running:
-            packet, _ = self.socket.recvfrom(ClientService.__BUFFSIZE) # LINHA PROBLEMÁTICA
-            if len(packet) > 1: # checar cond
-                if packet[:1] == b'v':
-                    self.video_queue.put(packet[1:])
-                elif packet[:1] == b'a':
-                    self.audio_queue.put(packet[1:])
-            else:
+            try:
+                packet, _ = self.socket.recvfrom(ClientService.__BUFFSIZE) # LINHA PROBLEMÁTICA
+                if len(packet) > 1: # checar cond
+                    if packet[:1] == b'v':
+                        self.video_queue.put(packet[1:])
+                    elif packet[:1] == b'a':
+                        self.audio_queue.put(packet[1:])
+            except TimeoutError:
+                # check if stream ended or the client stopped it
                 self.threads_are_running = False
-        self.stop_receiving_transmission()
+                break
+        print("SEPARATE CABÔ")
 
     def video_stream(self):
 
-        while self.video_queue.empty():
-            pass
-
         while self.threads_are_running:
-            data = base64.b64decode(self.video_queue.get()," /")
-            npdata = np.fromstring(data,dtype = np.uint8)
-            frame = cv2.imdecode(npdata, 1)
-            cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
-
-            img = Image.fromarray(cv2image)
+            try:
+                data = base64.b64decode(self.video_queue.get(True, 1)," /")
+            except queue.Empty:
+                if(not self.threads_are_running): break
+                continue
+            self.npdata = np.fromstring(data,dtype = np.uint8)
+            self.frame = cv2.imdecode(self.npdata, 1)
+            self.cv2image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGBA)
+            self.img = Image.fromarray(self.cv2image)
 
             '''
             # resize the best we can taking the screen size into consideration
@@ -111,19 +102,18 @@ class ClientService:
             img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
             '''
             # resize the best we can taking the screen size into consideration
-            resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
-            print(img.width, img.height, img.width * resize_ratio, img.height * resize_ratio)
-            img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
-
-            imgtk = ImageTk.PhotoImage(image=img)
-            self.widget.configure(image=imgtk)
-            self.widget.image = imgtk 
+            #resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
+            #img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
+            self.imgtk = ImageTk.PhotoImage(image=self.img)
+            self.widget.configure(image=self.imgtk)
+            self.widget.image = self.imgtk
+        print("VIDEO CABÔ")
 
     def audio_stream(self):
 
-        p = pyaudio.PyAudio()
+        self.p = pyaudio.PyAudio()
         CHUNK = 1024
-        stream = p.open(format=p.get_format_from_width(2),
+        self.stream = self.p.open(format=self.p.get_format_from_width(2),
                         channels=2,
                         rate=44100,
                         output=True,
@@ -138,16 +128,15 @@ class ClientService:
                     if not packet: 
                         break
                     data+=packet
-                packed_msg_size = data[:payload_size]
-                data = data[payload_size:]
-                msg_size = struct.unpack("Q",packed_msg_size)[0]
+                self.packed_msg_size = data[:payload_size]
+                self.data = data[payload_size:]
+                msg_size = struct.unpack("Q",self.packed_msg_size)[0]
                 while len(data) < msg_size:
                     data += self.audio_queue.get() # client_socket.recv(4*1024)
 
-                frame_data = data[:msg_size]
-                data  = data[msg_size:]
-                frame = pickle.loads(frame_data)
-                stream.write(frame)
+                self.frame_data = data[:msg_size]
+                self.data  = data[msg_size:]
+                self.stream.write(pickle.loads(self.frame_data))
             except:
                   break
 
@@ -160,7 +149,7 @@ class ClientService:
         self.start_receiving_transmission()
 
     def stopVideo(self):
-
-        if( self.threads_are_running ): return
+        if( not self.threads_are_running ): return
+        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
         self.stop_receiving_transmission()
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STOP_STREAM'}), 'utf-8'), self.server_addr)
+        print("GAME OVER :)")
