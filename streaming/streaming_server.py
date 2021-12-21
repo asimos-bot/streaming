@@ -5,13 +5,14 @@ import numpy as np
 
 import user
 import video
+from enum import Enum
 
 # don't use 'threading' module, as it doesn't really create other threads except
 # when one is waiting for an I/O response
 # (https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python)
 from multiprocessing import Process # , Lock
 
-class StreamQuality():
+class StreamQuality(Enum):
     VIDEO_720P=(1280, 720),
     VIDEO_480P=(854, 480),
     VIDEO_240P=(426, 240)
@@ -109,7 +110,7 @@ class StreamingServer():
 
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
-        self.add_stream(user, packet["arg"], StreamQuality.VIDEO_240P)
+        self.add_stream(user, packet["arg"], StreamQuality[packet['resolution']].value)
         # stream.close() # type: ignore
 
     def user_information(self, packet, user):
