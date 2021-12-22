@@ -77,7 +77,9 @@ class StreamingServer():
         # self.__stream_lock.acquire()
         vd = None
         if user.name not in self.active_streams.keys():
-            vd = video.Video(video_filename, user, quality.value[0], quality.value[1], self.sendto)
+            filename = video_filename.split(".")[0]
+            print("pwd: ", filename + "_{}".format(quality.value[1]) + ".mp4")
+            vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto)
             self.active_streams[user.name] = vd
             vd.start()
         # self.__stream_lock.release()
@@ -106,7 +108,8 @@ class StreamingServer():
     def list_videos(self, packet, user):
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
         video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('videos')))
-        self.sendto(bytes(json.dumps({"videos": video_list}), 'utf-8'), user.addr)
+        corrected_list = list(set([v.split("_")[0] for v in video_list]))
+        self.sendto(bytes(json.dumps({"videos": corrected_list}), 'utf-8'), user.addr)
 
     def stream_video(self, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))

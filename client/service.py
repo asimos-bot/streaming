@@ -5,7 +5,7 @@ import numpy as np
 import threading, queue
 import base64
 import pyaudio
-import struct
+import struct, zlib
 import pickle
 from PIL import Image, ImageTk
 from tkinter import Widget
@@ -86,7 +86,8 @@ class ClientService:
 
         while self.threads_are_running:
             try:
-                data = base64.b64decode(self.video_queue.get(True, 1)," /")
+                decompressed_data = zlib.decompress(self.video_queue.get(True, 1))
+                data = base64.b64decode(decompressed_data," /")
             except queue.Empty:
                 if(not self.threads_are_running): break
                 continue
@@ -94,15 +95,6 @@ class ClientService:
             self.frame = cv2.imdecode(self.npdata, 1)
             self.cv2image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGBA)
             self.img = Image.fromarray(self.cv2image)
-
-            '''
-            # resize the best we can taking the screen size into consideration
-            resize_ratio = min(self.widget.winfo_screenwidth()/img.width, self.widget.winfo_screenheight()/img.height)
-            img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
-            '''
-            # resize the best we can taking the screen size into consideration
-            #resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
-            #img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
             self.imgtk = ImageTk.PhotoImage(image=self.img)
             self.widget.configure(image=self.imgtk)
             self.widget.image = self.imgtk

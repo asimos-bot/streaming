@@ -8,6 +8,7 @@ import wave
 import pickle
 import subprocess
 import struct
+import zlib
 from multiprocessing import Lock
 from concurrent.futures import ThreadPoolExecutor
 
@@ -95,10 +96,10 @@ class Video():
 
         while self.video_is_running:#not self.queue.empty() and self.video_is_running:
             frame = self.queue.get()
-            encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
+            encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 20])
             message = base64.b64encode(buffer)
             for client in self.active_users:
-                self.sendto(b'v' + message, client.addr)
+                self.sendto(b'v' + zlib.compress(message), client.addr)
             #frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             if cnt == frames_to_count:
                 try:
