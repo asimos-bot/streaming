@@ -78,4 +78,4 @@ class ClientGUI:
         self.window.mainloop()
 
 if __name__ == "__main__":
-    ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000)
+    ClientGUI('127.0.0.1', 5050, '127.0.0.1', 6000)
