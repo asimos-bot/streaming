@@ -81,7 +81,6 @@ class ClientService:
                 # check if stream ended or the client stopped it
                 self.threads_are_running = False
                 break
-        print("SEPARATE CABÔ")
 
     def video_stream(self):
 
@@ -107,7 +106,6 @@ class ClientService:
             self.imgtk = ImageTk.PhotoImage(image=self.img)
             self.widget.configure(image=self.imgtk)
             self.widget.image = self.imgtk
-        print("VIDEO CABÔ")
 
     def audio_stream(self):
 
@@ -152,4 +150,3 @@ class ClientService:
         if( not self.threads_are_running ): return
         self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
         self.stop_receiving_transmission()
-        print("GAME OVER :)")

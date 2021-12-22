@@ -69,7 +69,6 @@ class StreamingServer():
     def sendto(self, packet, client_addr):
         self.__server.sendto(packet, client_addr)
     def close_stream(self, key):
-        print("ACTIVE STREAMS:", self.active_streams)
         if key in self.active_streams.keys():
             self.active_streams[key].video_is_running = False
             self.active_streams.pop(key)
@@ -119,7 +118,6 @@ class StreamingServer():
         logging.warning("USER_INFORMATION is not implemented yet!")
 
     def stop_stream(self, packet, user):
-        print("close_stream", user.name)
         self.close_stream(user.name)
 
     def play_stream_to_group(self, packet, user):
