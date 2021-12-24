@@ -5,14 +5,16 @@ import numpy as np
 import threading, queue
 import base64
 import pyaudio
-import struct
+import struct, zlib
 import pickle
+import time
 from PIL import Image, ImageTk
 from tkinter import Widget
 
 class ClientService:
 
     __BUFFSIZE = 65536
+    __CHUNK = 1024
 
     def __init__(self, client_ip, client_port, server_ip, server_port, widget):
         self.client_addr = (client_ip, client_port)
@@ -27,8 +29,8 @@ class ClientService:
         self.widget = widget
         self.videoTitle = ""
 
-        self.video_queue = queue.Queue() 
-        self.audio_queue = queue.Queue()
+        self.video_queue = queue.Queue(maxsize=10)
+        self.audio_queue = queue.Queue(maxsize=10)
 
         self.threads_are_running = False
 
@@ -55,8 +57,8 @@ class ClientService:
 
         self.threads_are_running = False
 
-        self.video_queue = queue.Queue()
-        self.audio_queue = queue.Queue()
+        self.video_queue = queue.Queue(maxsize=10)
+        self.audio_queue = queue.Queue(maxsize=10)
 
         self.separation_thread.join()
         self.audio_thread.join()
@@ -77,16 +79,20 @@ class ClientService:
                         self.video_queue.put(packet[1:])
                     elif packet[:1] == b'a':
                         self.audio_queue.put(packet[1:])
-            except TimeoutError:
+            except socket.timeout:
                 # check if stream ended or the client stopped it
                 self.threads_are_running = False
                 break
 
     def video_stream(self):
 
+        while self.video_queue.empty():
+            pass
+
         while self.threads_are_running:
             try:
-                data = base64.b64decode(self.video_queue.get(True, 1)," /")
+                decompressed_data = zlib.decompress(self.video_queue.get(True, 1))
+                data = decompressed_data
             except queue.Empty:
                 if(not self.threads_are_running): break
                 continue
@@ -94,33 +100,30 @@ class ClientService:
             self.frame = cv2.imdecode(self.npdata, 1)
             self.cv2image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGBA)
             self.img = Image.fromarray(self.cv2image)
-
-            '''
-            # resize the best we can taking the screen size into consideration
-            resize_ratio = min(self.widget.winfo_screenwidth()/img.width, self.widget.winfo_screenheight()/img.height)
-            img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
-            '''
-            # resize the best we can taking the screen size into consideration
-            #resize_ratio = min(self.widget.winfo_screenmmwidth()/img.width, self.widget.winfo_screenmmheight()/img.height)
-            #img.thumbnail((img.width * resize_ratio, img.height * resize_ratio))
+            self.img = self.img.resize((426,240))
             self.imgtk = ImageTk.PhotoImage(image=self.img)
+
             self.widget.configure(image=self.imgtk)
             self.widget.image = self.imgtk
 
     def audio_stream(self):
 
         self.p = pyaudio.PyAudio()
-        CHUNK = 1024
         self.stream = self.p.open(format=self.p.get_format_from_width(2),
                         channels=2,
                         rate=44100,
                         output=True,
-                        frames_per_buffer=CHUNK)
+                        frames_per_buffer=ClientService.__CHUNK)
                         
         self.data = b''
-        payload_size = struct.calcsize("Q")
+        silence = (chr(0)*ClientService.__CHUNK*4).encode('utf-8')
+
+        while self.audio_queue.empty():
+            pass
+
         while self.threads_are_running:
             try:
+                '''
                 while len(self.data) < payload_size:
                     packet = self.audio_queue.get() # client_socket.recv(4*1024) # 4K
                     if not packet: 
@@ -135,6 +138,11 @@ class ClientService:
                 self.frame_data = self.data[:msg_size]
                 self.data  = self.data[msg_size:]
                 self.stream.write(pickle.loads(self.frame_data))
+                '''
+                self.data = self.audio_queue.get()
+                self.stream.write(self.data)
+            except IOError:
+                self.stream.write(silence)
             except:
                   break
 
