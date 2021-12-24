@@ -29,8 +29,8 @@ class ClientService:
         self.widget = widget
         self.videoTitle = ""
 
-        self.video_queue = queue.Queue() 
-        self.audio_queue = queue.Queue()
+        self.video_queue = queue.Queue(maxsize=10)
+        self.audio_queue = queue.Queue(maxsize=10)
 
         self.threads_are_running = False
 
@@ -57,8 +57,8 @@ class ClientService:
 
         self.threads_are_running = False
 
-        self.video_queue = queue.Queue()
-        self.audio_queue = queue.Queue()
+        self.video_queue = queue.Queue(maxsize=10)
+        self.audio_queue = queue.Queue(maxsize=10)
 
         self.separation_thread.join()
         self.audio_thread.join()
@@ -79,7 +79,7 @@ class ClientService:
                         self.video_queue.put(packet[1:])
                     elif packet[:1] == b'a':
                         self.audio_queue.put(packet[1:])
-            except TimeoutError:
+            except socket.timeout:
                 # check if stream ended or the client stopped it
                 self.threads_are_running = False
                 break
@@ -100,7 +100,9 @@ class ClientService:
             self.frame = cv2.imdecode(self.npdata, 1)
             self.cv2image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGBA)
             self.img = Image.fromarray(self.cv2image)
+            self.img = self.img.resize((426,240))
             self.imgtk = ImageTk.PhotoImage(image=self.img)
+
             self.widget.configure(image=self.imgtk)
             self.widget.image = self.imgtk
 
