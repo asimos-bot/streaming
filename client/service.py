@@ -7,12 +7,14 @@ import base64
 import pyaudio
 import struct, zlib
 import pickle
+import time
 from PIL import Image, ImageTk
 from tkinter import Widget
 
 class ClientService:
 
     __BUFFSIZE = 65536
+    __CHUNK = 1024
 
     def __init__(self, client_ip, client_port, server_ip, server_port, widget):
         self.client_addr = (client_ip, client_port)
@@ -84,10 +86,13 @@ class ClientService:
 
     def video_stream(self):
 
+        while self.video_queue.empty():
+            pass
+
         while self.threads_are_running:
             try:
                 decompressed_data = zlib.decompress(self.video_queue.get(True, 1))
-                data = base64.b64decode(decompressed_data," /")
+                data = decompressed_data
             except queue.Empty:
                 if(not self.threads_are_running): break
                 continue
@@ -102,17 +107,21 @@ class ClientService:
     def audio_stream(self):
 
         self.p = pyaudio.PyAudio()
-        CHUNK = 1024
         self.stream = self.p.open(format=self.p.get_format_from_width(2),
                         channels=2,
                         rate=44100,
                         output=True,
-                        frames_per_buffer=CHUNK)
+                        frames_per_buffer=ClientService.__CHUNK)
                         
         self.data = b''
-        payload_size = struct.calcsize("Q")
+        silence = (chr(0)*ClientService.__CHUNK*4).encode('utf-8')
+
+        while self.audio_queue.empty():
+            pass
+
         while self.threads_are_running:
             try:
+                '''
                 while len(self.data) < payload_size:
                     packet = self.audio_queue.get() # client_socket.recv(4*1024) # 4K
                     if not packet: 
@@ -127,6 +136,11 @@ class ClientService:
                 self.frame_data = self.data[:msg_size]
                 self.data  = self.data[msg_size:]
                 self.stream.write(pickle.loads(self.frame_data))
+                '''
+                self.data = self.audio_queue.get()
+                self.stream.write(self.data)
+            except IOError:
+                self.stream.write(silence)
             except:
                   break
 

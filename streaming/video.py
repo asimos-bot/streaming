@@ -44,20 +44,9 @@ class Video():
             executor.submit(self.video_stream)
 
     def extract_audio(self, file_name):
-        command = "ffmpeg -i ./videos/{0} -vn ./videos/{0}.wav -y".format(file_name)
+        command = "ffmpeg -i ./videos/{0} -ab 160k -ac 2 -ar 44100 -vn ./videos/{0}.wav -y".format(file_name)
         subprocess.call(command, shell=True)
 
-    # @property
-    # def active_users(self):
-    #     self.__active_users_lock.acquire()
-    #     l = self.__active_users.copy()
-    #     self.__active_users_lock.release()
-    #     return l
-    # @active_users.setter
-    # def active_users(self, value):
-    #     self.__active_users_lock.acquire()
-    #     self.__active_users = value
-    #     self.__active_users_lock.release()
     @property
     def video_is_running(self):
         self.__video_is_running_lock.acquire()
@@ -96,8 +85,8 @@ class Video():
 
         while self.video_is_running:#not self.queue.empty() and self.video_is_running:
             frame = self.queue.get()
-            encoded, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 20])
-            message = base64.b64encode(buffer)
+            _, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 20])
+            message = buffer
             for client in self.active_users:
                 self.sendto(b'v' + zlib.compress(message), client.addr)
             #frame = cv2.putText(frame, 'SERVER FPS: ' + str(round(fps, 1)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
@@ -125,11 +114,9 @@ class Video():
         wf = wave.open("{}.wav".format("videos/" + self.filename), 'rb') # TODO: trocar por filename
 
         sample_rate = wf.getframerate()
-
         while self.video_is_running:
             data = wf.readframes(Video.__CHUNK)
-            a = pickle.dumps(data)
-            message = struct.pack("Q",len(a))+a
             for client in self.active_users:
-                self.sendto(b'a' + message, client.addr)
+                self.sendto(b'a' + data, client.addr)
+
             time.sleep(0.8*Video.__CHUNK/sample_rate)
