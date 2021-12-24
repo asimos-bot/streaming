@@ -65,7 +65,6 @@ class StreamingServer():
     def sendto(self, packet, client_addr):
         self.__server.sendto(packet, client_addr)
 
-
     def recvfrom(self):
         msg = b''
         addr = b''
@@ -86,13 +85,13 @@ class StreamingServer():
             return None
         return packet
 
-    def list_videos(self, active_streams, packet, user):
+    def list_videos(self, manager, active_streams, packet, user):
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
         video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('videos')))
         corrected_list = list(set([v.split("_")[0] for v in video_list]))
         self.sendto(bytes(json.dumps({"videos": corrected_list}), 'utf-8'), user.addr)
 
-    def stream_video(self, active_streams, packet, user):
+    def stream_video(self, manager, active_streams, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
 
         video_filename = packet['arg']
@@ -101,20 +100,20 @@ class StreamingServer():
         if user.name not in active_streams.keys():
             filename = video_filename.split(".")[0]
             print("pwd: ", filename + "_{}".format(quality.value[1]) + ".mp4")
-            vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto)
+            vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
             active_streams[user.name] = vd
-            vd.start()
+            Process(target=vd.start).start()
 
-    def user_information(self, active_streams, packet, user):
+    def user_information(self, manager, active_streams, packet, user):
         logging.info("USER_INFORMATION called by '{}'".format(user.name))
         logging.warning("USER_INFORMATION is not implemented yet!")
 
-    def stop_stream(self, active_streams, packet, user):
+    def stop_stream(self, manager, active_streams, packet, user):
         if user.name in active_streams.keys():
-            active_streams[user.name].video_is_running = False
+            active_streams[user.name].close()
             active_streams.pop(user.name)
 
-    def play_stream_to_group(self, active_streams, packet, user):
+    def play_stream_to_group(self, manager, active_streams, packet, user):
         logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
         logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
 
@@ -139,7 +138,7 @@ class StreamingServer():
                         continue
                     print(packet)
                     client = user.User(packet["id"], client_addr)
-                    Process(target=self.api_commands[packet['command']], args=(active_streams, packet, client)).start()
+                    self.api_commands[packet['command']](manager, active_streams, packet, client)
                 except KeyboardInterrupt:
                     break
 
