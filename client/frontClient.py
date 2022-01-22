@@ -77,5 +77,5 @@ class ClientGUI:
         self.receiveListVideos()
         self.window.mainloop()
 
-if __name__ == "__main__":
-    ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000)
+#if __name__ == "__main__":
+    #ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000)

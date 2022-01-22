@@ -8,7 +8,10 @@ import pyaudio
 import struct
 import pickle
 from PIL import Image, ImageTk
-from tkinter import Widget
+from tkinter import Framne
+
+from frontClient import ClientGUI
+
 
 class ClientService:
 
@@ -161,3 +164,9 @@ class ClientService:
 
     def stopVideo(self):
         self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
+
+def login(login, password):
+    print("Login->",login,"Senha->",password)
+    #Processamento de login
+    #Fecha a janela e abre a outra
+    ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000)
