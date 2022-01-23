@@ -1,6 +1,7 @@
 from streaming.server import StreamingServer
 from service.manager import ServiceManager
 from multiprocessing import Process
+import time
 
 def parse_loglevel_from_cli(args):
     for arg in sys.argv:
@@ -14,6 +15,7 @@ if __name__ == "__main__":
     service_manager = Process(target=ServiceManager, args=(5000,))
     streaming_server = Process(target=StreamingServer, args=(6000, ('127.0.0.1', 5000), loglevel))
     service_manager.start()
+    time.sleep(1)
     streaming_server.start()
     service_manager.join()
     streaming_server.join()
