@@ -160,50 +160,48 @@ class ClientService:
         if( not self.threads_are_running ): return
         self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
 
-    def entrarNaApp(self,userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP'}), 'utf-8'), self.server_addr)
+    def entrarNaApp(self,userID,typeUser):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
+        print(msg)
         return msg
 
     def getUserInforamtion(self,userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'GET_USER_INFORMATION'}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'GET_USER_INFORMATION'}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
     
     def verGrupo(self,userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def sairDoApp(self, userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
 
     def criarGrupo(self, userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def addUserToGroup(self, userID, name):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def removeUserFromGroup(self, userID, name):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.server_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
-
-    def entrarTeste(userID,typeUser):
-        print("USER ID ->", userID,"TYPEUSER ->", typeUser)

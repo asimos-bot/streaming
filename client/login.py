@@ -10,23 +10,25 @@ class Login:
     fontColor = '#F5F5F1'
     red = '#E50914'
 
-    def __init__(self):
+    def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port):
         self.setupWidgets()
+        self.service = service.ClientService(client_ip=client_ip,client_port= client_port,widget=self.label,server_ip= server_ip,server_port=server_port,service_manager_ip=service_manager_ip,service_manager_port=service_manager_port)
         self.setupStyle()
         self.start()
 
     def teste(self,login,typeUser):
-        service.ClientService.entrarTeste(login,typeUser)
+        self.service.entrarNaApp(login,typeUser)
         self.window.destroy()
         frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
     
     def setupWidgets(self):
- 
+        self.window = Tk()
+        self.frame = Frame(self.window)
+        self.label = Label(self.frame)
         values = {  "Pago" : "Premium",
                     "Gratuito" : "Guest",
                 }
 
-        self.window = Tk()
         self.width= 400 
         self.height= 200
         self.style = ttk.Style()
@@ -62,5 +64,5 @@ class Login:
         self.window.destroy()
 
 if __name__ == "__main__":
-    Login()
+    Login('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
     
