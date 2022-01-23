@@ -2,7 +2,6 @@ import socket, json, os
 import cv2, wave, pyaudio, imutils, base64, logging, subprocess, time, wave
 import pickle, struct
 import numpy as np
-
 import user
 import video
 from enum import Enum
@@ -10,11 +9,11 @@ from enum import Enum
 # don't use 'threading' module, as it doesn't really create other threads except
 # when one is waiting for an I/O response
 # (https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python)
-from multiprocessing import Process # , Lock
+from multiprocessing import Process, Lock, Manager
 
 class StreamQuality(Enum):
-    VIDEO_720P=(1280, 720),
-    VIDEO_480P=(854, 480),
+    VIDEO_720P=(1280, 720)
+    VIDEO_480P=(854, 480)
     VIDEO_240P=(426, 240)
 
 class StreamingServer():
@@ -29,14 +28,10 @@ class StreamingServer():
             "PARAR_STREAMING": self.stop_stream,
             "PLAY_STREAM_TO_GROUP": self.play_stream_to_group
         }
-        # dictionary with stream owners as keys and streams as values
-        self.active_streams = dict()
-        # self.__stream_lock = Lock()
         # setup logging service
         self.setup_logging(port, loglevel)
         # setup UDP server
         self.__server = self.setup_server(port)
-        # self.__server_lock = Lock()
         logging.info("Listening for streaming clients at UDP socket")
         self.server_main_loop()
 
@@ -68,19 +63,6 @@ class StreamingServer():
 
     def sendto(self, packet, client_addr):
         self.__server.sendto(packet, client_addr)
-    def close_stream(self, key):
-        if key in self.active_streams.keys():
-            self.active_streams[key].video_is_running(False)
-            self.active_streams.pop(key)
-
-    def add_stream(self, user, video_filename, quality):
-        # self.__stream_lock.acquire()
-        if user.name not in self.active_streams.keys():
-            vd = video.Video(video_filename, user, quality[0], quality[1], self.sendto)
-            self.active_streams[user.name] = vd
-            vd.start()
-        # self.__stream_lock.release()
-        return vd
 
     def recvfrom(self):
         msg = b''
@@ -92,7 +74,6 @@ class StreamingServer():
         return msg, addr
 
     def get_json(self, data):
-
         try:
             packet = json.loads(data.decode('utf-8'))
         except json.JSONDecodeError:
@@ -103,25 +84,35 @@ class StreamingServer():
             return None
         return packet
 
-    def list_videos(self, packet, user):
+    def list_videos(self, manager, active_streams, packet, user):
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
         video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('videos')))
-        self.sendto(bytes(json.dumps({"videos": video_list}), 'utf-8'), user.addr)
+        corrected_list = list(set([v.split("_")[0] for v in video_list]))
+        self.sendto(bytes(json.dumps({"videos": corrected_list}), 'utf-8'), user.addr)
 
-    def stream_video(self, packet, user):
+    def stream_video(self, manager, active_streams, packet, user):
         logging.info("STREAM_VIDEO called by '{}'".format(user.name))
-        self.add_stream(user, packet["arg"], StreamQuality['VIDEO_{}P'.format(packet['resolution'])])
-        # stream.close() # type: ignore
 
-    def user_information(self, packet, user):
+        video_filename = packet['arg']
+        quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
+
+        if user.name not in active_streams.keys():
+            filename = video_filename.split(".")[0]
+            print("pwd: ", filename + "_{}".format(quality.value[1]) + ".mp4")
+            vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
+            active_streams[user.name] = vd
+            Process(target=vd.start).start()
+
+    def user_information(self, manager, active_streams, packet, user):
         logging.info("USER_INFORMATION called by '{}'".format(user.name))
         logging.warning("USER_INFORMATION is not implemented yet!")
 
-    def stop_stream(self, packet, user):
-        print("close_stream", user.name)
-        self.close_stream(user.name)
+    def stop_stream(self, manager, active_streams, packet, user):
+        if user.name in active_streams.keys():
+            active_streams[user.name].close()
+            active_streams.pop(user.name)
 
-    def play_stream_to_group(self, packet, user):
+    def play_stream_to_group(self, manager, active_streams, packet, user):
         logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
         logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
 
@@ -135,14 +126,20 @@ class StreamingServer():
             "arg": "sample1"
         }
         '''
-        while True:
-            # get client
-            msg, client_addr = self.recvfrom()
-            packet = self.get_json(msg)
-            if packet == None:
-                continue
-            client = user.User(packet["id"], client_addr)
-            Process(target=self.api_commands[packet['command']], args=(packet, client)).start()
+        with Manager() as manager:
+            active_streams = manager.dict()
+            while True:
+                try:
+                    # get client
+                    msg, client_addr = self.recvfrom()
+                    packet = self.get_json(msg)
+                    if packet == None:
+                        continue
+                    print(packet)
+                    client = user.User(packet["id"], client_addr)
+                    self.api_commands[packet['command']](manager, active_streams, packet, client)
+                except KeyboardInterrupt:
+                    break
 
 if __name__ == "__main__":
     import sys
