@@ -1,4 +1,4 @@
-import random, secrets, string
+import secrets, string
 import json
 
 DEFAULT_HASH_SIZE = 8

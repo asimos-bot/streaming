@@ -1,16 +1,14 @@
 import socket, json, os
-import cv2, wave, pyaudio, imutils, base64, logging, subprocess, time, wave
-import pickle, struct
-import numpy as np
-
-import user
+import logging
+from .. service import user
 import video
 from enum import Enum
+# from .. import service
 
 # don't use 'threading' module, as it doesn't really create other threads except
 # when one is waiting for an I/O response
 # (https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python)
-from multiprocessing import Process, Lock, Manager
+from multiprocessing import Process, Manager
 
 class StreamQuality(Enum):
     VIDEO_720P=(1280, 720)
@@ -137,7 +135,7 @@ class StreamingServer():
                     if packet == None:
                         continue
                     print(packet)
-                    client = user.User(packet["id"], client_addr)
+                    client = User(packet["id"], client_addr)
                     self.api_commands[packet['command']](manager, active_streams, packet, client)
                 except KeyboardInterrupt:
                     break

@@ -1,5 +1,5 @@
 from multiprocessing.context import Process
-import cv2, imutils, socket
+import cv2, socket
 import numpy as np
 import time, os
 import base64
@@ -15,7 +15,6 @@ port = 6000
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
 print(host_ip)
-# message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"saint_pepsi.mp4", "resolution": 240}'
 message = b'{"id":"mr hello", "command": "STREAM_VIDEO", "arg":"nba.mp4", "resolution": 240}'
 client_socket.sendto(message,(host_ip,port))
 

@@ -1,9 +1,8 @@
 import socket
 import json
 from multiprocessing import Process, Lock, Manager
-from streaming.user import User
+from user import User
 from utils import Utils
-from streaming.group import Group
 
 class ServiceManager:
 
