@@ -1,9 +1,8 @@
 import socket
 import json
 from multiprocessing import Process, Lock, Manager
-from streaming.user import User
-from utils import Utils
-from streaming.group import Group
+from .user import User
+from .utils import Utils
 
 class ServiceManager:
 
@@ -30,7 +29,6 @@ class ServiceManager:
             'REMOVE_USUARIO_GRUPO': self.remove_usuario_grupo,
             'VER_GRUPO': self.ver_grupo
         }
-
         self.server_main_loop()
 
     def setup_server(self, port):

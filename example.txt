@@ -1,0 +1,10 @@
+{"id": "admin", "command": "ENTRAR_NA_APP", "arg": ""}
+{"id": "membro_1", "command": "ENTRAR_NA_APP", "arg": ""}
+{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}
+{"id": "admin", "command": "CRIAR_GRUPO", "arg": ""}
+
+{"id": "admin", "command": "ADD_USUARIO_GRUPO", "arg": "membro_1"}
+{"id": "admin", "command": "REMOVE_USUARIO_GRUPO", "arg": "membro_1"}
+
+{"id": "admin", "command": "VER_GRUPO", "arg": "h23GQlXr"}
+{"id": "admin", "command": "SAIR_DA_APP", "arg": ""}

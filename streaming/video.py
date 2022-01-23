@@ -3,16 +3,13 @@ import imutils
 import os
 from collections import deque
 import time
-import base64
 import wave
-import pickle
 import subprocess
-import struct
 import zlib
 from multiprocessing import Manager
 from concurrent.futures import ThreadPoolExecutor
 
-import user
+import service.user as user
 
 class Video():
 
