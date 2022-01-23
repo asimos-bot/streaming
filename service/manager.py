@@ -81,9 +81,9 @@ class ServiceManager:
             conn.sendto(bytes(json.dumps({'msg': 'ERROR: RESOURCE NOT FOUND!'}), 'utf-8'), user.addr)
 
     def entrar_na_app(self, packet, user, conn):
-        # arg = packet['arg'] -> TODO: USAR P/ access
+        arg = packet['arg']
         if not Utils.retrieve_client_from_list(self.user_list, user.name):
-            user.access = "premium" # revisar
+            user.access = arg  # revisar
             self.user_list.append(user) # check access type
             conn.sendto(bytes(json.dumps({'STATUS_DO_USUARIO': user.to_json()
             }), 'utf-8'), user.addr)

@@ -17,7 +17,7 @@ class Video():
 
     def __init__(self, filename: str,  user: user.User, width: int, height: int, sendto, manager : Manager):
         self.sendto = sendto
-        self.filename = "videos/" + filename
+        self.filename = "streaming/videos/" + filename
         self.width = width
         self.height = height
         self.queue = deque(maxlen=10)#queue.Queue(maxsize=10)

@@ -38,7 +38,7 @@ class StreamingServer():
     def setup_service_manager_skt(self, service_manager_addr):
         skt = socket.create_connection(service_manager_addr)
         skt.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, StreamingServer.__BUFF_SIZE)
-        skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": ""}), 'utf-8'))
+        skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}), 'utf-8'))
 
         return skt
 
@@ -93,7 +93,8 @@ class StreamingServer():
 
     def list_videos(self, manager, active_streams, packet, user):
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
-        video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('videos')))
+        video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('streaming/videos')))
+        print(video_list)
         corrected_list = list(set([v.split("_")[0] for v in video_list]))
         self.sendto(bytes(json.dumps({"videos": corrected_list}), 'utf-8'), user.addr)
 
@@ -104,12 +105,9 @@ class StreamingServer():
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
 
         if user.name not in active_streams.keys():
-
-            
-
             filename = video_filename.split(".")[0]
-            print("pwd: ", filename + "_{}".format(quality.value[1]) + ".mp4")
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
+            print("vd: ", vd.__dict__)
             active_streams[user.name] = vd
             Process(target=vd.start).start()
 
@@ -124,7 +122,7 @@ class StreamingServer():
 
     def get_user_information(self, username):
         logging.info("USER_INFORMATION called by '{}'".format(username))
-        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "user": username}), 'utf-8'))
+        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
         print(self.service_manager.recv(StreamingServer.__BUFF_SIZE))
 
     def user_information(self, manager, active_streams, packet, user):
