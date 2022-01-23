@@ -3,6 +3,7 @@ import json
 from multiprocessing import Process, Lock, Manager
 from .user import User
 from .utils import Utils
+import logging
 
 class ServiceManager:
 
@@ -13,7 +14,9 @@ class ServiceManager:
 
     def __init__(self, port):
         # setup TCP server
+        self.setup_logging(port, loglevel=logging.INFO)
         self.__server = self.setup_server(port)
+        logging.info("Listening for clients at TCP socket {}".format(port))
         
         # setup User/Group DS
         self.user_list = []
@@ -30,7 +33,17 @@ class ServiceManager:
             'VER_GRUPO': self.ver_grupo
         }
         self.server_main_loop()
-
+    def setup_logging(self, port, loglevel):
+        hostname = socket.gethostname()
+        ip = socket.gethostbyname(hostname)
+        logging.basicConfig(
+                handlers=[
+                    logging.FileHandler(filename='manager.log',
+                    encoding='utf-8',
+                )],
+                format="%(asctime)s|%(levelname)s:{}({}:{}):%(message)s".format(hostname, ip, port),
+                datefmt='%m/%d/%Y|%H:%M:%S',
+                level=loglevel)
     def setup_server(self, port):
         # get TCP socket
         srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -65,6 +78,7 @@ class ServiceManager:
                 packet = self.get_json(msg)
                 if not packet:
                     continue
+                logging.info("packet received: {}|client '{}': {}".format(packet, packet['id'], client_addr))
                 client = User(packet['id'], client_addr)
                 self.api_commands[packet['command']](packet, client, conn)
             except KeyboardInterrupt:
@@ -77,18 +91,24 @@ class ServiceManager:
         if retrieved_client:
             user_information = retrieved_client.to_json()
             conn.sendto(bytes(user_information, 'utf-8'), user.addr)
+            logging.info("GET_USER_INFORMATION: {}|client '{}': {}".format(user_information, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: RESOURCE NOT FOUND!'}), 'utf-8'), user.addr)
+            packet = {'msg': 'ERROR: RESOURCE NOT FOUND!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("GET_USER_INFORMATION: {} ({})|client '{}': {}".format(packet, arg, user.name, user.addr))
 
     def entrar_na_app(self, packet, user, conn):
         # arg = packet['arg'] -> TODO: USAR P/ access
         if not Utils.retrieve_client_from_list(self.user_list, user.name):
             user.access = "premium" # revisar
             self.user_list.append(user) # check access type
-            conn.sendto(bytes(json.dumps({'STATUS_DO_USUARIO': user.to_json()
-            }), 'utf-8'), user.addr)
+            packet = {'STATUS_DO_USUARIO': user.to_json()}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("ENTRAR_NA_APP: {}|client '{}': {}".format(packet, user.name, user.addr))
         else: 
-            conn.sendto(bytes(json.dumps({'ENTRAR_NA_APP_ACK': user.name}), 'utf-8'), user.addr)
+            packet = {'ENTRAR_NA_APP_ACK': user.name}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("ENTRAR_NA_APP: {}|client '{}': {}".format(packet, user.name, user.addr))
 
     def sair_da_app(self, packet, user, conn):
 
@@ -96,18 +116,26 @@ class ServiceManager:
             print(self.user_list)
             pos = Utils.find_element_index(self.user_list, 'name', user.name)
             self.user_list.pop(pos)
-            conn.sendto(bytes(json.dumps({'SAIR_DA_APP_ACK': user.name}), 'utf-8'), user.addr)
+            packet = {'SAIR_DA_APP_ACK': user.name}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("SAIR_DA_APP: {}|client '{}': {}".format(packet, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: RESOURCE NOT FOUND!'}), 'utf-8'), user.addr)        
+            packet = {'msg': 'ERROR: RESOURCE NOT FOUND!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("SAIR_DA_APP: {}|client '{}': {}".format(packet, user.name, user.addr))
 
     def criar_grupo(self, packet, user, conn):
         retrieved_client = Utils.retrieve_client_from_list(self.user_list, user.name)
 
         if retrieved_client and retrieved_client.is_premium():
             self.group_list.append(retrieved_client.create_group())
-            conn.sendto(bytes(json.dumps({'CRIAR_GRUPO_ACK': self.group_list[-1].id}), 'utf-8'), user.addr)
+            packet = {'CRIAR_GRUPO_ACK': self.group_list[-1].id}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("CRIAR_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: ACCESS DENIED!'}), 'utf-8'), user.addr)
+            packet = {'msg': 'ERROR: ACCESS DENIED!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("CRIAR_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
 
     def add_usuario_grupo(self, packet, user, conn):
         arg = packet['arg'] # guest name
@@ -120,9 +148,13 @@ class ServiceManager:
             index = Utils.find_element_index(self.group_list, 'id', group.id)
             print(index)
             guest.join_group(self.group_list[index])
-            conn.sendto(bytes(json.dumps({'ADD_USUARIO_GRUPO_ACK': [guest.addr, guest.group_id]}), 'utf-8'), user.addr)
+            packet = {'ADD_USUARIO_GRUPO_ACK': [guest.addr, guest.group_id]}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("ADD_USUARIO_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: ACCESS DENIED!'}), 'utf-8'), user.addr)
+            packet = {'msg': 'ERROR: ACCESS DENIED!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("ADD_USUARIO_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
 
     def remove_usuario_grupo(self, packet, user, conn):
         arg = packet['arg'] # guest name
@@ -133,9 +165,13 @@ class ServiceManager:
         if retrieved_client and retrieved_client.is_premium() and guest and group:
             index = Utils.find_element_index(self.group_list, 'id', group.id)
             guest.leave_group(self.group_list[index])
-            conn.sendto(bytes(json.dumps({'REMOVER_USUARIO_GRUPO_ACK': [guest.addr, guest.group_id]}), 'utf-8'), user.addr)
+            packet = {'REMOVER_USUARIO_GRUPO_ACK': [guest.addr, guest.group_id]}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("REMOVE_USUARIO_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: ACCESS DENIED!'}), 'utf-8'), user.addr)
+            packet = {'msg': 'ERROR: ACCESS DENIED!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("REMOVE_USUARIO_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
 
     def ver_grupo(self, packet, user, conn):
         arg = packet['arg'] # group_id
@@ -143,9 +179,13 @@ class ServiceManager:
         group = Utils.retrieve_group_from_list(self.group_list, arg)
         
         if retrieved_client and group and retrieved_client.is_premium():
-            conn.sendto(bytes(group.to_json(), 'utf-8'), user.addr)
+            packet = group.to_json()
+            conn.sendto(bytes(packet, 'utf-8'), user.addr)
+            logging.info("VER_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
         else:
-            conn.sendto(bytes(json.dumps({'msg': 'ERROR: ACCESS DENIED!'}), 'utf-8'), user.addr)
+            packet = {'msg': 'ERROR: ACCESS DENIED!'}
+            conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
+            logging.info("VER_GRUPO: {}|client '{}': {}".format(packet, user.name, user.addr))
 
 if __name__ == '__main__':
     import sys

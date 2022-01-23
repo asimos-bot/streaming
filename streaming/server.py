@@ -32,7 +32,7 @@ class StreamingServer():
         self.setup_logging(port, loglevel)
         # setup UDP server
         self.__server = self.setup_server(port)
-        logging.info("Listening for streaming clients at UDP socket")
+        logging.info("Listening for streaming clients at UDP socket {}".format(port))
         self.server_main_loop()
 
     def setup_service_manager_skt(self, service_manager_addr):
@@ -47,7 +47,7 @@ class StreamingServer():
         ip = socket.gethostbyname(hostname)
         logging.basicConfig(
                 handlers=[
-                    logging.FileHandler(filename='srv.log',
+                    logging.FileHandler(filename='streaming.log',
                     encoding='utf-8',
                 )],
                 format="%(asctime)s|%(levelname)s:{}({}:{}):%(message)s".format(hostname, ip, port),
@@ -150,7 +150,7 @@ class StreamingServer():
                     packet = self.get_json(msg)
                     if packet == None:
                         continue
-                    print(packet)
+                    logging.info("{}".format(packet))
                     client = user.User(packet["id"], client_addr)
                     self.api_commands[packet['command']](manager, active_streams, packet, client)
                     self.get_user_information("admin")
