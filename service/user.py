@@ -1,5 +1,5 @@
 import json
-from group import Group
+from service.group import Group
 
 class User():
     def __init__(self, name, addr, access='guest'):

@@ -1,7 +1,7 @@
 import socket, json, os
 import logging
-from .. service import user
-import video
+from service import user
+from . import video
 from enum import Enum
 # from .. import service
 
@@ -19,7 +19,7 @@ class StreamingServer():
 
     __BUFF_SIZE=65536
 
-    def __init__(self, port, loglevel=logging.INFO):
+    def __init__(self, port, service_manager_addr, loglevel=logging.INFO):
         self.api_commands = {
             "LIST_VIDEOS": self.list_videos,
             "STREAM_VIDEO": self.stream_video,
@@ -27,12 +27,20 @@ class StreamingServer():
             "PARAR_STREAMING": self.stop_stream,
             "PLAY_STREAM_TO_GROUP": self.play_stream_to_group
         }
+        self.service_manager = self.setup_service_manager_skt(service_manager_addr)
         # setup logging service
         self.setup_logging(port, loglevel)
         # setup UDP server
         self.__server = self.setup_server(port)
         logging.info("Listening for streaming clients at UDP socket")
         self.server_main_loop()
+
+    def setup_service_manager_skt(self, service_manager_addr):
+        skt = socket.create_connection(service_manager_addr)
+        skt.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, StreamingServer.__BUFF_SIZE)
+        skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": ""}), 'utf-8'))
+
+        return skt
 
     def setup_logging(self, port, loglevel):
         hostname = socket.gethostname()
@@ -96,15 +104,14 @@ class StreamingServer():
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
 
         if user.name not in active_streams.keys():
+
+            
+
             filename = video_filename.split(".")[0]
             print("pwd: ", filename + "_{}".format(quality.value[1]) + ".mp4")
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
             active_streams[user.name] = vd
             Process(target=vd.start).start()
-
-    def user_information(self, manager, active_streams, packet, user):
-        logging.info("USER_INFORMATION called by '{}'".format(user.name))
-        logging.warning("USER_INFORMATION is not implemented yet!")
 
     def stop_stream(self, manager, active_streams, packet, user):
         if user.name in active_streams.keys():
@@ -114,6 +121,15 @@ class StreamingServer():
     def play_stream_to_group(self, manager, active_streams, packet, user):
         logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
         logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
+
+    def get_user_information(self, username):
+        logging.info("USER_INFORMATION called by '{}'".format(username))
+        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "user": username}), 'utf-8'))
+        print(self.service_manager.recv(StreamingServer.__BUFF_SIZE))
+
+    def user_information(self, manager, active_streams, packet, user):
+        logging.info("GET_USER_INFORMATION called by '{}'".format(user.name))
+        logging.warning("GET_USER_INFORMATION is not implemented yet!")
 
     def server_main_loop(self):
 
@@ -135,8 +151,9 @@ class StreamingServer():
                     if packet == None:
                         continue
                     print(packet)
-                    client = User(packet["id"], client_addr)
+                    client = user.User(packet["id"], client_addr)
                     self.api_commands[packet['command']](manager, active_streams, packet, client)
+                    self.get_user_information("admin")
                 except KeyboardInterrupt:
                     break
 
@@ -148,4 +165,4 @@ if __name__ == "__main__":
                 return arg.split('=')[1]
         return "INFO" # default
     loglevel = parse_loglevel_from_cli(sys.argv)
-    streaming = StreamingServer(6000, loglevel)
+    streaming = StreamingServer(6000, ('127.0.0.1', 5000), loglevel)
