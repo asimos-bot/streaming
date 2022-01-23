@@ -54,10 +54,11 @@ class ClientGerenciador:
    
     def getAvaliableVideos(self):
         streaming_dir = next(os.walk('.'))[1].index('streaming')
-        file_list = os.listdir(next(os.walk('.'))[1][streaming_dir] + '/videos')
+        file_list = os.listdir(next(os.walk('.'))[1][streaming_dir] + '/videos') # TODO: revisar
         file_list = filter(lambda f: f[-3:] == 'mp4', file_list)
-        # atualizar options
+        file_list = list(set([f.split("_")[0] for f in file_list]))
         menu = self.optionsVideos["menu"]
+        menu.delete(0, 'end')
 
         for filename in sorted(file_list):
             menu.add_command(label=filename)
@@ -73,6 +74,7 @@ class ClientGerenciador:
                 VideoResizer.convert(file_path.name, "./streaming/videos/{}.mp4".format(fn.replace("_","") + "_" + str(resolution[1]), resolution[1]), resolution)
 
         self.getAvaliableVideos() # refresh videos
+    # TODO: add progress bar
 
     def start(self):
         self.window.title("Gerenciar Vídeos")
