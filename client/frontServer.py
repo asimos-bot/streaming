@@ -1,7 +1,9 @@
+from glob import glob
 import tkinter
-import os
-from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
+import os, shutil
+from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label, Text
 from tkinter.filedialog import askopenfile
+from tkinter.messagebox import askyesno
 from video_resizer import VideoResizer
 
 
@@ -56,12 +58,12 @@ class ClientGerenciador:
         streaming_dir = next(os.walk('.'))[1].index('streaming')
         file_list = os.listdir(next(os.walk('.'))[1][streaming_dir] + '/videos') # TODO: revisar
         file_list = filter(lambda f: f[-3:] == 'mp4', file_list)
-        file_list = list(set([f.split("_")[0] for f in file_list]))
+        file_list = list(set([f.split("_")[0] + "   (X)" for f in file_list]))
         menu = self.optionsVideos["menu"]
         menu.delete(0, 'end')
 
         for filename in sorted(file_list):
-            menu.add_command(label=filename)
+            menu.add_command(label=filename, command=lambda: self.confirmExclusion(filename.split()[0]))
 
     def uploadFile(self):
         cur_dir = os.getcwd()
@@ -75,6 +77,18 @@ class ClientGerenciador:
 
         self.getAvaliableVideos() # refresh videos
     # TODO: add progress bar
+
+    def confirmExclusion(self, filename):
+        answer = askyesno('Confirmar Exclusão', 'Deseja remover o vídeo {} do catálogo?'.format(filename))
+        print(answer)
+        if answer:
+            self.removeFile(filename)
+
+    def removeFile(self, filename):
+        files = glob('./streaming/videos/{}*'.format(filename))
+        for file in files:
+            os.remove(file)
+        self.getAvaliableVideos()
 
     def start(self):
         self.window.title("Gerenciar Vídeos")
