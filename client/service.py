@@ -9,16 +9,16 @@ import struct, zlib
 import pickle
 import time
 from PIL import Image, ImageTk
-from tkinter import Widget
 
 class ClientService:
 
     __BUFFSIZE = 65536
     __CHUNK = 1024
 
-    def __init__(self, client_ip, client_port, server_ip, server_port, widget):
+    def __init__(self, client_ip, client_port, server_ip, server_port, widget, service_manager_ip,service_manager_port):
         self.client_addr = (client_ip, client_port)
         self.server_addr = (server_ip, server_port)
+        self.service_manager_addr = (service_manager_ip,service_manager_port)
 
         self.socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.socket.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ClientService.__BUFFSIZE)
@@ -33,6 +33,8 @@ class ClientService:
         self.audio_queue = queue.Queue(maxsize=10)
 
         self.threads_are_running = False
+
+       
 
     def start_receiving_transmission(self):
 
@@ -69,7 +71,7 @@ class ClientService:
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         return msg
-
+        
     def separate_data(self):
         while self.threads_are_running:
             try:
@@ -157,4 +159,49 @@ class ClientService:
     def stopVideo(self):
         if( not self.threads_are_running ): return
         self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
-        self.stop_receiving_transmission()
+
+    def entrarNaApp(self,userID,typeUser):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg
+
+    def getUserInforamtion(self,userID):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'GET_USER_INFORMATION'}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg
+    
+    def verGrupo(self,userID):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg
+
+    def sairDoApp(self, userID):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+
+    def criarGrupo(self, userID):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg
+
+    def addUserToGroup(self, userID, name):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg
+
+    def removeUserFromGroup(self, userID, name):
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        msg = json.loads(msg)
+        print(msg)
+        return msg

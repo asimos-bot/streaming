@@ -1,3 +1,4 @@
+from cgitb import text
 import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
@@ -10,9 +11,9 @@ class ClientGUI:
     red = '#E50914'
     quality = 240
 
-    def __init__(self, client_ip, client_port, server_ip, server_port):
+    def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port):
         self.setupWidgets()
-        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label)
+        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
         self.setupStyle()
         self.start()
 
@@ -35,6 +36,9 @@ class ClientGUI:
 
         self.qualityMenu = OptionMenu(self.window,StringVar(),"--")
         self.qualityMenu.pack(side=tkinter.TOP, pady = 20)
+
+        
+
 
     def setupStyle(self):
         # Criação da estilização da interface
@@ -78,4 +82,4 @@ class ClientGUI:
         self.window.mainloop()
 
 if __name__ == "__main__":
-    ClientGUI('127.0.0.1', 5050, '127.0.0.1', 6000)
+    ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
