@@ -16,10 +16,10 @@ class Login:
         self.setupStyle()
         self.start()
 
-    def teste(self,login,typeUser):
+    def login(self,login,typeUser):
         self.service.entrarNaApp(login,typeUser)
         self.window.destroy()
-        frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
+        frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000, login)
     
     def setupWidgets(self):
         self.window = Tk()
@@ -43,7 +43,7 @@ class Login:
             ttk.Radiobutton(master=self.window, text = text, variable = self.typeUser,
                 value = value).pack( ipady = 5)
  
-        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.teste(self.login.get(),self.typeUser.get())  ,style="TButton")
+        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.login(self.login.get(),self.typeUser.get())  ,style="TButton")
         self.logarButton.place(x=150,y=100)
 
 

@@ -1,4 +1,5 @@
 from cgitb import text
+from client.login import Login
 import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
@@ -11,7 +12,8 @@ class ClientGUI:
     red = '#E50914'
     quality = 240
 
-    def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port):
+    def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port,login):
+        self.login = Login
         self.setupWidgets()
         self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
         self.setupStyle()
@@ -37,7 +39,6 @@ class ClientGUI:
         self.qualityMenu = OptionMenu(self.window,StringVar(),"--")
         self.qualityMenu.pack(side=tkinter.TOP, pady = 20)
 
-        
 
 
     def setupStyle(self):
@@ -72,13 +73,24 @@ class ClientGUI:
         self.optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle,self.quality))
         self.optionsVideos.pack(side=tkinter.TOP, pady = 10)
 
- 
+    def serviceManager(self):
+        self.seeGroupButton = ttk.Button(text="Ver Grupo",master=self.window,command=lambda: self.service.seeGroup(self.login)  ,style="TButton")
+        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
 
+        self.seeGroupButton = ttk.Button(text="Criar Grupo",master=self.window,command=lambda: self.service.createGroup(self.login)  ,style="TButton")
+        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
+
+        self.seeGroupButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.service.addUserToGroup(self.login)  ,style="TButton")
+        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
+
+        self.seeGroupButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
+        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
     # Função que cria o loop da janela
     def start(self):
         self.window.title("Redes 2")
         self.window.geometry("%dx%d" % (self.width, self.height))    
         self.receiveListVideos()
+        self.serviceManager()
         self.window.mainloop()
 
 if __name__ == "__main__":
