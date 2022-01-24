@@ -17,7 +17,7 @@ class Video():
 
     def __init__(self, filename: str,  user: user.User, width: int, height: int, sendto, manager : Manager):
         self.sendto = sendto
-        self.filename = "videos/" + filename
+        self.filename = "streaming/videos/" + filename
         self.width = width
         self.height = height
         self.queue = deque(maxlen=10)#queue.Queue(maxsize=10)
@@ -45,7 +45,7 @@ class Video():
             executor.submit(self.video_stream_gen, video)
 
     def extract_audio(self, file_name):
-        command = "ffmpeg -i ./videos/{0} -ab 160k -ac 2 -ar 44100 -vn ./videos/{0}.wav -y > /dev/null 2>&1".format(file_name)
+        command = "ffmpeg -i ./streaming/videos/{0} -ab 160k -ac 2 -ar 44100 -vn ./streaming/videos/{0}.wav -y > /dev/null 2>&1".format(file_name)
         subprocess.call(command, shell=True)
 
     def put(self, value):
