@@ -166,26 +166,19 @@ class ClientService:
         msg = json.loads(msg)
         print(msg)
         return msg
-
-    def getUserInforamtion(self,userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'GET_USER_INFORMATION'}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
-        msg = json.loads(msg)
-        print(msg)
-        return msg
     
-    def verGrupo(self,userID):
+    def seeGroup(self,userID):
         self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
-    def sairDoApp(self, userID):
+    def exitApp(self, userID):
         self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
 
-    def criarGrupo(self, userID):
+    def createGroup(self, userID):
         self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
@@ -200,7 +193,7 @@ class ClientService:
         return msg
 
     def removeUserFromGroup(self, userID, name):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
+        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
         msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
