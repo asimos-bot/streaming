@@ -1,4 +1,5 @@
 import json
+from service.utils import Utils
 from .group import Group
 
 class User():
@@ -12,7 +13,6 @@ class User():
         return json.dumps({'USER_INFORMATION': {'name': self.name, 'access': self.access, 'addr': self.addr, 'group_id': self.group_id}})
 
     def create_group(self, members=[]):
-        print("entrou")
         new_group = Group(self, members)
         self.group_id = new_group.id
         return new_group
@@ -25,6 +25,12 @@ class User():
         index = group.members.index(self)
         group.members.pop(index)
         self.group_id = None
+
+    def destroy_group(group_list, group_id):
+        group = Utils.retrieve_group_from_list(group_list, group_id)
+        for member in group.members:
+            member.leave_group(group)
+        group_list.pop(Utils.find_element_index(group_list, 'id', group_id))
 
     def is_premium(self):
         return self.access == 'premium'
