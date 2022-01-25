@@ -39,7 +39,9 @@ class ClientService:
         self.video_queue = queue.Queue(maxsize=10)
         self.audio_queue = queue.Queue(maxsize=10)
 
-        self.threads_are_running = False 
+        self.threads_are_running = False
+
+        self.group = None
 
     def start_receiving_transmission(self):
 
@@ -166,7 +168,8 @@ class ClientService:
         self.client_udp.sendto(bytes(json.dumps({'id': self.username, 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
 
     def entrarNaApp(self, userID, typeUser):
-        packet = json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser})
+        packet = json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg': typeUser})
+        print(packet)
         self.service_manager.sendall( bytes(packet, 'utf-8'))
         msg = self.service_manager.recv(4096)
         msg = json.loads(msg)
@@ -175,33 +178,34 @@ class ClientService:
         return msg
     
     def seeGroup(self,userID):
-        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
+        self.service_manager.send( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO', 'arg': self.group}), 'utf-8'))
+        msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
-        print(msg)
         return msg
 
     def exitApp(self, userID):
-        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
+        msg = self.service_manager.recv(ClientService.__BUFFSIZE)
+        print(msg)
 
     def createGroup(self, userID):
-        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
+        msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
-        print(msg)
+
+        self.group = msg['CRIAR_GRUPO_ACK']
         return msg
 
     def addUserToGroup(self, userID, name):
-        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
+        msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def removeUserFromGroup(self, userID, name):
-        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
+        msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg

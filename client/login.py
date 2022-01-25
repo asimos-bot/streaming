@@ -23,8 +23,8 @@ class Login:
         self.window = Tk()
         self.frame = Frame(self.window)
         self.label = Label(self.frame)
-        values = {  "Pago" : "Premium",
-                    "Gratuito" : "Guest",
+        values = {  "Pago" : "premium",
+                    "Gratuito" : "guest",
                 }
 
         self.width= 400 
