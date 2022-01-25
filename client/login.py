@@ -12,14 +12,12 @@ class Login:
 
     def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip, service_manager_port):
         self.setupWidgets()
-        self.service = service.ClientService(client_ip=client_ip,client_port= client_port,widget=self.label,server_ip= server_ip,server_port=server_port,service_manager_ip=service_manager_ip,service_manager_port=service_manager_port)
         self.setupStyle()
         self.start()
 
     def login(self,login,typeUser):
-        self.service.entrarNaApp(login,typeUser)
         self.window.destroy()
-        frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000, login)
+        frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000, login, typeUser)
     
     def setupWidgets(self):
         self.window = Tk()

@@ -1,5 +1,4 @@
 from cgitb import text
-from login import Login
 import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
@@ -12,11 +11,12 @@ class ClientGUI:
     red = '#E50914'
     quality = 240
 
-    def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port, login):
+    def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port, login, userType):
         self.login = login
         self.setupWidgets()
         self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
         self.setupStyle()
+        self.service.entrarNaApp(login, userType)
         self.start()
 
     def setupWidgets(self):

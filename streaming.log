@@ -1,14 +1,9 @@
-01/25/2022|18:21:47|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
-01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'LIST_VIDEOS'}
-01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by ''
-01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
-01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
-01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by ''
-01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by ''
-01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
-01/25/2022|18:22:12|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'PARAR_STREAMING'}
-01/25/2022|18:22:12|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
-01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
-01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by ''
-01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by ''
-01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|19:03:31|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|19:03:51|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|19:03:55|INFO:debian(127.0.1.1:6000):{'id': 'asimos', 'command': 'LIST_VIDEOS'}
+01/25/2022|19:03:55|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asimos'
+01/25/2022|19:03:55|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|19:04:01|INFO:debian(127.0.1.1:6000):{'id': 'asimos', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/25/2022|19:04:01|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asimos'
+01/25/2022|19:04:01|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'asimos'
+01/25/2022|19:04:01|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
