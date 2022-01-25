@@ -49,7 +49,7 @@ class ServiceManager:
         srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         srv.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ServiceManager.__BUFF_SIZE)
         srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        # srv.setblocking(False)
+        srv.setblocking(False)
         srv.bind(('', port))
         return srv
 
@@ -68,21 +68,38 @@ class ServiceManager:
 
     def server_main_loop(self):
 
-        self.__server.listen()
-        conn, client_addr = self.__server.accept()
-        print("")
-
+        self.__server.listen(5)
+        clients = []
         while True:
+            # check if there is any new connections to be made
             try:
-                msg = conn.recv(ServiceManager.__BUFF_SIZE)
-                packet = self.get_json(msg)
-                if not packet:
+                # return (client_skt, addr)
+                clients.append(self.__server.accept())
+                clients[-1][0].setblocking(False)
+                logging.info("connection established: {}".format(clients[-1][-1]))
+            except TimeoutError:
+                pass
+            except BlockingIOError:
+                pass
+
+            for client_info in clients:
+                client_skt = client_info[0]
+                client_addr = client_info[1]
+                try:
+                    msg = client_skt.recv(ServiceManager.__BUFF_SIZE)
+                    if len(msg) == 0:
+                        continue
+                    logging.info(msg)
+                    packet = self.get_json(msg)
+                    if not packet:
+                        continue
+                    logging.info("packet received: {}|client '{}': {}".format(packet, packet['id'], client_addr))
+                    client = User(packet['id'], client_addr)
+                    self.api_commands[packet['command']](packet, client, client_skt)
+                except KeyboardInterrupt:
+                    break
+                except BlockingIOError:
                     continue
-                logging.info("packet received: {}|client '{}': {}".format(packet, packet['id'], client_addr))
-                client = User(packet['id'], client_addr)
-                self.api_commands[packet['command']](packet, client, conn)
-            except KeyboardInterrupt:
-                break
     
     def get_user_information(self, packet, user, conn):
         arg = packet['arg']

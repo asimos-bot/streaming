@@ -104,7 +104,7 @@ class StreamingServer():
         video_filename = packet['arg']
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
 
-        if user.name not in active_streams.keys():
+        if user.name not in active_streams.keys() and self.get_user_information(user.name):
             filename = video_filename.split(".")[0]
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
             print("vd: ", vd.__dict__)
@@ -123,7 +123,7 @@ class StreamingServer():
     def get_user_information(self, username):
         logging.info("USER_INFORMATION called by '{}'".format(username))
         self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
-        print(self.service_manager.recv(StreamingServer.__BUFF_SIZE))
+        return json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
 
     def user_information(self, manager, active_streams, packet, user):
         logging.info("GET_USER_INFORMATION called by '{}'".format(user.name))

@@ -20,11 +20,15 @@ class ClientService:
         self.server_addr = (server_ip, server_port)
         self.service_manager_addr = (service_manager_ip,service_manager_port)
 
-        self.socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        self.socket.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ClientService.__BUFFSIZE)
-        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.socket.bind(self.client_addr)
-        self.socket.settimeout(2)
+        self.client_udp = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+        self.client_udp.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ClientService.__BUFFSIZE)
+        self.client_udp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.client_udp.bind(self.client_addr)
+        self.client_udp.settimeout(2)
+
+        self.service_manager = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+        self.service_manager.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.service_manager.connect(self.service_manager_addr)
 
         self.widget = widget
         self.videoTitle = ""
@@ -32,9 +36,7 @@ class ClientService:
         self.video_queue = queue.Queue(maxsize=10)
         self.audio_queue = queue.Queue(maxsize=10)
 
-        self.threads_are_running = False
-
-       
+        self.threads_are_running = False 
 
     def start_receiving_transmission(self):
 
@@ -67,15 +69,15 @@ class ClientService:
         self.video_thread.join()
 
     def listVideos (self):
-        self.socket.sendto( bytes(json.dumps({'id': 'user1', 'command': 'LIST_VIDEOS'}), 'utf-8'), self.server_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': 'user1', 'command': 'LIST_VIDEOS'}), 'utf-8'), self.server_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         return msg
         
     def separate_data(self):
         while self.threads_are_running:
             try:
-                packet, _ = self.socket.recvfrom(ClientService.__BUFFSIZE) # LINHA PROBLEMÁTICA
+                packet, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE) # LINHA PROBLEMÁTICA
                 if len(packet) > 1: # checar cond
                     if packet[:1] == b'v':
                         self.video_queue.put(packet[1:])
@@ -152,49 +154,53 @@ class ClientService:
         self.videoTitle = videoTitle
         if( self.threads_are_running ):
             self.stop_receiving_transmission()
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution': quality}), 'utf-8'), self.server_addr)
+        self.client_udp.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution': quality}), 'utf-8'), self.server_addr)
  
         self.start_receiving_transmission()
 
     def stopVideo(self):
         if( not self.threads_are_running ): return
-        self.socket.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
+        self.client_udp.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
 
-    def entrarNaApp(self,userID,typeUser):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
-        msg = json.loads(msg)
+    def entrarNaApp(self, userID, typeUser):
+        print("entrar na APP")
+        packet = json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser})
+        print(packet)
+        self.service_manager.sendall( bytes(packet, 'utf-8'))
+        print("bytes enviados")
+        msg = self.service_manager.recv(4096)
         print(msg)
+        msg = json.loads(msg)
         return msg
     
     def seeGroup(self,userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO'}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def exitApp(self, userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'SAIR_DA_APP'}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
 
     def createGroup(self, userID):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'CRIAR_GRUPO', 'arg':userID}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def addUserToGroup(self, userID, name):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg
 
     def removeUserFromGroup(self, userID, name):
-        self.socket.sendto( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
-        msg, _ = self.socket.recvfrom(ClientService.__BUFFSIZE)
+        self.client_udp.sendto( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'), self.service_manager_addr)
+        msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         print(msg)
         return msg

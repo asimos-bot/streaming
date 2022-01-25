@@ -10,7 +10,7 @@ class Login:
     fontColor = '#F5F5F1'
     red = '#E50914'
 
-    def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port):
+    def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip, service_manager_port):
         self.setupWidgets()
         self.service = service.ClientService(client_ip=client_ip,client_port= client_port,widget=self.label,server_ip= server_ip,server_port=server_port,service_manager_ip=service_manager_ip,service_manager_port=service_manager_port)
         self.setupStyle()
@@ -33,17 +33,17 @@ class Login:
         self.height= 200
         self.style = ttk.Style()
         self.typeUser = StringVar(self.window, "0")
-        self.login = StringVar()
+        self.login_str = StringVar()
         self.mod_answer=''
 
-        self.txtLogin = ttk.Entry(master=self.window,textvariable=self.login)
+        self.txtLogin = ttk.Entry(master=self.window,textvariable=self.login_str)
         self.txtLogin.pack(side=tkinter.TOP,pady=10)
 
         for (text, value) in values.items():
             ttk.Radiobutton(master=self.window, text = text, variable = self.typeUser,
                 value = value).pack( ipady = 5)
  
-        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.login(self.login.get(),self.typeUser.get())  ,style="TButton")
+        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.login(self.login_str.get(),self.typeUser.get())  ,style="TButton")
         self.logarButton.place(x=150,y=100)
 
 
