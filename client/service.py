@@ -30,6 +30,9 @@ class ClientService:
         self.service_manager.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.service_manager.connect(self.service_manager_addr)
 
+        self.username = ""
+        self.usertype = ""
+
         self.widget = widget
         self.videoTitle = ""
 
@@ -69,7 +72,7 @@ class ClientService:
         self.video_thread.join()
 
     def listVideos (self):
-        self.client_udp.sendto( bytes(json.dumps({'id': 'user1', 'command': 'LIST_VIDEOS'}), 'utf-8'), self.server_addr)
+        self.client_udp.sendto( bytes(json.dumps({'id': self.username, 'command': 'LIST_VIDEOS'}), 'utf-8'), self.server_addr)
         msg, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
         return msg
@@ -154,23 +157,21 @@ class ClientService:
         self.videoTitle = videoTitle
         if( self.threads_are_running ):
             self.stop_receiving_transmission()
-        self.client_udp.sendto(bytes(json.dumps({'id': "user1", 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution': quality}), 'utf-8'), self.server_addr)
+        self.client_udp.sendto(bytes(json.dumps({'id': self.username, 'command': 'STREAM_VIDEO','arg': self.videoTitle,'resolution': quality}), 'utf-8'), self.server_addr)
  
         self.start_receiving_transmission()
 
     def stopVideo(self):
         if( not self.threads_are_running ): return
-        self.client_udp.sendto(bytes(json.dumps({'id': "user1", 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
+        self.client_udp.sendto(bytes(json.dumps({'id': self.username, 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
 
     def entrarNaApp(self, userID, typeUser):
-        print("entrar na APP")
         packet = json.dumps({'id': userID, 'command': 'ENTRAR_NA_APP','arg':typeUser})
-        print(packet)
         self.service_manager.sendall( bytes(packet, 'utf-8'))
-        print("bytes enviados")
         msg = self.service_manager.recv(4096)
-        print(msg)
         msg = json.loads(msg)
+        self.username = userID
+        self.usertype = typeUser
         return msg
     
     def seeGroup(self,userID):

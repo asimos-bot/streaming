@@ -1,9 +1,14 @@
-01/25/2022|17:52:49|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
-01/25/2022|17:53:30|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
-01/25/2022|17:53:36|INFO:debian(127.0.1.1:6000):{'id': 'user1', 'command': 'LIST_VIDEOS'}
-01/25/2022|17:53:36|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'user1'
-01/25/2022|17:53:36|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
-01/25/2022|17:53:46|INFO:debian(127.0.1.1:6000):{'id': 'user1', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
-01/25/2022|17:53:46|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'user1'
-01/25/2022|17:53:46|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'user1'
-01/25/2022|17:53:50|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|18:21:47|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'LIST_VIDEOS'}
+01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by ''
+01/25/2022|18:21:59|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by ''
+01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by ''
+01/25/2022|18:22:02|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|18:22:12|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'PARAR_STREAMING'}
+01/25/2022|18:22:12|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):{'id': '', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by ''
+01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by ''
+01/25/2022|18:22:16|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
