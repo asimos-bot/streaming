@@ -199,7 +199,7 @@ class ClientService:
         return msg
 
     def addUserToGroup(self, userID, name):
-        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'), self.service_manager_addr)
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':'g'}), 'utf-8'), self.service_manager_addr)
         msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         print("name: ", name)
         msg = json.loads(msg)

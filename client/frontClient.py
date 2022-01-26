@@ -105,11 +105,15 @@ class ClientGUI:
         self.refreshButton = ttk.Button(text="Atualizar Lista de usuários",master=self.window,command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
-        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.service.addUserToGroup(self.login, selectedUser.get())  ,style="TButton")
+        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.addUserToGroup(selectedUser) ,style="TButton")
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
         self.removeUserButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
         self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
+
+    def addUserToGroup(self, selectedUser):
+        self.service.addUserToGroup(self.login, selectedUser.get())
+        self.getAvaliableUsers(self.service.listUsers(self.login))
 
     def getAvaliableUsers(self,listUsers):
         menu = self.selectUsers["menu"]
