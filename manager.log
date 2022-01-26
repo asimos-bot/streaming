@@ -210,3 +210,36 @@
 01/25/2022|20:28:01|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "VER_GRUPO", "arg": "p3wf8aKw"}'
 01/25/2022|20:28:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'VER_GRUPO', 'arg': 'p3wf8aKw'}|client 'asimos': ('127.0.0.1', 35846)
 01/25/2022|20:28:01|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "p3wf8aKw", "owner": "asimos", "members": []}}|client 'asimos': ('127.0.0.1', 35846)
+01/25/2022|21:18:02|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|21:18:03|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):connection established: ('127.0.0.1', 62913)
+01/25/2022|21:18:03|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|21:18:03|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:18:03|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 62913], "group_id": null}}'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):connection established: ('127.0.0.1', 62916)
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "teste", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'teste', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'teste': ('127.0.0.1', 62916)
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "teste", "access": "premium", "addr": ["127.0.0.1", 62916], "group_id": null}}'}|client 'teste': ('127.0.0.1', 62916)
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:18:36|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 62913], "group_id": null}}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):connection established: ('127.0.0.1', 62928)
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "teste", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'teste', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'teste': ('127.0.0.1', 62928)
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):ENTRAR_NA_APP: {'ENTRAR_NA_APP_ACK': 'teste'}|client 'teste': ('127.0.0.1', 62928)
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:16|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 62913], "group_id": null}}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "teste"}'
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'teste'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "teste", "access": "premium", "addr": ["127.0.0.1", 62916], "group_id": null}}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:26|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 62913], "group_id": null}}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:33|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|21:19:33|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:19:33|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 62913], "group_id": null}}|client 'admin': ('127.0.0.1', 62913)
+01/25/2022|21:23:44|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|21:23:45|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):connection established: ('127.0.0.1', 56196)
+01/25/2022|21:23:45|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|21:23:45|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 56196)
+01/25/2022|21:23:45|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 56196], "group_id": null}}'}|client 'admin': ('127.0.0.1', 56196)
