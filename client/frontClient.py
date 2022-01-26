@@ -84,7 +84,6 @@ class ClientGUI:
         self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
         
         listsUser = self.service.listUsers(self.login)
-        print(listsUser['LIST_USERS'])
         selectedUser = None
         if not listsUser['LIST_USERS']:
             self.selectUsers = OptionMenu(self.window,StringVar(),"--")
@@ -96,12 +95,23 @@ class ClientGUI:
             selectedUser.set(listsUser[0])
             self.selectUsers = OptionMenu(self.window,selectedUser,*listsUser)
             self.selectUsers.pack(side=tkinter.TOP, pady = 20)
-            
+        
+        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários",master=self.window,command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
+        self.refreshButton.pack(side=tkinter.TOP, pady = 20)
+
         self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.service.addUserToGroup(self.login,selectedUser)  ,style="TButton")
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
-
+        
         self.removeUserButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
         self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
+
+    def getAvaliableUsers(self,listUsers):
+        menu = self.optionsVideos["menu"]
+        menu.delete(0, 'end')
+
+        for eachUser in sorted(listUsers):
+            menu.add_command(label=eachUser)
+
     # Função que cria o loop da janela
     def start(self):
         self.window.title("Redes 2")
