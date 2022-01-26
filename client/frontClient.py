@@ -11,7 +11,6 @@ class ClientGUI:
     fontColor = '#F5F5F1'
     red = '#E50914'
     quality = 240
-    userType = ''
 
     def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port, login, userType):
         self.login = login
@@ -84,7 +83,7 @@ class ClientGUI:
         self.seeGroupButton = ttk.Button(text="Criar Grupo",master=self.window,command=lambda: self.service.createGroup(self.login)  ,style="TButton")
         self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
         
-        listsUser = self.service.listUsers()
+        listsUser = self.service.listUsers(self.login)
         listsUser = list(listsUser.values())
         listsUser = list(listsUser[0])
         selectedUser = StringVar(self.window)
@@ -101,9 +100,8 @@ class ClientGUI:
     def start(self):
         self.window.title("Redes 2")
         self.window.geometry("%dx%d" % (self.width, self.height))   
-        if(self.userType == "Premium"):
-            self.receiveListVideos()
-            self.serviceManager()
+        self.receiveListVideos()
+        self.serviceManager()
         self.window.mainloop()
 
 if __name__ == "__main__":

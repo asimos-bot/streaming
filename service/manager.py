@@ -30,7 +30,8 @@ class ServiceManager:
             'CRIAR_GRUPO': self.criar_grupo,
             'ADD_USUARIO_GRUPO': self.add_usuario_grupo,
             'REMOVE_USUARIO_GRUPO': self.remove_usuario_grupo,
-            'VER_GRUPO': self.ver_grupo
+            'VER_GRUPO': self.ver_grupo,
+            'LIST_USERS': self.list_users
         }
         self.server_main_loop()
     def setup_logging(self, port, loglevel):
