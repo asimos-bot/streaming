@@ -103,11 +103,10 @@ class StreamingServer():
         video_filename = packet['arg']
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
         user_info = self.get_user_information(user.name)
-        print("name being sent to auth: '{}'".format(user.name))
         if user.name not in active_streams.keys() and "USER_INFORMATION" in user_info.keys():
             filename = video_filename.split(".")[0]
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
-            print("vd: ", vd.__dict__)
+            print("video being streamed: ", vd.__dict__)
             active_streams[user.name] = vd
             Process(target=vd.start).start()
 
