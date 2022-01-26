@@ -120,6 +120,7 @@ class StreamingServer():
         user_info = self.get_user_information(user.name)['USER_INFORMATION']
         group_id = user_info['group_id']
         members_id = self.get_group_members(group_id)
+        print("members: ", members_id)
         members = [self.user_id_to_obj(user_id) for user_id in members_id]
         if not group_id is None:
             for member in members:
@@ -127,7 +128,7 @@ class StreamingServer():
                 if member.name in active_streams.keys():
                     active_streams[member.name].close()
                 # 2. add users to owner's transmission
-                active_streams[member.name].active_users.append(member)
+                active_streams[user.name].active_users.append(member)
         
     def get_user_information(self, username):
         logging.info("USER_INFORMATION called by '{}'".format(username))

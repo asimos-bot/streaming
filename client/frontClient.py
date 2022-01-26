@@ -16,11 +16,12 @@ class ClientGUI:
         self.login = login
         self.userType = userType
         self.setupFrame()
+
+        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
+        self.service.entrarNaApp(login, userType)
         if(userType == 'premium'):
             self.setupWidgets()
             self.setupStyle()
-        self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
-        self.service.entrarNaApp(login, userType)
         self.start()
     
     def setupFrame(self):
@@ -53,7 +54,8 @@ class ClientGUI:
         self.qualityMenu = OptionMenu(self.window,StringVar(),"--")
         self.qualityMenu.pack(side=tkinter.TOP, pady = 20)
 
-
+        self.playToGroupButton = ttk.Button(text="Streamar para o Grupo",master=self.window,command=self.service.playToGroup,style="TButton")
+        self.playToGroupButton.pack(side=tkinter.TOP, pady = 10)
 
     def setupStyle(self):
         # Criação da estilização da interface
@@ -104,20 +106,18 @@ class ClientGUI:
             self.selectUsers = OptionMenu(self.window, self.selectedUser, *listsUser['LIST_USERS'])
             self.selectUsers.pack(side=tkinter.TOP, pady = 20)
 
-        print("selected user:", self.selectedUser.get())
-        
         self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
-        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo", master=self.window, command=lambda: self.addUserToGroup(self.selectedUser) ,style="TButton")
+        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo", master=self.window, command=self.addUserToGroup, style="TButton")
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
         self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
         self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
 
-    def addUserToGroup(self, selectedUser):
-        self.service.addUserToGroup(self.login, selectedUser.get())
-        selectedUser.set("--")
+    def addUserToGroup(self):
+        self.service.addUserToGroup(self.login, self.selectedUser.get())
+        self.selectedUser.set("--")
         self.getAvaliableUsers(self.service.listUsers(self.login))
 
     def getAvaliableUsers(self,listUsers):

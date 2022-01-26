@@ -172,17 +172,10 @@ class ServiceManager:
         arg = packet['arg'] # guest name
         retrieved_client = Utils.retrieve_client_from_list(self.user_list, user.name)
         guest = Utils.retrieve_client_from_list(self.user_list, arg)
-        print("group_id: ", user.group_id)
         group = Utils.retrieve_group_from_list(self.group_list, retrieved_client.group_id)
-
-        print(packet)
-        print("\tretrieved client: ", retrieved_client.to_json())
-        print("\tguest: ", guest.to_json())
-        print("\tgroup: ", group.to_json())
 
         if retrieved_client and retrieved_client.group_id and retrieved_client.is_premium() and guest and group and not guest.group_id:
             index = Utils.find_element_index(self.group_list, 'id', group.id)
-            print(index)
             guest.join_group(self.group_list[index])
             packet = {'ADD_USUARIO_GRUPO_ACK': [guest.addr, guest.group_id]}
             conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
