@@ -130,3 +130,59 @@
 01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
 01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
 01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:48:02|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:48:07|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:48:07|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:48:07|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:49:10|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:49:10|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:49:10|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:49:14|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:49:39|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:49:48|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:49:48|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:49:48|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:49:51|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:49:51|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:49:51|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:49:52|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:51:08|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:51:12|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:51:12|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:51:12|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:51:16|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:51:16|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:51:16|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:51:17|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:51:27|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'PARAR_STREAMING'}
+01/26/2022|10:51:27|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:53:59|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:54:05|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:54:05|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:54:05|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:54:07|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:54:07|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:54:07|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:54:07|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:54:11|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'PARAR_STREAMING'}
+01/26/2022|10:54:11|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:54:27|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:54:30|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:54:30|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:54:30|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:54:32|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:54:32|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:54:32|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:54:32|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:54:37|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'PARAR_STREAMING'}
+01/26/2022|10:54:37|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:55:35|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:55:41|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:55:41|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:55:41|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:55:43|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/26/2022|10:55:43|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'p'
+01/26/2022|10:55:43|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'p'
+01/26/2022|10:55:43|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:55:47|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'PARAR_STREAMING'}
+01/26/2022|10:55:47|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'

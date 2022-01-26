@@ -165,6 +165,7 @@ class ClientService:
 
     def stopVideo(self):
         if( not self.threads_are_running ): return
+        self.stop_receiving_transmission()
         self.client_udp.sendto(bytes(json.dumps({'id': self.username, 'command': 'PARAR_STREAMING'}), 'utf-8'), self.server_addr)
 
     def entrarNaApp(self, userID, typeUser):

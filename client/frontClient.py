@@ -37,8 +37,9 @@ class ClientGUI:
         self.exitButton.pack(side=tkinter.TOP, pady = 10)
 
     def exitAplication(self):
-        self.service.exitApp()
-
+        self.service.stopVideo()
+        self.service.exitApp(self.login)
+        self.window.destroy()
 
     def setupWidgets(self):
         self.style = ttk.Style()
