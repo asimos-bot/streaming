@@ -6,9 +6,6 @@ from tkinter import Button, Tk, ttk, StringVar, OptionMenu, Frame, Label
 import service
 
 class Login:
-    backgroundColor = '#221F1F'
-    fontColor = '#F5F5F1'
-    red = '#E50914'
 
     def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip, service_manager_port):
         self.setupWidgets()
@@ -41,17 +38,9 @@ class Login:
             ttk.Radiobutton(master=self.window, text = text, variable = self.typeUser,
                 value = value).pack( ipady = 5)
  
-        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.login(self.login_str.get(),self.typeUser.get())  ,style="TButton")
+        self.logarButton = ttk.Button(text="Logar",master=self.window,command=lambda : self.login(self.login_str.get(),self.typeUser.get()) )
         self.logarButton.place(x=150,y=100)
 
-
-    def setupStyle(self):
-        # Criação da estilização da interface
-        self.window.configure(background=Login.backgroundColor)
-        self.style.configure("TButton", font =
-                       ('calibri',10,'bold'),
-                        foreground = Login.red,borderwidth=4,anchor="center")
-        self.style.configure('LabelList',fontColor=Login.red)
    
     def start(self):
         self.window.title("Redes 2")
