@@ -30,7 +30,8 @@ class ServiceManager:
             'CRIAR_GRUPO': self.criar_grupo,
             'ADD_USUARIO_GRUPO': self.add_usuario_grupo,
             'REMOVE_USUARIO_GRUPO': self.remove_usuario_grupo,
-            'VER_GRUPO': self.ver_grupo
+            'VER_GRUPO': self.ver_grupo,
+            'LIST_USERS': self.list_users
         }
         self.server_main_loop()
     def setup_logging(self, port, loglevel):
@@ -103,8 +104,9 @@ class ServiceManager:
     
     def list_users(self, packet, user, conn):
         users = [u.name for u in self.user_list if u.group_id != user.group_id]
+        msg = json.dumps({'LIST_USERS': users})
         logging.info("LIST_USERS: {}|client '{}':{}".format(users, user.name, user.addr))
-        conn.sendto(bytes(users, 'utf-8'), user.addr)
+        conn.sendto(bytes(msg, 'utf-8'), user.addr)
 
     def get_user_information(self, packet, user, conn):
         arg = packet['arg']
