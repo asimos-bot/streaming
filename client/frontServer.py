@@ -26,6 +26,13 @@ class ClientGerenciador:
         self.style = ttk.Style()
         self.frame = Frame(self.window)
         self.label = Label(self.frame)
+
+        label_d = StringVar()
+        label_d.set("Selecione um vídeo da Lista para removê-lo")
+
+        self.delete_label = Label(self.window, textvariable=label_d)
+        self.delete_label.pack()
+
         self.frame.pack(side=tkinter.BOTTOM, pady = 10, padx = 10, fill='both')
         self.frame.config(bg="black")
         self.label.pack()
