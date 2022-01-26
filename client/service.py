@@ -212,5 +212,9 @@ class ClientService:
         print(msg)
         return msg
 
-    def listUser():
-        return ['a','b']
+    def listUsers(self, userID):
+        self.service_manager.sendto( bytes(json.dumps({'id': userID, 'command': 'LIST_USERS'}), 'utf-8'), self.service_manager_addr)
+        listUser = self.service_manager.recv(ClientService.__BUFFSIZE)
+        listUser = json.loads(listUser)
+        return listUser
+        

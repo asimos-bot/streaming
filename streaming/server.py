@@ -120,7 +120,8 @@ class StreamingServer():
     def play_stream_to_group(self, manager, active_streams, packet, user):
         user_info = self.get_user_information(user.name)['USER_INFORMATION']
         group_id = user_info['group_id']
-        members = 
+        members_id = self.get_group_members(group_id)
+        members = [self.user_id_to_obj(user_id) for user_id in members_id]
         if not group_id is None:
             for member in members:
                 # 1. close transmission for everybody in the group (except owner)
@@ -133,6 +134,17 @@ class StreamingServer():
         logging.info("USER_INFORMATION called by '{}'".format(username))
         self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
         return json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
+
+    def get_group_members(self, group_id):
+        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "VER_GRUPO", "arg": group_id}), 'utf-8'))
+        response = json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
+        if "GRUPO_DE_STREAMING" in response.keys():
+            return response['GRUPO_DE_STREAMING']['members']
+        else:
+            return []
+
+    def user_id_to_obj(self, user_id):
+        return self.get_user_information(user_id)['addr']
 
     def server_main_loop(self):
 
