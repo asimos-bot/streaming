@@ -101,6 +101,11 @@ class ServiceManager:
                 except BlockingIOError:
                     continue
     
+    def list_users(self, packet, user, conn):
+        users = [u.name for u in self.user_list if u.group_id != user.group_id]
+        logging.info("LIST_USERS: {}|client '{}':{}".format(users, user.name, user.addr))
+        conn.sendto(bytes(users, 'utf-8'), user.addr)
+
     def get_user_information(self, packet, user, conn):
         arg = packet['arg']
         retrieved_client = Utils.retrieve_client_from_list(self.user_list, arg)
@@ -132,6 +137,11 @@ class ServiceManager:
         if Utils.retrieve_client_from_list(self.user_list, user.name):
             print(self.user_list)
             pos = Utils.find_element_index(self.user_list, 'name', user.name)
+
+            # grupo é destruído quando usuário sai da aplicação
+            if user.is_premium() and user.group_id:
+                User.destroy_group(self.group_list, user.group_id)
+
             self.user_list.pop(pos)
             packet = {'SAIR_DA_APP_ACK': user.name}
             conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
