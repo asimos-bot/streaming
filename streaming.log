@@ -80,3 +80,15 @@
 01/25/2022|20:27:43|INFO:debian(127.0.1.1:6000):{'id': 'asimos', 'command': 'LIST_VIDEOS'}
 01/25/2022|20:27:43|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asimos'
 01/25/2022|20:27:43|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|20:30:49|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|20:30:57|INFO:debian(127.0.1.1:6000):{'id': 'somewhere out there', 'command': 'LIST_VIDEOS'}
+01/25/2022|20:30:57|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'somewhere out there'
+01/25/2022|20:30:57|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|20:33:01|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|20:33:05|INFO:debian(127.0.1.1:6000):{'id': 'asimos', 'command': 'LIST_VIDEOS'}
+01/25/2022|20:33:05|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asimos'
+01/25/2022|20:33:05|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/25/2022|20:34:23|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/25/2022|20:34:27|INFO:debian(127.0.1.1:6000):{'id': 'asioms', 'command': 'LIST_VIDEOS'}
+01/25/2022|20:34:27|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asioms'
+01/25/2022|20:34:27|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'

@@ -23,7 +23,6 @@ class StreamingServer():
         self.api_commands = {
             "LIST_VIDEOS": self.list_videos,
             "STREAM_VIDEO": self.stream_video,
-            "USER_INFORMATION": self.user_information,
             "PARAR_STREAMING": self.stop_stream,
             "PLAY_STREAM_TO_GROUP": self.play_stream_to_group
         }
@@ -113,22 +112,27 @@ class StreamingServer():
             Process(target=vd.start).start()
 
     def stop_stream(self, manager, active_streams, packet, user):
+        # check if user has an active stream
         if user.name in active_streams.keys():
             active_streams[user.name].close()
             active_streams.pop(user.name)
 
     def play_stream_to_group(self, manager, active_streams, packet, user):
-        logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
-        logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
-
+        user_info = self.get_user_information(user.name)['USER_INFORMATION']
+        group_id = user_info['group_id']
+        members = 
+        if not group_id is None:
+            for member in members:
+                # 1. close transmission for everybody in the group (except owner)
+                if member.name in active_streams.keys():
+                    active_streams[member.name].close()
+                # 2. add users to owner's transmission
+                active_streams[member.name].active_users.append(member)
+        
     def get_user_information(self, username):
         logging.info("USER_INFORMATION called by '{}'".format(username))
         self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
         return json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
-
-    def user_information(self, manager, active_streams, packet, user):
-        logging.info("GET_USER_INFORMATION called by '{}'".format(user.name))
-        logging.warning("GET_USER_INFORMATION is not implemented yet!")
 
     def server_main_loop(self):
 

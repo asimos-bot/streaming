@@ -181,6 +181,7 @@ class ClientService:
         self.service_manager.send( bytes(json.dumps({'id': userID, 'command': 'VER_GRUPO', 'arg': self.group}), 'utf-8'))
         msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)
+        print(msg)
         return msg
 
     def exitApp(self, userID):
@@ -194,6 +195,7 @@ class ClientService:
         msg = json.loads(msg)
 
         self.group = msg['CRIAR_GRUPO_ACK']
+        print(msg)
         return msg
 
     def addUserToGroup(self, userID, name):
