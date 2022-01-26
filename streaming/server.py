@@ -23,7 +23,6 @@ class StreamingServer():
         self.api_commands = {
             "LIST_VIDEOS": self.list_videos,
             "STREAM_VIDEO": self.stream_video,
-            "USER_INFORMATION": self.user_information,
             "PARAR_STREAMING": self.stop_stream,
             "PLAY_STREAM_TO_GROUP": self.play_stream_to_group
         }
@@ -104,31 +103,47 @@ class StreamingServer():
         video_filename = packet['arg']
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
         user_info = self.get_user_information(user.name)
-        print("name being sent to auth: '{}'".format(user.name))
         if user.name not in active_streams.keys() and "USER_INFORMATION" in user_info.keys():
             filename = video_filename.split(".")[0]
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
-            print("vd: ", vd.__dict__)
+            print("video being streamed: ", vd.__dict__)
             active_streams[user.name] = vd
             Process(target=vd.start).start()
 
     def stop_stream(self, manager, active_streams, packet, user):
+        # check if user has an active stream
         if user.name in active_streams.keys():
             active_streams[user.name].close()
             active_streams.pop(user.name)
 
     def play_stream_to_group(self, manager, active_streams, packet, user):
-        logging.info("PLAY_STREAM_TO_GROUP called by '{}'".format(user.name))
-        logging.warning("PLAY_STREAM_TO_GROUP is not implemented yet!")
-
+        user_info = self.get_user_information(user.name)['USER_INFORMATION']
+        group_id = user_info['group_id']
+        members_id = self.get_group_members(group_id)
+        members = [self.user_id_to_obj(user_id) for user_id in members_id]
+        if not group_id is None:
+            for member in members:
+                # 1. close transmission for everybody in the group (except owner)
+                if member.name in active_streams.keys():
+                    active_streams[member.name].close()
+                # 2. add users to owner's transmission
+                active_streams[member.name].active_users.append(member)
+        
     def get_user_information(self, username):
         logging.info("USER_INFORMATION called by '{}'".format(username))
         self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
         return json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
 
-    def user_information(self, manager, active_streams, packet, user):
-        logging.info("GET_USER_INFORMATION called by '{}'".format(user.name))
-        logging.warning("GET_USER_INFORMATION is not implemented yet!")
+    def get_group_members(self, group_id):
+        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "VER_GRUPO", "arg": group_id}), 'utf-8'))
+        response = json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
+        if "GRUPO_DE_STREAMING" in response.keys():
+            return response['GRUPO_DE_STREAMING']['members']
+        else:
+            return []
+
+    def user_id_to_obj(self, user_id):
+        return self.get_user_information(user_id)['addr']
 
     def server_main_loop(self):
 
