@@ -211,3 +211,6 @@ class ClientService:
         msg = json.loads(msg)
         print(msg)
         return msg
+
+    def listUser():
+        return ['a','b']
