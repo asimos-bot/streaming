@@ -95,27 +95,32 @@ class ClientGUI:
         
         listsUser = self.service.listUsers(self.login)
 
-        selectedUser = StringVar(self.window)
+        self.selectedUser = StringVar()
         if not listsUser['LIST_USERS']:
-            self.selectUsers = OptionMenu(self.window, selectedUser ,"--")
+            self.selectUsers = OptionMenu(self.window, self.selectedUser ,"--")
+            self.selectUsers.pack(side=tkinter.TOP, pady = 20)
+        else:
+            self.selectUsers = OptionMenu(self.window, self.selectedUser, *listsUser['LIST_USERS'])
             self.selectUsers.pack(side=tkinter.TOP, pady = 20)
 
-        print("selected user:", selectedUser.get())
+        print("selected user:", self.selectedUser.get())
         
-        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários",master=self.window,command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
+        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
-        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.addUserToGroup(selectedUser) ,style="TButton")
+        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo", master=self.window, command=lambda: self.addUserToGroup(self.selectedUser) ,style="TButton")
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
-        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
+        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
         self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
 
     def addUserToGroup(self, selectedUser):
         self.service.addUserToGroup(self.login, selectedUser.get())
+        selectedUser.set("--")
         self.getAvaliableUsers(self.service.listUsers(self.login))
 
     def getAvaliableUsers(self,listUsers):
+        print(listUsers)
         menu = self.selectUsers["menu"]
         menu.delete(0, 'end')
 

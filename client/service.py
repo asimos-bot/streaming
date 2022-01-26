@@ -219,4 +219,3 @@ class ClientService:
         listUser = json.loads(listUser)
         print(listUser)
         return listUser
-        

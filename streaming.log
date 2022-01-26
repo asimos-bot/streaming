@@ -106,3 +106,27 @@
 01/25/2022|23:57:00|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
 01/25/2022|23:57:00|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
 01/25/2022|23:57:00|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:18:15|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:30:22|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:30:22|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:30:22|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:31:46|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:31:56|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:31:56|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:31:56|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:38:20|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:38:51|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:38:51|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:38:51|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:42:03|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:42:08|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:42:08|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:42:08|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:45:31|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:45:43|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:45:43|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:45:43|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
+01/26/2022|10:46:50|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):{'id': 'p', 'command': 'LIST_VIDEOS'}
+01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'p'
+01/26/2022|10:46:55|INFO:debian(127.0.1.1:6000):USER_INFORMATION called by 'admin'
