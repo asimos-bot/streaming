@@ -101,6 +101,11 @@ class ServiceManager:
                 except BlockingIOError:
                     continue
     
+    def list_users(self, packet, user, conn):
+        users = [u.name for u in self.user_list if u.group_id != user.group_id]
+        logging.info("LIST_USERS: {}|client '{}':{}".format(users, user.name, user.addr))
+        conn.sendto(bytes(users, 'utf-8'), user.addr)
+
     def get_user_information(self, packet, user, conn):
         arg = packet['arg']
         retrieved_client = Utils.retrieve_client_from_list(self.user_list, arg)
