@@ -11,9 +11,11 @@ class ClientGUI:
     fontColor = '#F5F5F1'
     red = '#E50914'
     quality = 240
+    userType = ''
 
     def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port, login, userType):
         self.login = login
+        self.userType = userType
         if(userType == 'premium'):
             self.setupWidgets()
             self.setupStyle()
@@ -99,7 +101,7 @@ class ClientGUI:
     def start(self):
         self.window.title("Redes 2")
         self.window.geometry("%dx%d" % (self.width, self.height))   
-        if(self.userType == "premium"):
+        if(self.userType == "Premium"):
             self.receiveListVideos()
             self.serviceManager()
         self.window.mainloop()
