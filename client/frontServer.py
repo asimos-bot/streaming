@@ -3,7 +3,7 @@ import tkinter
 import os, shutil
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label, Text
 from tkinter.filedialog import askopenfile
-from tkinter.messagebox import askyesno
+from tkinter.messagebox import askyesno, showerror
 from video_resizer import VideoResizer
 
 
@@ -68,13 +68,14 @@ class ClientGerenciador:
     def uploadFile(self):
         cur_dir = os.getcwd()
         file_path = askopenfile(initialdir=cur_dir, mode='r', filetypes=[('Video Files', '*mp4')])
-        if file_path:
+        if file_path and os.path.getsize(file_path.name) <= 8000000:
             # converter vídeos p/ a pasta raiz
             for resolution in [(1280, 720), (640, 480), (360, 240)]:
                 fn = r'"{}"'.format(file_path.name.split(os.sep)[-1].split(".")[0])
                 print("./streaming/videos/{}.mp4".format(fn.replace("_","") + "_" + str(resolution[1])))
                 VideoResizer.convert(file_path.name, "./streaming/videos/{}.mp4".format(fn.replace("_","") + "_" + str(resolution[1]), resolution[1]), resolution)
-
+        else:
+            showerror(title="Erro!", message="Arquivo maior do que o limite suportado (8 MB)")
         self.getAvaliableVideos() # refresh videos
     # TODO: add progress bar
 
