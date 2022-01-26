@@ -103,7 +103,11 @@ class ServiceManager:
                     continue
     
     def list_users(self, packet, user, conn):
-        users = [u.name for u in self.user_list if u.group_id != user.group_id]
+
+        user = Utils.retrieve_client_from_list(self.user_list, user.name)
+        print(user.name)
+        print([(u.name, u.group_id) for u in self.user_list])
+        users = [u.name for u in self.user_list if u.group_id != user.group_id and u.name != 'admin' ]
         msg = json.dumps({'LIST_USERS': users})
         logging.info("LIST_USERS: {}|client '{}':{}".format(users, user.name, user.addr))
         conn.sendto(bytes(msg, 'utf-8'), user.addr)
@@ -172,6 +176,11 @@ class ServiceManager:
         guest = Utils.retrieve_client_from_list(self.user_list, arg)
         print("group_id: ", user.group_id)
         group = Utils.retrieve_group_from_list(self.group_list, retrieved_client.group_id)
+
+        print(packet)
+        print("\tretrieved client: ", retrieved_client.to_json())
+        print("\tguest: ", guest.to_json())
+        print("\tgroup: ", group.to_json())
 
         if retrieved_client and retrieved_client.group_id and retrieved_client.is_premium() and guest and group:
             index = Utils.find_element_index(self.group_list, 'id', group.id)

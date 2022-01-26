@@ -1,204 +1,564 @@
-01/25/2022|22:18:55|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:18:56|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36684)
-01/25/2022|22:18:56|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:18:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36684)
-01/25/2022|22:18:56|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36684], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36684)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36686)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'boss': ('127.0.0.1', 36686)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "boss", "access": "premium", "addr": ["127.0.0.1", 36686], "group_id": null}}'}|client 'boss': ('127.0.0.1', 36686)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36684)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36684], "group_id": null}}|client 'admin': ('127.0.0.1', 36684)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "LIST_USERS"}'
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'LIST_USERS'}|client 'boss': ('127.0.0.1', 36686)
-01/25/2022|22:19:07|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'boss':('127.0.0.1', 36686)
-01/25/2022|22:21:12|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:21:13|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36688)
-01/25/2022|22:21:13|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:21:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:13|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36688], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36690)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "boss", "access": "premium", "addr": ["127.0.0.1", 36690], "group_id": null}}'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36688], "group_id": null}}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "LIST_USERS"}'
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'LIST_USERS'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:21|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'boss':('127.0.0.1', 36690)
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36692)
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):b'{"id": "notboss", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'notboss', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'notboss': ('127.0.0.1', 36692)
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "notboss", "access": "premium", "addr": ["127.0.0.1", 36692], "group_id": null}}'}|client 'notboss': ('127.0.0.1', 36692)
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:26|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36688], "group_id": null}}|client 'admin': ('127.0.0.1', 36688)
-01/25/2022|22:21:27|INFO:debian(127.0.1.1:5000):b'{"id": "notboss", "command": "LIST_USERS"}'
-01/25/2022|22:21:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'notboss', 'command': 'LIST_USERS'}|client 'notboss': ('127.0.0.1', 36692)
-01/25/2022|22:21:27|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'notboss':('127.0.0.1', 36692)
-01/25/2022|22:21:29|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "CRIAR_GRUPO", "arg": "boss"}'
-01/25/2022|22:21:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'CRIAR_GRUPO', 'arg': 'boss'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:29|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'cz1x1XGu'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:34|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "ADD_USUARIO_GRUPO", "arg": null}'
-01/25/2022|22:21:34|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:34|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:57|INFO:debian(127.0.1.1:5000):b'{"id": "boss", "command": "ADD_USUARIO_GRUPO", "arg": null}'
-01/25/2022|22:21:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'boss', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:21:57|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'boss': ('127.0.0.1', 36690)
-01/25/2022|22:23:44|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:23:45|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36694)
-01/25/2022|22:23:45|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:23:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36694)
-01/25/2022|22:23:45|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36694], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36694)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36696)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):b'{"id": "asdfsdf", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfsdf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'asdfsdf': ('127.0.0.1', 36696)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asdfsdf", "access": "premium", "addr": ["127.0.0.1", 36696], "group_id": null}}'}|client 'asdfsdf': ('127.0.0.1', 36696)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36694)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36694], "group_id": null}}|client 'admin': ('127.0.0.1', 36694)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):b'{"id": "asdfsdf", "command": "LIST_USERS"}'
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfsdf', 'command': 'LIST_USERS'}|client 'asdfsdf': ('127.0.0.1', 36696)
-01/25/2022|22:23:49|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asdfsdf':('127.0.0.1', 36696)
-01/25/2022|22:23:51|INFO:debian(127.0.1.1:5000):b'{"id": "asdfsdf", "command": "ADD_USUARIO_GRUPO", "arg": null}'
-01/25/2022|22:23:51|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfsdf', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'asdfsdf': ('127.0.0.1', 36696)
-01/25/2022|22:23:51|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'asdfsdf': ('127.0.0.1', 36696)
-01/25/2022|22:25:46|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:25:47|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36702)
-01/25/2022|22:25:47|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:25:47|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36702)
-01/25/2022|22:25:47|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36702], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36702)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36704)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):b'{"id": "asfsdf", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asfsdf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'asfsdf': ('127.0.0.1', 36704)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asfsdf", "access": "premium", "addr": ["127.0.0.1", 36704], "group_id": null}}'}|client 'asfsdf': ('127.0.0.1', 36704)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36702)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36702], "group_id": null}}|client 'admin': ('127.0.0.1', 36702)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):b'{"id": "asfsdf", "command": "LIST_USERS"}'
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asfsdf', 'command': 'LIST_USERS'}|client 'asfsdf': ('127.0.0.1', 36704)
-01/25/2022|22:25:52|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asfsdf':('127.0.0.1', 36704)
-01/25/2022|22:25:57|INFO:debian(127.0.1.1:5000):b'{"id": "asfsdf", "command": "ADD_USUARIO_GRUPO", "arg": null}'
-01/25/2022|22:25:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asfsdf', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'asfsdf': ('127.0.0.1', 36704)
-01/25/2022|22:25:57|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'asfsdf': ('127.0.0.1', 36704)
-01/25/2022|22:26:16|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:26:17|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36706)
-01/25/2022|22:26:17|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:26:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:17|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36706], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36708)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdfsadf", "access": "premium", "addr": ["127.0.0.1", 36708], "group_id": null}}'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36706], "group_id": null}}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:26|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:26:35|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "CRIAR_GRUPO", "arg": "sdfsadf"}'
-01/25/2022|22:26:35|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'CRIAR_GRUPO', 'arg': 'sdfsadf'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:35|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'QAXenZKI'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:37|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "ADD_USUARIO_GRUPO", "arg": null}'
-01/25/2022|22:26:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:37|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:53|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:26:53|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:26:53|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36710)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):b'{"id": "sadfdsf", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sadfdsf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sadfdsf", "access": "premium", "addr": ["127.0.0.1", 36710], "group_id": null}}'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36706], "group_id": null}}|client 'admin': ('127.0.0.1', 36706)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):b'{"id": "sadfdsf", "command": "LIST_USERS"}'
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sadfdsf', 'command': 'LIST_USERS'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:26:59|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sadfdsf':('127.0.0.1', 36710)
-01/25/2022|22:27:01|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:01|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:02|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:02|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:02|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:04|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:14|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:14|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:14|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:15|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:15|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:27|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:27:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:27|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:27:39|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "VER_GRUPO", "arg": "QAXenZKI"}'
-01/25/2022|22:27:39|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'VER_GRUPO', 'arg': 'QAXenZKI'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:39|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "QAXenZKI", "owner": "sdfsadf", "members": []}}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:43|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "CRIAR_GRUPO", "arg": "sdfsadf"}'
-01/25/2022|22:27:43|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'CRIAR_GRUPO', 'arg': 'sdfsadf'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:43|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'uBb32NlC'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:27:45|INFO:debian(127.0.1.1:5000):b'{"id": "sadfdsf", "command": "CRIAR_GRUPO", "arg": "sadfdsf"}'
-01/25/2022|22:27:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sadfdsf', 'command': 'CRIAR_GRUPO', 'arg': 'sadfdsf'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:27:45|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'kS10j1z2'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:28:11|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsadf", "command": "LIST_USERS"}'
-01/25/2022|22:28:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsadf', 'command': 'LIST_USERS'}|client 'sdfsadf': ('127.0.0.1', 36708)
-01/25/2022|22:28:11|INFO:debian(127.0.1.1:5000):LIST_USERS: ['sdfsadf', 'sadfdsf']|client 'sdfsadf':('127.0.0.1', 36708)
-01/25/2022|22:28:18|INFO:debian(127.0.1.1:5000):b'{"id": "sadfdsf", "command": "VER_GRUPO", "arg": "kS10j1z2"}'
-01/25/2022|22:28:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sadfdsf', 'command': 'VER_GRUPO', 'arg': 'kS10j1z2'}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:28:18|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "kS10j1z2", "owner": "sadfdsf", "members": []}}|client 'sadfdsf': ('127.0.0.1', 36710)
-01/25/2022|22:28:49|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
-01/25/2022|22:28:50|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36712)
-01/25/2022|22:28:50|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:28:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:28:50|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36712], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36714)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "user1_guest", "access": "premium", "addr": ["127.0.0.1", 36714], "group_id": null}}'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36712], "group_id": null}}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "LIST_USERS"}'
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'LIST_USERS'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:03|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'user1_guest':('127.0.0.1', 36714)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36716)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):b'{"id": "user2_boss", "command": "ENTRAR_NA_APP", "arg": "premium"}'
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2_boss', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "user2_boss", "access": "premium", "addr": ["127.0.0.1", 36716], "group_id": null}}'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36712], "group_id": null}}|client 'admin': ('127.0.0.1', 36712)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):b'{"id": "user2_boss", "command": "LIST_USERS"}'
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2_boss', 'command': 'LIST_USERS'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:12|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'user2_boss':('127.0.0.1', 36716)
-01/25/2022|22:29:14|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "LIST_USERS"}'
-01/25/2022|22:29:14|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'LIST_USERS'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:14|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'user1_guest':('127.0.0.1', 36714)
-01/25/2022|22:29:15|INFO:debian(127.0.1.1:5000):b'{"id": "user2_boss", "command": "LIST_USERS"}'
-01/25/2022|22:29:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2_boss', 'command': 'LIST_USERS'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:15|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'user2_boss':('127.0.0.1', 36716)
-01/25/2022|22:29:20|INFO:debian(127.0.1.1:5000):b'{"id": "user2_boss", "command": "CRIAR_GRUPO", "arg": "user2_boss"}'
-01/25/2022|22:29:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2_boss', 'command': 'CRIAR_GRUPO', 'arg': 'user2_boss'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:20|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'ak1S08MY'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:21|INFO:debian(127.0.1.1:5000):b'{"id": "user2_boss", "command": "LIST_USERS"}'
-01/25/2022|22:29:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2_boss', 'command': 'LIST_USERS'}|client 'user2_boss': ('127.0.0.1', 36716)
-01/25/2022|22:29:21|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user2_boss']|client 'user2_boss':('127.0.0.1', 36716)
-01/25/2022|22:29:22|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "CRIAR_GRUPO", "arg": "user1_guest"}'
-01/25/2022|22:29:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'CRIAR_GRUPO', 'arg': 'user1_guest'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:22|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'USqpbFqJ'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:23|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "LIST_USERS"}'
-01/25/2022|22:29:23|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'LIST_USERS'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:23|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user1_guest', 'user2_boss']|client 'user1_guest':('127.0.0.1', 36714)
-01/25/2022|22:29:24|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "LIST_USERS"}'
-01/25/2022|22:29:24|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'LIST_USERS'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:24|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user1_guest', 'user2_boss']|client 'user1_guest':('127.0.0.1', 36714)
-01/25/2022|22:29:40|INFO:debian(127.0.1.1:5000):b'{"id": "user1_guest", "command": "LIST_USERS"}'
-01/25/2022|22:29:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user1_guest', 'command': 'LIST_USERS'}|client 'user1_guest': ('127.0.0.1', 36714)
-01/25/2022|22:29:40|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user1_guest', 'user2_boss']|client 'user1_guest':('127.0.0.1', 36714)
+01/25/2022|22:55:41|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|22:55:42|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36976)
+01/25/2022|22:55:42|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:55:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:42|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36976], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36978)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asimos", "access": "premium", "addr": ["127.0.0.1", 36978], "group_id": null}}'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36976], "group_id": null}}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "LIST_USERS"}'
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'LIST_USERS'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:55:50|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asimos':('127.0.0.1', 36978)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36980)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):b'{"id": "simoes", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'simoes', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'simoes': ('127.0.0.1', 36980)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "simoes", "access": "premium", "addr": ["127.0.0.1", 36980], "group_id": null}}'}|client 'simoes': ('127.0.0.1', 36980)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36976], "group_id": null}}|client 'admin': ('127.0.0.1', 36976)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):b'{"id": "simoes", "command": "LIST_USERS"}'
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'simoes', 'command': 'LIST_USERS'}|client 'simoes': ('127.0.0.1', 36980)
+01/25/2022|22:55:59|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'simoes':('127.0.0.1', 36980)
+01/25/2022|22:56:06|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "CRIAR_GRUPO", "arg": "asimos"}'
+01/25/2022|22:56:06|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'CRIAR_GRUPO', 'arg': 'asimos'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:56:06|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'YotGUmh2'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:56:07|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "LIST_USERS"}'
+01/25/2022|22:56:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'LIST_USERS'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:56:07|INFO:debian(127.0.1.1:5000):LIST_USERS: ['asimos']|client 'asimos':('127.0.0.1', 36978)
+01/25/2022|22:56:11|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "LIST_USERS"}'
+01/25/2022|22:56:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'LIST_USERS'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:56:11|INFO:debian(127.0.1.1:5000):LIST_USERS: ['asimos']|client 'asimos':('127.0.0.1', 36978)
+01/25/2022|22:56:41|INFO:debian(127.0.1.1:5000):b'{"id": "asimos", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|22:56:41|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asimos', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:56:41|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'asimos': ('127.0.0.1', 36978)
+01/25/2022|22:57:24|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|22:57:25|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36982)
+01/25/2022|22:57:25|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:57:25|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36982)
+01/25/2022|22:57:25|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36982], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36982)
+01/25/2022|22:57:33|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36984)
+01/25/2022|22:57:33|INFO:debian(127.0.1.1:5000):b'{"id": "adfadsf", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|22:57:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'adfadsf', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'adfadsf': ('127.0.0.1', 36984)
+01/25/2022|22:57:33|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "adfadsf", "access": "guest", "addr": ["127.0.0.1", 36984], "group_id": null}}'}|client 'adfadsf': ('127.0.0.1', 36984)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36986)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):b'{"id": "user2", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "user2", "access": "premium", "addr": ["127.0.0.1", 36986], "group_id": null}}'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36982)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36982], "group_id": null}}|client 'admin': ('127.0.0.1', 36982)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):b'{"id": "user2", "command": "LIST_USERS"}'
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2', 'command': 'LIST_USERS'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:57:57|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'user2':('127.0.0.1', 36986)
+01/25/2022|22:58:07|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36988)
+01/25/2022|22:58:07|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsdfs", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|22:58:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsdfs', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'sdfsdfs': ('127.0.0.1', 36988)
+01/25/2022|22:58:07|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdfsdfs", "access": "guest", "addr": ["127.0.0.1", 36988], "group_id": null}}'}|client 'sdfsdfs': ('127.0.0.1', 36988)
+01/25/2022|22:58:09|INFO:debian(127.0.1.1:5000):b'{"id": "user2", "command": "CRIAR_GRUPO", "arg": "user2"}'
+01/25/2022|22:58:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2', 'command': 'CRIAR_GRUPO', 'arg': 'user2'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:58:09|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'PMxGq9D4'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:58:10|INFO:debian(127.0.1.1:5000):b'{"id": "user2", "command": "LIST_USERS"}'
+01/25/2022|22:58:10|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2', 'command': 'LIST_USERS'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:58:10|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user2']|client 'user2':('127.0.0.1', 36986)
+01/25/2022|22:58:18|INFO:debian(127.0.1.1:5000):b'{"id": "user2", "command": "LIST_USERS"}'
+01/25/2022|22:58:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'user2', 'command': 'LIST_USERS'}|client 'user2': ('127.0.0.1', 36986)
+01/25/2022|22:58:18|INFO:debian(127.0.1.1:5000):LIST_USERS: ['user2']|client 'user2':('127.0.0.1', 36986)
+01/25/2022|22:58:28|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|22:58:29|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36990)
+01/25/2022|22:58:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:58:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 36990)
+01/25/2022|22:58:29|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36990], "group_id": null}}'}|client 'admin': ('127.0.0.1', 36990)
+01/25/2022|22:58:52|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36994)
+01/25/2022|22:58:52|INFO:debian(127.0.1.1:5000):b'{"id": "guest", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|22:58:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'guest', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'guest': ('127.0.0.1', 36994)
+01/25/2022|22:58:52|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "guest", "access": "guest", "addr": ["127.0.0.1", 36994], "group_id": null}}'}|client 'guest': ('127.0.0.1', 36994)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 36996)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):b'{"id": "premium", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'premium', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "premium", "access": "premium", "addr": ["127.0.0.1", 36996], "group_id": null}}'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 36990)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 36990], "group_id": null}}|client 'admin': ('127.0.0.1', 36990)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):b'{"id": "premium", "command": "LIST_USERS"}'
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):packet received: {'id': 'premium', 'command': 'LIST_USERS'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:58:57|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'premium':('127.0.0.1', 36996)
+01/25/2022|22:59:01|INFO:debian(127.0.1.1:5000):b'{"id": "premium", "command": "CRIAR_GRUPO", "arg": "premium"}'
+01/25/2022|22:59:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'premium', 'command': 'CRIAR_GRUPO', 'arg': 'premium'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:59:01|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'LZyB01e6'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:59:02|INFO:debian(127.0.1.1:5000):b'{"id": "premium", "command": "LIST_USERS"}'
+01/25/2022|22:59:02|INFO:debian(127.0.1.1:5000):packet received: {'id': 'premium', 'command': 'LIST_USERS'}|client 'premium': ('127.0.0.1', 36996)
+01/25/2022|22:59:02|INFO:debian(127.0.1.1:5000):LIST_USERS: ['premium']|client 'premium':('127.0.0.1', 36996)
+01/25/2022|23:01:21|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:01:22|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37000)
+01/25/2022|23:01:22|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:01:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37000)
+01/25/2022|23:01:22|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37000], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37000)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37002)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37002], "group_id": null}}'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37000)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37000], "group_id": null}}|client 'admin': ('127.0.0.1', 37000)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:27|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37002)
+01/25/2022|23:01:33|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37004)
+01/25/2022|23:01:33|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:01:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37004)
+01/25/2022|23:01:33|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37004], "group_id": null}}'}|client 'g': ('127.0.0.1', 37004)
+01/25/2022|23:01:37|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:01:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:37|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'lpWUWpRp'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:44|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:01:44|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37002)
+01/25/2022|23:01:44|INFO:debian(127.0.1.1:5000):LIST_USERS: ['p']|client 'p':('127.0.0.1', 37002)
+01/25/2022|23:03:08|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:03:09|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37006)
+01/25/2022|23:03:09|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:03:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37006)
+01/25/2022|23:03:09|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37006], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37006)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37008)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37008], "group_id": null}}'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37006)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37006], "group_id": null}}|client 'admin': ('127.0.0.1', 37006)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:15|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37008)
+01/25/2022|23:03:18|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37010)
+01/25/2022|23:03:18|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:03:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37010)
+01/25/2022|23:03:18|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37010], "group_id": null}}'}|client 'g': ('127.0.0.1', 37010)
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': '4DGFhtVe'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37008)
+01/25/2022|23:03:20|INFO:debian(127.0.1.1:5000):LIST_USERS: ['p']|client 'p':('127.0.0.1', 37008)
+01/25/2022|23:04:05|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:04:06|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37016)
+01/25/2022|23:04:06|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:04:06|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37016)
+01/25/2022|23:04:06|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37016], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37016)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37018)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37018], "group_id": null}}'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37016)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37016], "group_id": null}}|client 'admin': ('127.0.0.1', 37016)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:12|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37018)
+01/25/2022|23:04:16|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37020)
+01/25/2022|23:04:16|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:04:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37020)
+01/25/2022|23:04:16|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37020], "group_id": null}}'}|client 'g': ('127.0.0.1', 37020)
+01/25/2022|23:04:18|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:04:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:18|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'KZzuxyct'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:22|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:04:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37018)
+01/25/2022|23:04:22|INFO:debian(127.0.1.1:5000):LIST_USERS: ['p']|client 'p':('127.0.0.1', 37018)
+01/25/2022|23:07:28|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:07:29|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37022)
+01/25/2022|23:07:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:07:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37022)
+01/25/2022|23:07:29|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37022], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37022)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37024)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37024], "group_id": null}}'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37022)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37022], "group_id": null}}|client 'admin': ('127.0.0.1', 37022)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:35|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'p']|client 'p':('127.0.0.1', 37024)
+01/25/2022|23:07:37|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37026)
+01/25/2022|23:07:37|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:07:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37026)
+01/25/2022|23:07:37|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37026], "group_id": null}}'}|client 'g': ('127.0.0.1', 37026)
+01/25/2022|23:07:40|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:07:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:40|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'YUM27D9t'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37024)
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:07:45|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37024)
+01/25/2022|23:08:05|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:08:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37024)
+01/25/2022|23:08:05|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37024)
+01/25/2022|23:08:09|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:08:10|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37028)
+01/25/2022|23:08:10|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:08:10|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37028)
+01/25/2022|23:08:10|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37028], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37028)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37030)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37030], "group_id": null}}'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37028)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37028], "group_id": null}}|client 'admin': ('127.0.0.1', 37028)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:17|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'p']|client 'p':('127.0.0.1', 37030)
+01/25/2022|23:08:20|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37032)
+01/25/2022|23:08:20|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:08:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37032)
+01/25/2022|23:08:20|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37032], "group_id": null}}'}|client 'g': ('127.0.0.1', 37032)
+01/25/2022|23:08:28|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:08:28|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:28|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'UUlmM2LU'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:29|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:08:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37030)
+01/25/2022|23:08:29|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37030)
+01/25/2022|23:09:34|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:09:35|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37034)
+01/25/2022|23:09:35|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:09:35|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37034)
+01/25/2022|23:09:35|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37034], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37034)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37036)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37036], "group_id": null}}'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37034)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37034], "group_id": null}}|client 'admin': ('127.0.0.1', 37034)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:09:42|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37036)
+01/25/2022|23:09:46|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37038)
+01/25/2022|23:09:46|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:09:46|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37038)
+01/25/2022|23:09:46|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37038], "group_id": null}}'}|client 'g': ('127.0.0.1', 37038)
+01/25/2022|23:09:55|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:09:55|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:09:55|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'SePSrRwX'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:10:05|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:10:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:10:05|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'VAJKDq6m'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:10:08|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:10:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37036)
+01/25/2022|23:10:08|INFO:debian(127.0.1.1:5000):LIST_USERS: ['p']|client 'p':('127.0.0.1', 37036)
+01/25/2022|23:12:23|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:12:24|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37042)
+01/25/2022|23:12:24|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:12:24|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37042)
+01/25/2022|23:12:24|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37042], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37042)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37044)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37044], "group_id": null}}'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37042)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37042], "group_id": null}}|client 'admin': ('127.0.0.1', 37042)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:31|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37044)
+01/25/2022|23:12:36|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37046)
+01/25/2022|23:12:36|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:12:36|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37046)
+01/25/2022|23:12:36|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37046], "group_id": null}}'}|client 'g': ('127.0.0.1', 37046)
+01/25/2022|23:12:46|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:12:46|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:46|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'Pa4bWAss'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:51|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:12:51|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:12:51|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37044)
+01/25/2022|23:13:15|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "VER_GRUPO", "arg": "Pa4bWAss"}'
+01/25/2022|23:13:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'VER_GRUPO', 'arg': 'Pa4bWAss'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:13:15|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "Pa4bWAss", "owner": "p", "members": []}}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:10|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:14:10|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:10|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37044)
+01/25/2022|23:14:13|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:14:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:13|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:20|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:14:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:20|INFO:debian(127.0.1.1:5000):LIST_USERS: ['admin', 'g']|client 'p':('127.0.0.1', 37044)
+01/25/2022|23:14:26|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:14:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:26|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:59|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:14:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:14:59|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'p': ('127.0.0.1', 37044)
+01/25/2022|23:16:33|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:16:34|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37052)
+01/25/2022|23:16:34|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:16:34|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37052)
+01/25/2022|23:16:34|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37052], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37052)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37054)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37054], "group_id": null}}'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37052)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37052], "group_id": null}}|client 'admin': ('127.0.0.1', 37052)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:40|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37054)
+01/25/2022|23:16:44|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37056)
+01/25/2022|23:16:44|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:16:44|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37056)
+01/25/2022|23:16:44|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37056], "group_id": null}}'}|client 'g': ('127.0.0.1', 37056)
+01/25/2022|23:16:50|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:16:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:50|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'NVuKkgJP'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:52|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:16:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:16:52|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37054)
+01/25/2022|23:17:08|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:17:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:17:08|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'msg': 'ERROR: ACCESS DENIED!'}|client 'p': ('127.0.0.1', 37054)
+01/25/2022|23:17:52|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:17:53|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37058)
+01/25/2022|23:17:53|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:17:53|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37058)
+01/25/2022|23:17:53|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37058], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37058)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37060)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37060], "group_id": null}}'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37058)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37058], "group_id": null}}|client 'admin': ('127.0.0.1', 37058)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:17:59|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37060)
+01/25/2022|23:18:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37062)
+01/25/2022|23:18:03|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:18:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37062)
+01/25/2022|23:18:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37062], "group_id": null}}'}|client 'g': ('127.0.0.1', 37062)
+01/25/2022|23:18:05|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:18:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:18:05|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'VIaCvMGO'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:18:07|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:18:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:18:07|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37060)
+01/25/2022|23:18:15|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:18:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37060)
+01/25/2022|23:21:29|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:21:30|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37066)
+01/25/2022|23:21:30|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:21:30|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37066)
+01/25/2022|23:21:30|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37066], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37066)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37068)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37068], "group_id": null}}'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37066)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37066], "group_id": null}}|client 'admin': ('127.0.0.1', 37066)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:37|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37068)
+01/25/2022|23:21:39|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37070)
+01/25/2022|23:21:39|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:21:39|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37070)
+01/25/2022|23:21:39|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37070], "group_id": null}}'}|client 'g': ('127.0.0.1', 37070)
+01/25/2022|23:21:42|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:21:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:42|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37068)
+01/25/2022|23:21:44|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:21:44|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:44|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'Z9oDthi9'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:45|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:21:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:21:45|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37068)
+01/25/2022|23:21:46|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:21:46|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37068)
+01/25/2022|23:25:08|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:25:09|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37074)
+01/25/2022|23:25:09|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:25:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37074)
+01/25/2022|23:25:09|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37074], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37074)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37076)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37076], "group_id": null}}'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37074)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37074], "group_id": null}}|client 'admin': ('127.0.0.1', 37074)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:25:16|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37076)
+01/25/2022|23:25:21|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37078)
+01/25/2022|23:25:21|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:25:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37078)
+01/25/2022|23:25:21|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37078], "group_id": null}}'}|client 'g': ('127.0.0.1', 37078)
+01/25/2022|23:26:06|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37080)
+01/25/2022|23:26:06|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:26:06|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37080)
+01/25/2022|23:26:06|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'ENTRAR_NA_APP_ACK': 'g'}|client 'g': ('127.0.0.1', 37080)
+01/25/2022|23:26:08|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:26:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:26:08|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'MEcagIyQ'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:26:09|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:26:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:26:09|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37076)
+01/25/2022|23:26:32|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": null}'
+01/25/2022|23:26:32|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': None}|client 'p': ('127.0.0.1', 37076)
+01/25/2022|23:28:37|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:28:38|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37090)
+01/25/2022|23:28:38|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:28:38|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37090)
+01/25/2022|23:28:38|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37090], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37090)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37092)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37092)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37092], "group_id": null}}'}|client 'p': ('127.0.0.1', 37092)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37090)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37090], "group_id": null}}|client 'admin': ('127.0.0.1', 37090)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37092)
+01/25/2022|23:28:56|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37092)
+01/25/2022|23:28:59|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37094)
+01/25/2022|23:28:59|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:28:59|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37094)
+01/25/2022|23:28:59|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37094], "group_id": null}}'}|client 'g': ('127.0.0.1', 37094)
+01/25/2022|23:30:10|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:30:11|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37096)
+01/25/2022|23:30:11|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:30:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37096)
+01/25/2022|23:30:11|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37096], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37096)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37098)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37098], "group_id": null}}'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37096)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37096], "group_id": null}}|client 'admin': ('127.0.0.1', 37096)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:17|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37098)
+01/25/2022|23:30:19|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37100)
+01/25/2022|23:30:19|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:30:19|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37100)
+01/25/2022|23:30:19|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37100], "group_id": null}}'}|client 'g': ('127.0.0.1', 37100)
+01/25/2022|23:30:22|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:30:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:22|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'RecZ9dIL'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:25|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:30:25|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37098)
+01/25/2022|23:30:25|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37098)
+01/25/2022|23:31:02|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:31:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37102)
+01/25/2022|23:31:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:31:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37102)
+01/25/2022|23:31:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37102], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37102)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37104)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37104], "group_id": null}}'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37102)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37102], "group_id": null}}|client 'admin': ('127.0.0.1', 37102)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:09|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37104)
+01/25/2022|23:31:11|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37106)
+01/25/2022|23:31:11|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:31:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37106)
+01/25/2022|23:31:11|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37106], "group_id": null}}'}|client 'g': ('127.0.0.1', 37106)
+01/25/2022|23:31:13|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:31:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:13|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'lpCM9c0z'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:14|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:31:14|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:31:14|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37104)
+01/25/2022|23:31:16|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": ""}'
+01/25/2022|23:31:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': ''}|client 'p': ('127.0.0.1', 37104)
+01/25/2022|23:32:06|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:32:07|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37108)
+01/25/2022|23:32:07|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:32:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37108)
+01/25/2022|23:32:07|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37108], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37108)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37110)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37110], "group_id": null}}'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37108)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37108], "group_id": null}}|client 'admin': ('127.0.0.1', 37108)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:13|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37110)
+01/25/2022|23:32:16|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37112)
+01/25/2022|23:32:16|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:32:16|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37112)
+01/25/2022|23:32:16|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37112], "group_id": null}}'}|client 'g': ('127.0.0.1', 37112)
+01/25/2022|23:32:19|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:32:19|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:19|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'yBpAlbfx'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:20|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:32:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:32:20|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37110)
+01/25/2022|23:32:22|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": ""}'
+01/25/2022|23:32:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': ''}|client 'p': ('127.0.0.1', 37110)
+01/25/2022|23:34:13|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:34:14|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37654)
+01/25/2022|23:34:14|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:34:14|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37654)
+01/25/2022|23:34:14|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37654], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37654)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37656)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37656], "group_id": null}}'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37654)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37654], "group_id": null}}|client 'admin': ('127.0.0.1', 37654)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:19|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37656)
+01/25/2022|23:34:22|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37658)
+01/25/2022|23:34:22|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:34:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37658)
+01/25/2022|23:34:22|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37658], "group_id": null}}'}|client 'g': ('127.0.0.1', 37658)
+01/25/2022|23:34:25|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:34:25|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:25|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'gBY3HOSK'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:26|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:34:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:34:26|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37656)
+01/25/2022|23:34:27|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": ""}'
+01/25/2022|23:34:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': ''}|client 'p': ('127.0.0.1', 37656)
+01/25/2022|23:36:50|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/25/2022|23:36:51|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37724)
+01/25/2022|23:36:51|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:36:51|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'admin': ('127.0.0.1', 37724)
+01/25/2022|23:36:51|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37724], "group_id": null}}'}|client 'admin': ('127.0.0.1', 37724)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37726)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ENTRAR_NA_APP", "arg": "premium"}'
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ENTRAR_NA_APP', 'arg': 'premium'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "p", "access": "premium", "addr": ["127.0.0.1", 37726], "group_id": null}}'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 37724)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 37724], "group_id": null}}|client 'admin': ('127.0.0.1', 37724)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:36:58|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'p':('127.0.0.1', 37726)
+01/25/2022|23:37:01|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 37728)
+01/25/2022|23:37:01|INFO:debian(127.0.1.1:5000):b'{"id": "g", "command": "ENTRAR_NA_APP", "arg": "guest"}'
+01/25/2022|23:37:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'g', 'command': 'ENTRAR_NA_APP', 'arg': 'guest'}|client 'g': ('127.0.0.1', 37728)
+01/25/2022|23:37:01|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "g", "access": "guest", "addr": ["127.0.0.1", 37728], "group_id": null}}'}|client 'g': ('127.0.0.1', 37728)
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "CRIAR_GRUPO", "arg": "p"}'
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'CRIAR_GRUPO', 'arg': 'p'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'akvJHOFE'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "LIST_USERS"}'
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'LIST_USERS'}|client 'p': ('127.0.0.1', 37726)
+01/25/2022|23:37:04|INFO:debian(127.0.1.1:5000):LIST_USERS: ['g']|client 'p':('127.0.0.1', 37726)
+01/25/2022|23:37:06|INFO:debian(127.0.1.1:5000):b'{"id": "p", "command": "ADD_USUARIO_GRUPO", "arg": ""}'
+01/25/2022|23:37:06|INFO:debian(127.0.1.1:5000):packet received: {'id': 'p', 'command': 'ADD_USUARIO_GRUPO', 'arg': ''}|client 'p': ('127.0.0.1', 37726)
