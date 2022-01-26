@@ -119,7 +119,7 @@ class ClientGUI:
         menu = self.selectUsers["menu"]
         menu.delete(0, 'end')
 
-        for eachUser in sorted(listUsers):
+        for eachUser in sorted(listUsers['LIST_USERS']):
             menu.add_command(label=eachUser)
 
     # Função que cria o loop da janela
