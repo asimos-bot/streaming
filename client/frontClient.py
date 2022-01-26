@@ -1,4 +1,5 @@
 from cgitb import text
+from distutils import command
 import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
@@ -13,9 +14,10 @@ class ClientGUI:
 
     def __init__(self, client_ip, client_port, server_ip, server_port, service_manager_ip,service_manager_port, login, userType):
         self.login = login
-        self.setupWidgets()
+        if(userType == 'premium'):
+            self.setupWidgets()
+            self.setupStyle()
         self.service = service.ClientService(client_ip, client_port, server_ip, server_port, self.label, service_manager_ip,service_manager_port)
-        self.setupStyle()
         self.service.entrarNaApp(login, userType)
         self.start()
 
@@ -79,18 +81,27 @@ class ClientGUI:
 
         self.seeGroupButton = ttk.Button(text="Criar Grupo",master=self.window,command=lambda: self.service.createGroup(self.login)  ,style="TButton")
         self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
+        
+        listsUser = self.service.listUsers()
+        listsUser = list(listsUser.values())
+        listsUser = list(listsUser[0])
+        selectedUser = StringVar(self.window)
+        selectedUser.set(listsUser[0])
+        self.selectUsers = OptionMenu(self.window,selectedUser,*listsUser)
+        self.selectUsers.pack(side=tkinter.TOP, pady = 20)
+        
+        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.service.addUserToGroup(self.login,selectedUser)  ,style="TButton")
+        self.addUserButton.pack(side=tkinter.TOP, pady = 10)
 
-        self.seeGroupButton = ttk.Button(text="Adicionar  usuário do Grupo",master=self.window,command=lambda: self.service.addUserToGroup(self.login)  ,style="TButton")
-        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
-
-        self.seeGroupButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
-        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
+        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo",master=self.window,command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
+        self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
     # Função que cria o loop da janela
     def start(self):
         self.window.title("Redes 2")
-        self.window.geometry("%dx%d" % (self.width, self.height))    
-        self.receiveListVideos()
-        self.serviceManager()
+        self.window.geometry("%dx%d" % (self.width, self.height))   
+        if(self.userType == "premium"):
+            self.receiveListVideos()
+            self.serviceManager()
         self.window.mainloop()
 
 if __name__ == "__main__":
