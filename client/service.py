@@ -24,7 +24,7 @@ class ClientService:
         self.client_udp.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ClientService.__BUFFSIZE)
         self.client_udp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.client_udp.bind(self.client_addr)
-        self.client_udp.settimeout(0)
+        self.client_udp.settimeout(2)
 
         self.service_manager = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
         self.service_manager.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -97,7 +97,8 @@ class ClientService:
                 if recv_at_least_once:
                     print("PAREI DE OUVIR")
                     self.threads_are_running = False
-                break
+                    break
+                continue
 
     def video_stream(self):
 
