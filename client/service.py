@@ -9,6 +9,8 @@ import struct, zlib
 import pickle
 import time
 from PIL import Image, ImageTk
+import io
+import base64
 
 class ClientService:
 
@@ -42,6 +44,10 @@ class ClientService:
         self.threads_are_running = False
 
         self.group = None
+
+        blank_img = base64.b64decode(b"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==")
+        blank_img = Image.open(io.BytesIO(blank_img)).resize((1,1))
+        self.blank = ImageTk.PhotoImage(image = blank_img)
 
     def start_receiving_transmission(self):
 
@@ -118,6 +124,7 @@ class ClientService:
 
             self.widget.configure(image=self.imgtk)
             self.widget.image = self.imgtk
+        self.widget.configure(image=self.blank)
 
     def audio_stream(self):
 

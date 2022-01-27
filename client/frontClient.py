@@ -4,6 +4,9 @@ import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
 from tkinter.messagebox import askyesno, showinfo, showwarning
+import base64
+from PIL import Image, ImageTk
+import io
 
 class ClientGUI:
     
@@ -38,10 +41,16 @@ class ClientGUI:
         self.service.exitApp(self.login)
         self.window.destroy()
 
+    def stopVideo(self):
+        self.service.stopVideo()
+
+    def showVideo(self, videoTitle, quality):
+        self.service.showVideo(videoTitle, quality)
+
     def setupWidgets(self):
         self.style = ttk.Style()
     
-        self.excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: self.service.stopVideo()  )
+        self.excludeButton = ttk.Button(text="Parar",master=self.window,command=lambda: self.stopVideo()  )
         self.excludeButton.pack(side=tkinter.TOP, pady = 10)
 
         self.optionsVideos = OptionMenu(self.window, StringVar(), "--")
@@ -76,7 +85,7 @@ class ClientGUI:
         self.qualityMenu.destroy()
         self.qualityMenu = OptionMenu(self.window,videoQuality,*qualities,command=lambda videoQuality=videoQuality: self.change_quality(videoQuality))
         self.qualityMenu.pack(side=tkinter.TOP,pady=10)
-        self.optionsVideos = OptionMenu(self.window,defaultQuality,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle,self.quality))
+        self.optionsVideos = OptionMenu(self.window,defaultQuality,*listOfVideos,command=lambda videoTitle=listOfVideos : self.showVideo(videoTitle, self.quality))
         self.optionsVideos.pack(side=tkinter.TOP, pady = 10)
 
     def serviceManager(self):
