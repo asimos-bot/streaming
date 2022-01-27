@@ -50,6 +50,7 @@ class ServiceManager:
         srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         srv.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ServiceManager.__BUFF_SIZE)
         srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         srv.setblocking(False)
         srv.bind(('', port))
         return srv
@@ -113,9 +114,9 @@ class ServiceManager:
     def get_user_information(self, packet, user, conn):
         arg = packet['arg']
         retrieved_client = Utils.retrieve_client_from_list(self.user_list, arg)
-        
         if retrieved_client:
             user_information = retrieved_client.to_json()
+            print("GET_USER_INFORMATION for {}: ".format(arg), user_information)
             conn.sendto(bytes(user_information, 'utf-8'), user.addr)
             logging.info("GET_USER_INFORMATION: {}|client '{}': {}".format(user_information, user.name, user.addr))
         else:

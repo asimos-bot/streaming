@@ -168,6 +168,8 @@ class ClientGUI:
         if(self.userType == 'premium'):
             self.receiveListVideos()
             self.serviceManager()
+        else:
+            self.service.start_receiving_transmission()
         self.window.mainloop()
 
 if __name__ == "__main__":

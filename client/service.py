@@ -199,7 +199,6 @@ class ClientService:
         return msg
 
     def addUserToGroup(self, userID, name):
-        print(name)
         self.service_manager.send( bytes(json.dumps({'id': userID, 'command': 'ADD_USUARIO_GRUPO','arg':name}), 'utf-8'))
         msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         print("name: ", name)
@@ -222,4 +221,5 @@ class ClientService:
         return listUser
 
     def playToGroup(self):
-        self.client_udp.sendto( bytes(json.dumps({'id': self.username, 'command': 'PLAY_TO_GROUP'}), 'utf-8' ), self.streaming_addr)
+        print("username playToGroup:", self.username)
+        self.client_udp.sendto( bytes(json.dumps({'id': self.username, 'command': 'PLAY_STREAM_TO_GROUP'}), 'utf-8' ), self.streaming_addr)
