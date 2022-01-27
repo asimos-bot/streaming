@@ -58,5 +58,9 @@ class Login:
         self.window.destroy()
 
 if __name__ == "__main__":
-    Login('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
+    import sys
+    port = 1100
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+    Login('127.0.0.1', port, '127.0.0.1', 6000, '127.0.0.1', 5000)
     
