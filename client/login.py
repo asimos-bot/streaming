@@ -10,14 +10,21 @@ class Login:
     fontColor = '#F5F5F1'
     red = '#E50914'
 
-    def __init__(self,client_ip, client_port, server_ip, server_port, service_manager_ip, service_manager_port):
+    def __init__(self,client_ip, client_port, streaming_ip, streaming_port, service_manager_ip, service_manager_port):
+        self.client_ip = client_ip
+        self.client_port = client_port
+        self.streaming_ip = streaming_ip
+        self.streaming_port = streaming_port
+        self.service_manager_ip = service_manager_ip
+        self.service_manager_port = service_manager_port
+
         self.setupWidgets()
         self.setupStyle()
         self.start()
 
     def login(self,login,typeUser):
         self.window.destroy()
-        frontClient.ClientGUI('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000, login, typeUser)
+        frontClient.ClientGUI(self.client_ip, self.client_port, self.streaming_ip, self.streaming_port, self.service_manager_ip, self.service_manager_port, login, typeUser)
     
     def setupWidgets(self):
         self.window = Tk()
@@ -62,5 +69,5 @@ class Login:
         self.window.destroy()
 
 if __name__ == "__main__":
-    Login('127.0.0.1', 1100, '127.0.0.1', 6000, '127.0.0.1', 5000)
+    Login('127.0.0.1', 1101, '127.0.0.1', 6000, '127.0.0.1', 5000)
     

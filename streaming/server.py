@@ -38,6 +38,7 @@ class StreamingServer():
         skt = socket.create_connection(service_manager_addr)
         skt.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, StreamingServer.__BUFF_SIZE)
         skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}), 'utf-8'))
+        skt.recv(StreamingServer.__BUFF_SIZE)
 
         return skt
 
@@ -93,7 +94,6 @@ class StreamingServer():
     def list_videos(self, manager, active_streams, packet, user):
         logging.info("LIST_VIDEOS called by '{}'".format(user.name))
         video_list = list(filter(lambda name: name.endswith(".mp4"), os.listdir('streaming/videos')))
-        print(video_list)
         corrected_list = list(set([v.split("_")[0] for v in video_list]))
         self.sendto(bytes(json.dumps({"videos": corrected_list}), 'utf-8'), user.addr)
 
@@ -106,7 +106,7 @@ class StreamingServer():
         if user.name not in active_streams.keys() and "USER_INFORMATION" in user_info.keys():
             filename = video_filename.split(".")[0]
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
-            print("video being streamed: ", vd.__dict__)
+            print("streaming to user: ", user_info)
             active_streams[user.name] = vd
             Process(target=vd.start).start()
 
@@ -117,13 +117,15 @@ class StreamingServer():
             active_streams.pop(user.name)
 
     def play_stream_to_group(self, manager, active_streams, packet, user):
+        print("play to group called {}".format(user.name))
         user_info = self.get_user_information(user.name)['USER_INFORMATION']
+        print("user_info for {}: ".format(user.name), user_info)
         group_id = user_info['group_id']
         members_id = self.get_group_members(group_id)
-        print("members: ", members_id)
-        members = [self.user_id_to_obj(user_id) for user_id in members_id]
+        members = [self.user_id_to_dict(user_id) for user_id in members_id]
         if not group_id is None:
             for member in members:
+                print("member: ", member.name)
                 # 1. close transmission for everybody in the group (except owner)
                 if member.name in active_streams.keys():
                     active_streams[member.name].close()
@@ -131,20 +133,24 @@ class StreamingServer():
                 active_streams[user.name].active_users.append(member)
         
     def get_user_information(self, username):
-        logging.info("USER_INFORMATION called by '{}'".format(username))
-        self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username}), 'utf-8'))
+        logging.info("USER_INFORMATION called to '{}'".format(username))
+        packet = json.dumps({"id": "admin", "command": "GET_USER_INFORMATION", "arg": username})
+        self.service_manager.sendall(bytes(packet, 'utf-8'))
         return json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
 
     def get_group_members(self, group_id):
         self.service_manager.sendall(bytes(json.dumps({"id": "admin", "command": "VER_GRUPO", "arg": group_id}), 'utf-8'))
-        response = json.loads(self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8'))
+        response_raw = self.service_manager.recv(StreamingServer.__BUFF_SIZE).decode('utf-8')
+        print("get group response: ", response_raw)
+        response = json.loads(response_raw)
         if "GRUPO_DE_STREAMING" in response.keys():
             return response['GRUPO_DE_STREAMING']['members']
         else:
             return []
 
-    def user_id_to_obj(self, user_id):
-        return self.get_user_information(user_id)['addr']
+    def user_id_to_dict(self, user_id):
+        user_dict = self.get_user_information(user_id)['USER_INFORMATION']
+        return user.User(user_dict['name'], user_dict['addr'], user_dict['access'], user_dict['group_id'])
 
     def server_main_loop(self):
 

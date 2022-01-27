@@ -3,11 +3,11 @@ from service.utils import Utils
 from .group import Group
 
 class User():
-    def __init__(self, name, addr, access='guest'):
+    def __init__(self, name, addr, access='guest', group_id=None):
         self.name = name # IDENTIFICADOR
         self.addr = addr
         self.access = access # guest | premium
-        self.group_id = None
+        self.group_id = group_id
 
     def to_json(self):
         return json.dumps({'USER_INFORMATION': {'name': self.name, 'access': self.access, 'addr': self.addr, 'group_id': self.group_id}})
