@@ -83,9 +83,7 @@ class ClientService:
         recv_at_least_once = False
         while self.threads_are_running:
             try:
-                print("recv at: ", self.client_addr)
                 packet, _ = self.client_udp.recvfrom(ClientService.__BUFFSIZE)
-                print("HELLO")
                 recv_at_least_once = True
                 if len(packet) > 1: # checar cond
                     if packet[:1] == b'v':
@@ -94,8 +92,7 @@ class ClientService:
                         self.audio_queue.put(packet[1:])
             except socket.timeout:
                 # check if stream ended or the client stopped it
-                if recv_at_least_once:
-                    print("PAREI DE OUVIR")
+                if recv_at_least_once and self.usertype == "premium":
                     self.threads_are_running = False
                     break
                 continue
@@ -139,22 +136,6 @@ class ClientService:
 
         while self.threads_are_running:
             try:
-                '''
-                while len(self.data) < payload_size:
-                    packet = self.audio_queue.get() # client_socket.recv(4*1024) # 4K
-                    if not packet: 
-                        break
-                    self.data+=packet
-                self.packed_msg_size = self.data[:payload_size]
-                self.data = self.data[payload_size:]
-                msg_size = struct.unpack("Q",self.packed_msg_size)[0]
-                while len(self.data) < msg_size:
-                    self.data += self.audio_queue.get() # client_socket.recv(4*1024)
-
-                self.frame_data = self.data[:msg_size]
-                self.data  = self.data[msg_size:]
-                self.stream.write(pickle.loads(self.frame_data))
-                '''
                 self.data = self.audio_queue.get()
                 self.stream.write(self.data)
             except IOError:
@@ -172,6 +153,7 @@ class ClientService:
 
     def stopVideo(self):
         if( not self.threads_are_running ): return
+        self.threads_are_running = False
         self.client_udp.sendto(bytes(json.dumps({'id': self.username, 'command': 'PARAR_STREAMING'}), 'utf-8'), self.streaming_addr)
 
     def entrarNaApp(self, userID, typeUser):
