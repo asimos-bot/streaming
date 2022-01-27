@@ -126,9 +126,12 @@ class ServiceManager:
 
     def entrar_na_app(self, packet, user, conn):
         arg = packet['arg']
+        udp_port = packet['udp_port']
         if not Utils.retrieve_client_from_list(self.user_list, user.name):
             user.access = arg  # revisar
+            user.udp_port = udp_port
             self.user_list.append(user) # check access type
+            print("user added: ", user.to_json())
             packet = {'STATUS_DO_USUARIO': user.to_json()}
             conn.sendto(bytes(json.dumps(packet), 'utf-8'), user.addr)
             logging.info("ENTRAR_NA_APP: {}|client '{}': {}".format(packet, user.name, user.addr))

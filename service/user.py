@@ -3,14 +3,15 @@ from service.utils import Utils
 from .group import Group
 
 class User():
-    def __init__(self, name, addr, access='guest', group_id=None):
+    def __init__(self, name, addr, udp_port=None, access='guest', group_id=None):
         self.name = name # IDENTIFICADOR
         self.addr = addr
+        self.udp_port = udp_port
         self.access = access # guest | premium
         self.group_id = group_id
 
     def to_json(self):
-        return json.dumps({'USER_INFORMATION': {'name': self.name, 'access': self.access, 'addr': self.addr, 'group_id': self.group_id}})
+        return json.dumps({'USER_INFORMATION': {'name': self.name, 'access': self.access, 'addr': self.addr, 'udp_port': self.udp_port, 'group_id': self.group_id}})
 
     def create_group(self, members=[]):
         new_group = Group(self, members)

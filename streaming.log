@@ -352,3 +352,227 @@
 01/26/2022|23:29:29|INFO:DESKTOP-4BBGI0E(172.29.192.1:6000):{'id': 'Admin', 'command': 'LIST_VIDEOS'}
 01/26/2022|23:29:29|INFO:DESKTOP-4BBGI0E(172.29.192.1:6000):LIST_VIDEOS called by 'Admin'
 01/26/2022|23:29:30|INFO:DESKTOP-4BBGI0E(172.29.192.1:6000):USER_INFORMATION called by 'admin'
+01/27/2022|02:08:12|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:08:14|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:08:14|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfdsf'
+01/27/2022|02:08:14|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:08:17|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:08:17|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfdsf'
+01/27/2022|02:08:17|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfdsf'
+01/27/2022|02:08:17|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:15:24|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:15:26|INFO:debian(127.0.1.1:6000):{'id': 'asdf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:16:01|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:6000):{'id': 'asdfd', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfd'
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:6000):{'id': 'asdfd', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfd'
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfd'
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:17:56|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:6000):{'id': 'sdfsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdfsf'
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:18:01|INFO:debian(127.0.1.1:6000):{'id': 'sdfsf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:18:01|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdfsf'
+01/27/2022|02:18:01|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdfsf'
+01/27/2022|02:18:01|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'admin'
+01/27/2022|02:19:22|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:6000):{'id': 'sdf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdf'
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:6000):{'id': 'sdf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdf'
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdf'
+01/27/2022|02:21:06|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:6000):{'id': 'sdf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdf'
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:6000):{'id': 'sdf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdf'
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdf'
+01/27/2022|02:21:44|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:21:46|INFO:debian(127.0.1.1:6000):{'id': 'asdfdf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:21:46|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfdf'
+01/27/2022|02:21:48|INFO:debian(127.0.1.1:6000):{'id': 'asdfdf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:21:48|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfdf'
+01/27/2022|02:21:48|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfdf'
+01/27/2022|02:22:29|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfdsf'
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfdsf'
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfdsf'
+01/27/2022|02:22:55|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:22:57|INFO:debian(127.0.1.1:6000):{'id': 'saddf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:22:57|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'saddf'
+01/27/2022|02:22:59|INFO:debian(127.0.1.1:6000):{'id': 'saddf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:22:59|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'saddf'
+01/27/2022|02:22:59|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'saddf'
+01/27/2022|02:23:44|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:23:46|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:23:46|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfsf'
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfsf'
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfsf'
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfsf'
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfsf'
+01/27/2022|02:24:50|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:24:53|INFO:debian(127.0.1.1:6000):{'id': 'asdf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:24:53|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdf'
+01/27/2022|02:24:55|INFO:debian(127.0.1.1:6000):{'id': 'asdf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:24:55|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdf'
+01/27/2022|02:24:55|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdf'
+01/27/2022|02:27:01|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:27:03|INFO:debian(127.0.1.1:6000):{'id': 'asdfds', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:27:03|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfds'
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:6000):{'id': 'asdfds', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfds'
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfds'
+01/27/2022|02:27:19|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:27:21|INFO:debian(127.0.1.1:6000):{'id': 'sdfdsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:27:21|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdfdsf'
+01/27/2022|02:27:23|INFO:debian(127.0.1.1:6000):{'id': 'sdfdsf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:27:23|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdfdsf'
+01/27/2022|02:27:23|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdfdsf'
+01/27/2022|02:28:13|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:28:16|INFO:debian(127.0.1.1:6000):{'id': 'sdfafd', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:28:16|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdfafd'
+01/27/2022|02:28:18|INFO:debian(127.0.1.1:6000):{'id': 'sdfafd', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:28:18|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdfafd'
+01/27/2022|02:28:18|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdfafd'
+01/27/2022|02:30:37|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:30:40|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:30:40|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfdsf'
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:6000):{'id': 'asdfdsf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfdsf'
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfdsf'
+01/27/2022|02:30:52|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:30:55|INFO:debian(127.0.1.1:6000):{'id': 'dfgdgdg', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:30:55|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'dfgdgdg'
+01/27/2022|02:30:57|INFO:debian(127.0.1.1:6000):{'id': 'dfgdgdg', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:30:57|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'dfgdgdg'
+01/27/2022|02:30:57|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'dfgdgdg'
+01/27/2022|02:40:14|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:40:18|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:40:18|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfsf'
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfsf'
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfsf'
+01/27/2022|02:40:30|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:6000):{'id': 'afsdsa', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'afsdsa'
+01/27/2022|02:41:09|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:6000):{'id': 'sdfsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'sdfsf'
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:6000):{'id': 'sdfsf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'sdfsf'
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'sdfsf'
+01/27/2022|02:42:27|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:6000):{'id': 'asdads', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdads'
+01/27/2022|02:42:31|INFO:debian(127.0.1.1:6000):{'id': 'asdads', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:42:31|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdads'
+01/27/2022|02:42:31|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdads'
+01/27/2022|02:42:39|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:6000):{'id': 'asad', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asad'
+01/27/2022|02:42:45|INFO:debian(127.0.1.1:6000):{'id': 'asad', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:42:45|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asad'
+01/27/2022|02:42:45|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asad'
+01/27/2022|02:43:23|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'asdfsf'
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:6000):{'id': 'asdfsf', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'asdfsf'
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'asdfsf'
+01/27/2022|02:44:01|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:45:39|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:45:50|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:46:47|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PARAR_STREAMING'}
+01/27/2022|02:50:25|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:52:20|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'nba', 'resolution': 240}
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:53:48|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:56:22|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'STREAM_VIDEO', 'arg': 'saintpepsi', 'resolution': 240}
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:6000):STREAM_VIDEO called by 'paid'
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'PLAY_STREAM_TO_GROUP'}
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'paid'
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:6000):USER_INFORMATION called to 'free'
+01/27/2022|02:59:04|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:03:31|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:04:31|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:05:13|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:05:37|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:06:15|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:07:03|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'
+01/27/2022|03:07:56|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:08:21|INFO:debian(127.0.1.1:6000):Listening for streaming clients at UDP socket 6000
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:6000):{'id': 'paid', 'command': 'LIST_VIDEOS'}
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:6000):LIST_VIDEOS called by 'paid'

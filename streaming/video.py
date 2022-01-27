@@ -100,7 +100,8 @@ class Video():
             _, buffer = cv2.imencode('.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 20])
             message = buffer
             for client in self.active_users:
-                self.sendto(b'v' + zlib.compress(message), client.addr)
+                print("sento for {}: ".format(client.name), (client.addr[0], client.udp_port))
+                self.sendto(b'v' + zlib.compress(message), (client.addr[0], client.udp_port))
 
     def audio_stream(self):
 
@@ -110,5 +111,5 @@ class Video():
         while self.ns.video_is_running:
             data = wf.readframes(Video.__CHUNK)
             for client in self.active_users:
-                self.sendto(b'a' + data, client.addr)
+                self.sendto(b'a' + data, (client.addr[0], client.udp_port))
             time.sleep(0.8*Video.__CHUNK/sample_rate)

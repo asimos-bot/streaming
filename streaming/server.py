@@ -37,7 +37,7 @@ class StreamingServer():
     def setup_service_manager_skt(self, service_manager_addr):
         skt = socket.create_connection(service_manager_addr)
         skt.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, StreamingServer.__BUFF_SIZE)
-        skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium"}), 'utf-8'))
+        skt.sendall(bytes(json.dumps({"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", 'udp_port': None}), 'utf-8'))
         skt.recv(StreamingServer.__BUFF_SIZE)
 
         return skt
@@ -103,8 +103,11 @@ class StreamingServer():
         video_filename = packet['arg']
         quality = StreamQuality['VIDEO_{}P'.format(packet['resolution'])]
         user_info = self.get_user_information(user.name)
+        print("request to stream to: ", user_info)
         if user.name not in active_streams.keys() and "USER_INFORMATION" in user_info.keys():
             filename = video_filename.split(".")[0]
+            user.udp_port = user_info['USER_INFORMATION']['udp_port']
+            print("about to stream to: ", user.to_json())
             vd = video.Video(filename + "_{}".format(quality.value[1]) + ".mp4", user, quality.value[0], quality.value[1], self.sendto, manager)
             print("streaming to user: ", user_info)
             active_streams[user.name] = vd
@@ -150,7 +153,7 @@ class StreamingServer():
 
     def user_id_to_dict(self, user_id):
         user_dict = self.get_user_information(user_id)['USER_INFORMATION']
-        return user.User(user_dict['name'], user_dict['addr'], user_dict['access'], user_dict['group_id'])
+        return user.User(user_dict['name'], user_dict['addr'], user_dict['udp_port'], user_dict['access'], user_dict['group_id'])
 
     def server_main_loop(self):
 
@@ -174,7 +177,6 @@ class StreamingServer():
                     logging.info("{}".format(packet))
                     client = user.User(packet["id"], client_addr)
                     self.api_commands[packet['command']](manager, active_streams, packet, client)
-                    self.get_user_information("admin")
                 except KeyboardInterrupt:
                     break
 

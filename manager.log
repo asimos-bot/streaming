@@ -2460,3 +2460,567 @@
 01/26/2022|23:30:00|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):b'{"id": "Admin", "command": "LIST_USERS"}'
 01/26/2022|23:30:00|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):packet received: {'id': 'Admin', 'command': 'LIST_USERS'}|client 'Admin': ('127.0.0.1', 49920)
 01/26/2022|23:30:00|INFO:DESKTOP-4BBGI0E(172.29.192.1:5000):LIST_USERS: ['asd']|client 'Admin':('127.0.0.1', 49920)
+01/27/2022|02:08:11|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:14:37|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:15:23|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:16:00|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:16:01|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58156)
+01/27/2022|02:16:01|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:16:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:01|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58156], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58158)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):b'{"id": "asdfd", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfd', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'asdfd': ('127.0.0.1', 58158)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asdfd", "access": "premium", "addr": ["127.0.0.1", 58158], "udp_port": 1101, "group_id": null}}'}|client 'asdfd': ('127.0.0.1', 58158)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58156], "udp_port": null, "group_id": null}}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):b'{"id": "asdfd", "command": "LIST_USERS"}'
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfd', 'command': 'LIST_USERS'}|client 'asdfd': ('127.0.0.1', 58158)
+01/27/2022|02:16:03|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asdfd':('127.0.0.1', 58158)
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfd"}'
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfd'}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "asdfd", "access": "premium", "addr": ["127.0.0.1", 58158], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "admin"}'
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'admin'}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:16:15|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58156], "udp_port": null, "group_id": null}}|client 'admin': ('127.0.0.1', 58156)
+01/27/2022|02:17:55|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58162)
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'sdfsf': ('127.0.0.1', 58162)
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdfsf", "access": "premium", "addr": ["127.0.0.1", 58162], "udp_port": 1101, "group_id": null}}'}|client 'sdfsf': ('127.0.0.1', 58162)
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsf", "command": "LIST_USERS"}'
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsf', 'command': 'LIST_USERS'}|client 'sdfsf': ('127.0.0.1', 58162)
+01/27/2022|02:17:58|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'sdfsf':('127.0.0.1', 58162)
+01/27/2022|02:19:21|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:19:22|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58164)
+01/27/2022|02:19:22|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:19:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58164)
+01/27/2022|02:19:22|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58164], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58164)
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58166)
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):b'{"id": "sdf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'sdf': ('127.0.0.1', 58166)
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdf", "access": "premium", "addr": ["127.0.0.1", 58166], "udp_port": 1101, "group_id": null}}'}|client 'sdf': ('127.0.0.1', 58166)
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):b'{"id": "sdf", "command": "LIST_USERS"}'
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdf', 'command': 'LIST_USERS'}|client 'sdf': ('127.0.0.1', 58166)
+01/27/2022|02:19:24|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'sdf':('127.0.0.1', 58166)
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "sdf"}'
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'sdf'}|client 'admin': ('127.0.0.1', 58164)
+01/27/2022|02:19:25|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "sdf", "access": "premium", "addr": ["127.0.0.1", 58166], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58164)
+01/27/2022|02:21:05|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:21:06|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58168)
+01/27/2022|02:21:06|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:21:06|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58168)
+01/27/2022|02:21:06|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58168], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58168)
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58170)
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):b'{"id": "sdf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'sdf': ('127.0.0.1', 58170)
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdf", "access": "premium", "addr": ["127.0.0.1", 58170], "udp_port": 1101, "group_id": null}}'}|client 'sdf': ('127.0.0.1', 58170)
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):b'{"id": "sdf", "command": "LIST_USERS"}'
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdf', 'command': 'LIST_USERS'}|client 'sdf': ('127.0.0.1', 58170)
+01/27/2022|02:21:11|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'sdf':('127.0.0.1', 58170)
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "sdf"}'
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'sdf'}|client 'admin': ('127.0.0.1', 58168)
+01/27/2022|02:21:13|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "sdf", "access": "premium", "addr": ["127.0.0.1", 58170], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58168)
+01/27/2022|02:21:43|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:22:28|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:22:29|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58176)
+01/27/2022|02:22:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:22:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58176)
+01/27/2022|02:22:29|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58176], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58176)
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58178)
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):b'{"id": "asdfdsf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfdsf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'asdfdsf': ('127.0.0.1', 58178)
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asdfdsf", "access": "premium", "addr": ["127.0.0.1", 58178], "udp_port": 1101, "group_id": null}}'}|client 'asdfdsf': ('127.0.0.1', 58178)
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):b'{"id": "asdfdsf", "command": "LIST_USERS"}'
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfdsf', 'command': 'LIST_USERS'}|client 'asdfdsf': ('127.0.0.1', 58178)
+01/27/2022|02:22:31|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asdfdsf':('127.0.0.1', 58178)
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfdsf"}'
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfdsf'}|client 'admin': ('127.0.0.1', 58176)
+01/27/2022|02:22:33|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "asdfdsf", "access": "premium", "addr": ["127.0.0.1", 58178], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58176)
+01/27/2022|02:22:54|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:23:43|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:23:44|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58184)
+01/27/2022|02:23:44|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:23:44|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:23:44|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58184], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfsf"}'
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfsf'}|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:23:47|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {'msg': 'ERROR: RESOURCE NOT FOUND!'} (asdfsf)|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfsf"}'
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfsf'}|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:24:22|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {'msg': 'ERROR: RESOURCE NOT FOUND!'} (asdfsf)|client 'admin': ('127.0.0.1', 58184)
+01/27/2022|02:24:49|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:27:00|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:27:01|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58192)
+01/27/2022|02:27:01|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:27:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58192)
+01/27/2022|02:27:01|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58192], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58192)
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfds"}'
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfds'}|client 'admin': ('127.0.0.1', 58192)
+01/27/2022|02:27:05|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {'msg': 'ERROR: RESOURCE NOT FOUND!'} (asdfds)|client 'admin': ('127.0.0.1', 58192)
+01/27/2022|02:27:18|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:28:12|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:30:36|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:30:37|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58210)
+01/27/2022|02:30:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:30:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58210)
+01/27/2022|02:30:37|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58210], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58210)
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfdsf"}'
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfdsf'}|client 'admin': ('127.0.0.1', 58210)
+01/27/2022|02:30:42|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {'msg': 'ERROR: RESOURCE NOT FOUND!'} (asdfdsf)|client 'admin': ('127.0.0.1', 58210)
+01/27/2022|02:30:51|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:40:13|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:40:14|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58222)
+01/27/2022|02:40:14|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:40:14|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58222)
+01/27/2022|02:40:14|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58222], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58222)
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfsf"}'
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfsf'}|client 'admin': ('127.0.0.1', 58222)
+01/27/2022|02:40:20|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {'msg': 'ERROR: RESOURCE NOT FOUND!'} (asdfsf)|client 'admin': ('127.0.0.1', 58222)
+01/27/2022|02:40:29|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:40:30|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58226)
+01/27/2022|02:40:30|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:40:30|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58226)
+01/27/2022|02:40:30|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58226], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58226)
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58228)
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):b'{"id": "afsdsa", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'afsdsa', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'afsdsa': ('127.0.0.1', 58228)
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "afsdsa", "access": "premium", "addr": ["127.0.0.1", 58228], "udp_port": 1101, "group_id": null}}'}|client 'afsdsa': ('127.0.0.1', 58228)
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):b'{"id": "afsdsa", "command": "LIST_USERS"}'
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'afsdsa', 'command': 'LIST_USERS'}|client 'afsdsa': ('127.0.0.1', 58228)
+01/27/2022|02:40:33|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'afsdsa':('127.0.0.1', 58228)
+01/27/2022|02:41:08|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:41:09|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58230)
+01/27/2022|02:41:09|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:41:09|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58230)
+01/27/2022|02:41:09|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58230], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58230)
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58232)
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'sdfsf': ('127.0.0.1', 58232)
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "sdfsf", "access": "premium", "addr": ["127.0.0.1", 58232], "udp_port": 1101, "group_id": null}}'}|client 'sdfsf': ('127.0.0.1', 58232)
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):b'{"id": "sdfsf", "command": "LIST_USERS"}'
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'sdfsf', 'command': 'LIST_USERS'}|client 'sdfsf': ('127.0.0.1', 58232)
+01/27/2022|02:41:15|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'sdfsf':('127.0.0.1', 58232)
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "sdfsf"}'
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'sdfsf'}|client 'admin': ('127.0.0.1', 58230)
+01/27/2022|02:41:41|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "sdfsf", "access": "premium", "addr": ["127.0.0.1", 58232], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58230)
+01/27/2022|02:42:26|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58236)
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):b'{"id": "asdads", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdads', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'asdads': ('127.0.0.1', 58236)
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asdads", "access": "premium", "addr": ["127.0.0.1", 58236], "udp_port": 1101, "group_id": null}}'}|client 'asdads': ('127.0.0.1', 58236)
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):b'{"id": "asdads", "command": "LIST_USERS"}'
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdads', 'command': 'LIST_USERS'}|client 'asdads': ('127.0.0.1', 58236)
+01/27/2022|02:42:29|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asdads':('127.0.0.1', 58236)
+01/27/2022|02:42:38|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58240)
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):b'{"id": "asad", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asad', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'asad': ('127.0.0.1', 58240)
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asad", "access": "premium", "addr": ["127.0.0.1", 58240], "udp_port": 1101, "group_id": null}}'}|client 'asad': ('127.0.0.1', 58240)
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):b'{"id": "asad", "command": "LIST_USERS"}'
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asad', 'command': 'LIST_USERS'}|client 'asad': ('127.0.0.1', 58240)
+01/27/2022|02:42:43|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asad':('127.0.0.1', 58240)
+01/27/2022|02:43:22|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:43:23|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58244)
+01/27/2022|02:43:23|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:43:23|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58244)
+01/27/2022|02:43:23|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58244], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58244)
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58246)
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):b'{"id": "asdfsf", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfsf', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'asdfsf': ('127.0.0.1', 58246)
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "asdfsf", "access": "premium", "addr": ["127.0.0.1", 58246], "udp_port": 1101, "group_id": null}}'}|client 'asdfsf': ('127.0.0.1', 58246)
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):b'{"id": "asdfsf", "command": "LIST_USERS"}'
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'asdfsf', 'command': 'LIST_USERS'}|client 'asdfsf': ('127.0.0.1', 58246)
+01/27/2022|02:43:27|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'asdfsf':('127.0.0.1', 58246)
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "asdfsf"}'
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'asdfsf'}|client 'admin': ('127.0.0.1', 58244)
+01/27/2022|02:43:46|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "asdfsf", "access": "premium", "addr": ["127.0.0.1", 58246], "udp_port": 1101, "group_id": null}}|client 'admin': ('127.0.0.1', 58244)
+01/27/2022|02:44:00|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:44:01|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58248)
+01/27/2022|02:44:01|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:44:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:01|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58248], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58250)
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1100}'
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1100}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58250], "udp_port": 1100, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:18|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58250)
+01/27/2022|02:44:20|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58252)
+01/27/2022|02:44:20|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1101}'
+01/27/2022|02:44:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1101}|client 'free': ('127.0.0.1', 58252)
+01/27/2022|02:44:20|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58252], "udp_port": 1101, "group_id": null}}'}|client 'free': ('127.0.0.1', 58252)
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'YaWnlOJ8'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:27|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58250)
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58252), 'YaWnlOJ8']}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:29|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58250)
+01/27/2022|02:44:31|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "YaWnlOJ8"}'
+01/27/2022|02:44:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'YaWnlOJ8'}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:31|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "YaWnlOJ8", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58250)
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:34|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58250], "udp_port": 1100, "group_id": "YaWnlOJ8"}}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58250], "udp_port": 1100, "group_id": "YaWnlOJ8"}}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "YaWnlOJ8"}'
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'YaWnlOJ8'}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "YaWnlOJ8", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:44:37|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58252], "udp_port": 1101, "group_id": "YaWnlOJ8"}}|client 'admin': ('127.0.0.1', 58248)
+01/27/2022|02:45:38|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:45:39|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58254)
+01/27/2022|02:45:39|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:45:39|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58254)
+01/27/2022|02:45:39|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58254], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58254)
+01/27/2022|02:45:49|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:45:50|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58256)
+01/27/2022|02:45:50|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:45:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:45:50|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58256], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58258)
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58258], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:11|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58258)
+01/27/2022|02:46:13|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58260)
+01/27/2022|02:46:13|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1100}'
+01/27/2022|02:46:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1100}|client 'free': ('127.0.0.1', 58260)
+01/27/2022|02:46:13|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58260], "udp_port": 1100, "group_id": null}}'}|client 'free': ('127.0.0.1', 58260)
+01/27/2022|02:46:15|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:46:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:15|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58258)
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'TBdxkzoH'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:17|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58258)
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58260), 'TBdxkzoH']}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:22|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58258)
+01/27/2022|02:46:24|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "TBdxkzoH"}'
+01/27/2022|02:46:24|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'TBdxkzoH'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:24|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "TBdxkzoH", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:26|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58258], "udp_port": 1101, "group_id": "TBdxkzoH"}}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58258], "udp_port": 1101, "group_id": "TBdxkzoH"}}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "TBdxkzoH"}'
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'TBdxkzoH'}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "TBdxkzoH", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:31|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58260], "udp_port": 1100, "group_id": "TBdxkzoH"}}|client 'admin': ('127.0.0.1', 58256)
+01/27/2022|02:46:46|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "SAIR_DA_APP"}'
+01/27/2022|02:46:46|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'SAIR_DA_APP'}|client 'free': ('127.0.0.1', 58260)
+01/27/2022|02:46:46|INFO:debian(127.0.1.1:5000):SAIR_DA_APP: {'SAIR_DA_APP_ACK': 'free'}|client 'free': ('127.0.0.1', 58260)
+01/27/2022|02:46:47|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "SAIR_DA_APP"}'
+01/27/2022|02:46:47|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'SAIR_DA_APP'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:46:47|INFO:debian(127.0.1.1:5000):SAIR_DA_APP: {'SAIR_DA_APP_ACK': 'paid'}|client 'paid': ('127.0.0.1', 58258)
+01/27/2022|02:50:24|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:50:25|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58268)
+01/27/2022|02:50:25|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:50:25|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:25|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58268], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58270)
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58270], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:29|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58270)
+01/27/2022|02:50:44|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58272)
+01/27/2022|02:50:44|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1100}'
+01/27/2022|02:50:44|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1100}|client 'free': ('127.0.0.1', 58272)
+01/27/2022|02:50:44|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58272], "udp_port": 1100, "group_id": null}}'}|client 'free': ('127.0.0.1', 58272)
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'y8NJPDv1'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:47|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58270)
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58272), 'y8NJPDv1']}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:49|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58270)
+01/27/2022|02:50:50|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "y8NJPDv1"}'
+01/27/2022|02:50:50|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'y8NJPDv1'}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:50|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "y8NJPDv1", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58270)
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:53|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58270], "udp_port": 1101, "group_id": "y8NJPDv1"}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58270], "udp_port": 1101, "group_id": "y8NJPDv1"}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "y8NJPDv1"}'
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'y8NJPDv1'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "y8NJPDv1", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:50:54|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58272], "udp_port": 1100, "group_id": "y8NJPDv1"}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58270], "udp_port": 1101, "group_id": "y8NJPDv1"}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "y8NJPDv1"}'
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'y8NJPDv1'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "y8NJPDv1", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:51:12|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58272], "udp_port": 1100, "group_id": "y8NJPDv1"}}|client 'admin': ('127.0.0.1', 58268)
+01/27/2022|02:52:19|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:52:20|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58274)
+01/27/2022|02:52:20|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:52:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:52:20|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58274], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58276)
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58276], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:52:38|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58276)
+01/27/2022|02:52:41|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58278)
+01/27/2022|02:52:41|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "0", "udp_port": 1100}'
+01/27/2022|02:52:41|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': '0', 'udp_port': 1100}|client 'free': ('127.0.0.1', 58278)
+01/27/2022|02:52:41|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "0", "addr": ["127.0.0.1", 58278], "udp_port": 1100, "group_id": null}}'}|client 'free': ('127.0.0.1', 58278)
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'quLZgpX3'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:00|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58276)
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58278), 'quLZgpX3']}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:01|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58276)
+01/27/2022|02:53:02|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "quLZgpX3"}'
+01/27/2022|02:53:02|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'quLZgpX3'}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:02|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "quLZgpX3", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58276)
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:05|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58276], "udp_port": 1101, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58276], "udp_port": 1101, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "quLZgpX3"}'
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'quLZgpX3'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "quLZgpX3", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:27|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "0", "addr": ["127.0.0.1", 58278], "udp_port": 1100, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58276], "udp_port": 1101, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "quLZgpX3"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'quLZgpX3'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "quLZgpX3", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "0", "addr": ["127.0.0.1", 58278], "udp_port": 1100, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58276], "udp_port": 1101, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "quLZgpX3"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'quLZgpX3'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "quLZgpX3", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:33|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "0", "addr": ["127.0.0.1", 58278], "udp_port": 1100, "group_id": "quLZgpX3"}}|client 'admin': ('127.0.0.1', 58274)
+01/27/2022|02:53:47|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:53:48|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58282)
+01/27/2022|02:53:48|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:53:48|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:53:48|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58282], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58284)
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58284], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:53:54|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58284)
+01/27/2022|02:54:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58286)
+01/27/2022|02:54:03|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1100}'
+01/27/2022|02:54:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1100}|client 'free': ('127.0.0.1', 58286)
+01/27/2022|02:54:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58286], "udp_port": 1100, "group_id": null}}'}|client 'free': ('127.0.0.1', 58286)
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'jSfY1mOh'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:05|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58284)
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58286), 'jSfY1mOh']}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:07|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58284)
+01/27/2022|02:54:08|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "jSfY1mOh"}'
+01/27/2022|02:54:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'jSfY1mOh'}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:08|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "jSfY1mOh", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58284)
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:26|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58284], "udp_port": 1101, "group_id": "jSfY1mOh"}}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58284], "udp_port": 1101, "group_id": "jSfY1mOh"}}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "jSfY1mOh"}'
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'jSfY1mOh'}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "jSfY1mOh", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:54:29|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58286], "udp_port": 1100, "group_id": "jSfY1mOh"}}|client 'admin': ('127.0.0.1', 58282)
+01/27/2022|02:56:21|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:56:22|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58288)
+01/27/2022|02:56:22|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:56:22|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:56:22|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58288], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58290)
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1100}'
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1100}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58290], "udp_port": 1100, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:36|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58290)
+01/27/2022|02:56:40|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58292)
+01/27/2022|02:56:40|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1101}'
+01/27/2022|02:56:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1101}|client 'free': ('127.0.0.1', 58292)
+01/27/2022|02:56:40|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58292], "udp_port": 1101, "group_id": null}}'}|client 'free': ('127.0.0.1', 58292)
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "CRIAR_GRUPO", "arg": "paid"}'
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'CRIAR_GRUPO', 'arg': 'paid'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):CRIAR_GRUPO: {'CRIAR_GRUPO_ACK': 'OGxheLnF'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:52|INFO:debian(127.0.1.1:5000):LIST_USERS: ['free']|client 'paid':('127.0.0.1', 58290)
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ADD_USUARIO_GRUPO", "arg": "free"}'
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ADD_USUARIO_GRUPO', 'arg': 'free'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):ADD_USUARIO_GRUPO: {'ADD_USUARIO_GRUPO_ACK': [('127.0.0.1', 58292), 'OGxheLnF']}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "LIST_USERS"}'
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'LIST_USERS'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:54|INFO:debian(127.0.1.1:5000):LIST_USERS: []|client 'paid':('127.0.0.1', 58290)
+01/27/2022|02:56:56|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "VER_GRUPO", "arg": "OGxheLnF"}'
+01/27/2022|02:56:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'VER_GRUPO', 'arg': 'OGxheLnF'}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:56:56|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "OGxheLnF", "owner": "paid", "members": ["free"]}}|client 'paid': ('127.0.0.1', 58290)
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:00|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58290], "udp_port": 1100, "group_id": "OGxheLnF"}}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "paid"}'
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'paid'}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58290], "udp_port": 1100, "group_id": "OGxheLnF"}}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "VER_GRUPO", "arg": "OGxheLnF"}'
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'VER_GRUPO', 'arg': 'OGxheLnF'}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):VER_GRUPO: {"GRUPO_DE_STREAMING": {"id": "OGxheLnF", "owner": "paid", "members": ["free"]}}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "GET_USER_INFORMATION", "arg": "free"}'
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'GET_USER_INFORMATION', 'arg': 'free'}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:57:03|INFO:debian(127.0.1.1:5000):GET_USER_INFORMATION: {"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58292], "udp_port": 1101, "group_id": "OGxheLnF"}}|client 'admin': ('127.0.0.1', 58288)
+01/27/2022|02:59:03|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|02:59:04|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58298)
+01/27/2022|02:59:04|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|02:59:04|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58298)
+01/27/2022|02:59:04|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58298], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58298)
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58300)
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58300)
+01/27/2022|02:59:08|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58300], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58300)
+01/27/2022|02:59:21|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58302)
+01/27/2022|02:59:21|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1100}'
+01/27/2022|02:59:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1100}|client 'free': ('127.0.0.1', 58302)
+01/27/2022|02:59:21|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58302], "udp_port": 1100, "group_id": null}}'}|client 'free': ('127.0.0.1', 58302)
+01/27/2022|03:03:30|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:03:31|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58306)
+01/27/2022|03:03:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:03:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58306)
+01/27/2022|03:03:31|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58306], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58306)
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58308)
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1100}'
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1100}|client 'paid': ('127.0.0.1', 58308)
+01/27/2022|03:03:36|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58308], "udp_port": 1100, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58308)
+01/27/2022|03:04:30|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:04:31|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58312)
+01/27/2022|03:04:31|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:04:31|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58312)
+01/27/2022|03:04:31|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58312], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58312)
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58314)
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1100}'
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1100}|client 'paid': ('127.0.0.1', 58314)
+01/27/2022|03:04:40|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58314], "udp_port": 1100, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58314)
+01/27/2022|03:05:12|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:05:13|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58316)
+01/27/2022|03:05:13|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:05:13|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58316)
+01/27/2022|03:05:13|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58316], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58316)
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58318)
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58318)
+01/27/2022|03:05:20|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58318], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58318)
+01/27/2022|03:05:36|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:05:37|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58320)
+01/27/2022|03:05:37|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:05:37|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58320)
+01/27/2022|03:05:37|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58320], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58320)
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58322)
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1102}'
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1102}|client 'paid': ('127.0.0.1', 58322)
+01/27/2022|03:05:42|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58322], "udp_port": 1102, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58322)
+01/27/2022|03:06:14|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:06:15|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58324)
+01/27/2022|03:06:15|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:06:15|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58324)
+01/27/2022|03:06:15|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58324], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58324)
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58326)
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1102}'
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1102}|client 'paid': ('127.0.0.1', 58326)
+01/27/2022|03:06:23|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58326], "udp_port": 1102, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58326)
+01/27/2022|03:07:02|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:07:03|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58328)
+01/27/2022|03:07:03|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:07:03|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58328)
+01/27/2022|03:07:03|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58328], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58328)
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58330)
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1101}'
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1101}|client 'paid': ('127.0.0.1', 58330)
+01/27/2022|03:07:08|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58330], "udp_port": 1101, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58330)
+01/27/2022|03:07:55|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:07:56|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58332)
+01/27/2022|03:07:56|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:07:56|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58332)
+01/27/2022|03:07:56|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58332], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58332)
+01/27/2022|03:08:02|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58334)
+01/27/2022|03:08:02|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1101}'
+01/27/2022|03:08:02|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1101}|client 'free': ('127.0.0.1', 58334)
+01/27/2022|03:08:02|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58334], "udp_port": 1101, "group_id": null}}'}|client 'free': ('127.0.0.1', 58334)
+01/27/2022|03:08:20|INFO:debian(127.0.1.1:5000):Listening for clients at TCP socket 5000
+01/27/2022|03:08:21|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58336)
+01/27/2022|03:08:21|INFO:debian(127.0.1.1:5000):b'{"id": "admin", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": null}'
+01/27/2022|03:08:21|INFO:debian(127.0.1.1:5000):packet received: {'id': 'admin', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': None}|client 'admin': ('127.0.0.1', 58336)
+01/27/2022|03:08:21|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "admin", "access": "premium", "addr": ["127.0.0.1", 58336], "udp_port": null, "group_id": null}}'}|client 'admin': ('127.0.0.1', 58336)
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58338)
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:5000):b'{"id": "paid", "command": "ENTRAR_NA_APP", "arg": "premium", "udp_port": 1100}'
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:5000):packet received: {'id': 'paid', 'command': 'ENTRAR_NA_APP', 'arg': 'premium', 'udp_port': 1100}|client 'paid': ('127.0.0.1', 58338)
+01/27/2022|03:08:42|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "paid", "access": "premium", "addr": ["127.0.0.1", 58338], "udp_port": 1100, "group_id": null}}'}|client 'paid': ('127.0.0.1', 58338)
+01/27/2022|03:08:45|INFO:debian(127.0.1.1:5000):connection established: ('127.0.0.1', 58340)
+01/27/2022|03:08:45|INFO:debian(127.0.1.1:5000):b'{"id": "free", "command": "ENTRAR_NA_APP", "arg": "guest", "udp_port": 1101}'
+01/27/2022|03:08:45|INFO:debian(127.0.1.1:5000):packet received: {'id': 'free', 'command': 'ENTRAR_NA_APP', 'arg': 'guest', 'udp_port': 1101}|client 'free': ('127.0.0.1', 58340)
+01/27/2022|03:08:45|INFO:debian(127.0.1.1:5000):ENTRAR_NA_APP: {'STATUS_DO_USUARIO': '{"USER_INFORMATION": {"name": "free", "access": "guest", "addr": ["127.0.0.1", 58340], "udp_port": 1101, "group_id": null}}'}|client 'free': ('127.0.0.1', 58340)
