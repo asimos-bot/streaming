@@ -31,7 +31,7 @@ class ClientGUI:
         self.label.pack()
 
         self.exitButton = ttk.Button(text="Sair",master=self.window,command=lambda: self.exitAplication() )
-        self.exitButton.pack(side=tkinter.TOP, pady = 10)
+        self.exitButton.pack(side=tkinter.BOTTOM, pady = 10)
 
     def exitAplication(self):
         self.service.stopVideo()
@@ -87,26 +87,35 @@ class ClientGUI:
         self.createGroupButton.pack(side=tkinter.TOP, pady = 10)
         
         listsUser = self.service.listUsers(self.login)
+        groupMembers = self.service.seeGroup(self.login)
 
-        self.selectedUser = StringVar()
-        if not listsUser['LIST_USERS']:
-            self.selectUsers = OptionMenu(self.window, self.selectedUser ,"--")
-            self.selectUsers.pack(side=tkinter.TOP, pady = 20)
-        else:
-            self.selectUsers = OptionMenu(self.window, self.selectedUser, *listsUser['LIST_USERS'])
-            self.selectUsers.pack(side=tkinter.TOP, pady = 20)
+        self.selectedUserAdd = StringVar()
+        self.selectedUserRm = StringVar()
 
-        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
+        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers())
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
         self.addUserButton = ttk.Button(text="Adicionar usuário ao Grupo", master=self.window, command=self.addUserToGroup, style="TButton")
-        self.addUserButton.pack(side=tkinter.TOP, pady = 10)
+
+        if not listsUser['LIST_USERS']:
+            self.selectUsersAdd = OptionMenu(self.window, self.selectedUserAdd, "--")
+        else:
+            self.selectUsersAdd = OptionMenu(self.window, self.selectedUserAdd, *listsUser['LIST_USERS'])
+
+        #self.selectUsersAdd.pack(side=tkinter.TOP, pady = 20)
+        #self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
         self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.removeUserFromGroup  ,style="TButton")
-        self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
+        if 'msg' not in groupMembers:
+            self.selectUsersRm = OptionMenu(self.window, self.selectedUserRm, *groupMembers['GRUPO_DE_STREAMING']['members'])
+        else:
+            self.selectUsersRm = OptionMenu(self.window, self.selectedUserRm, "--")
+
+        #self.selectUsersRm.pack(side=tkinter.TOP, pady = 20)
+        #self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
 
     def addUserToGroup(self):
-        packet = self.service.addUserToGroup(self.login, self.selectedUser.get())
+        packet = self.service.addUserToGroup(self.login, self.selectedUserAdd.get())
 
         if not 'msg' in packet:
             packet = packet['ADD_USUARIO_GRUPO_ACK']
@@ -115,12 +124,12 @@ class ClientGUI:
             msg = packet['msg']    
 
         self.selectedUser.set("--")
-        self.getAvaliableUsers(self.service.listUsers(self.login))
+        self.getAvaliableUsers()
         showinfo(title="Informação do Grupo", message=msg)
 
 
     def removeUserFromGroup(self):
-        packet = self.service.removeUserFromGroup(self.login)
+        packet = self.service.removeUserFromGroup(self.login, self.selectedUserRm.get())
 
         if not 'msg' in packet:
             packet = packet['REMOVE_USUARIO_GRUPO_ACK']
@@ -130,14 +139,23 @@ class ClientGUI:
 
         showinfo(title="Informação do Grupo", message=msg)
 
-    def getAvaliableUsers(self,listUsers):
-        print(listUsers)
-        menu = self.selectUsers["menu"]
-        menu.delete(0, 'end')
+    def getAvaliableUsers(self):
+        listUsers = self.service.listUsers(self.login)
+        groupMembers = self.service.seeGroup(self.login)
+        self.getAvaliableUsersAdd(listUsers['LIST_USERS'])
+        self.getAvaliableUsersRm(groupMembers['GRUPO_DE_STREAMING']['members'])
 
-        for eachUser in sorted(listUsers['LIST_USERS']):
-            
-            menu.add_command(label=eachUser,value=self.selectedUser.set(eachUser))
+    def getAvaliableUsersAdd(self,listUsers):
+        menu = self.selectUsersAdd["menu"]
+        menu.delete(0, 'end')
+        for eachUser in sorted(listUsers):
+            menu.add_command(label=eachUser,value=self.selectedUserAdd.set(eachUser))
+
+    def getAvaliableUsersRm(self,groupMembers):
+        menu = self.selectUsersRm["menu"]
+        menu.delete(0, 'end')
+        for eachUser in sorted(groupMembers):
+            menu.add_command(label=eachUser,value=self.selectedUserRm.set(eachUser))
 
     def seeGroup(self):
         packet = self.service.seeGroup(self.login)
@@ -152,7 +170,7 @@ class ClientGUI:
 
     def createGroup(self):
         packet = self.service.createGroup(self.login)
-        self.getAvaliableUsers(self.service.listUsers(self.login))
+        # self.getAvaliableUsers()
 
         if not 'msg' in packet:
             msg = "GRUPO CRIADO: " + packet['CRIAR_GRUPO_ACK']
