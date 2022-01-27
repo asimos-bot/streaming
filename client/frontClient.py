@@ -3,6 +3,7 @@ from distutils import command
 import service
 import tkinter
 from tkinter import Tk, ttk, StringVar, OptionMenu, Frame, Label
+from tkinter.messagebox import askyesno, showinfo, showwarning
 
 class ClientGUI:
 
@@ -77,8 +78,8 @@ class ClientGUI:
         listOfVideos = self.service.listVideos()
         listOfVideos = list(listOfVideos.values())
         listOfVideos = list(listOfVideos[0])
-        defaultValue = StringVar(self.window)
-        defaultValue.set(listOfVideos[0])
+        defaultQuality = StringVar(self.window)
+        defaultQuality.set(listOfVideos[0])
         qualities = ['240p','480p','720p']
         videoQuality = StringVar(self.window)
         videoQuality.set(qualities[0])
@@ -86,15 +87,15 @@ class ClientGUI:
         self.qualityMenu.destroy()
         self.qualityMenu = OptionMenu(self.window,videoQuality,*qualities,command=lambda videoQuality=videoQuality: self.change_quality(videoQuality))
         self.qualityMenu.pack(side=tkinter.TOP,pady=10)
-        self.optionsVideos = OptionMenu(self.window,defaultValue,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle,self.quality))
+        self.optionsVideos = OptionMenu(self.window,defaultQuality,*listOfVideos,command=lambda videoTitle=listOfVideos : self.service.showVideo(videoTitle,self.quality))
         self.optionsVideos.pack(side=tkinter.TOP, pady = 10)
 
     def serviceManager(self):
-        self.seeGroupButton = ttk.Button(text="Ver Grupo",master=self.window,command=lambda: self.service.seeGroup(self.login)  ,style="TButton")
+        self.seeGroupButton = ttk.Button(text="Ver Grupo",master=self.window,command=lambda: self.seeGroup()  ,style="TButton")
         self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
 
-        self.seeGroupButton = ttk.Button(text="Criar Grupo",master=self.window,command=lambda: self.service.createGroup(self.login)  ,style="TButton")
-        self.seeGroupButton.pack(side=tkinter.TOP, pady = 10)
+        self.createGroupButton = ttk.Button(text="Criar Grupo",master=self.window,command=lambda: self.createGroup()  ,style="TButton")
+        self.createGroupButton.pack(side=tkinter.TOP, pady = 10)
         
         listsUser = self.service.listUsers(self.login)
 
@@ -109,16 +110,36 @@ class ClientGUI:
         self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers(self.service.listUsers(self.login)))
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
-        self.addUserButton = ttk.Button(text="Adicionar  usuário do Grupo", master=self.window, command=self.addUserToGroup, style="TButton")
+        self.addUserButton = ttk.Button(text="Adicionar usuário ao Grupo", master=self.window, command=self.addUserToGroup, style="TButton")
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
-        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.service.removeUserFromGroup(self.login)  ,style="TButton")
+        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.removeUserFromGroup  ,style="TButton")
         self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
 
     def addUserToGroup(self):
-        self.service.addUserToGroup(self.login, self.selectedUser.get())
+        packet = self.service.addUserToGroup(self.login, self.selectedUser.get())
+
+        if not 'msg' in packet:
+            packet = packet['ADD_USUARIO_GRUPO_ACK']
+            msg = "Usuário '{}' adicionado ao Grupo {}".format(packet[0], packet[1])
+        else:
+            msg = packet['msg']    
+
         self.selectedUser.set("--")
         self.getAvaliableUsers(self.service.listUsers(self.login))
+        showinfo(title="Informação do Grupo", message=msg)
+
+
+    def removeUserFromGroup(self):
+        packet = self.service.removeUserFromGroup(self.login)
+
+        if not 'msg' in packet:
+            packet = packet['REMOVE_USUARIO_GRUPO_ACK']
+            msg = "Usuário '{}' removido do Grupo {}".format(packet[0], packet[1])
+        else:
+            msg = packet['msg']    
+
+        showinfo(title="Informação do Grupo", message=msg)
 
     def getAvaliableUsers(self,listUsers):
         print(listUsers)
@@ -127,6 +148,28 @@ class ClientGUI:
 
         for eachUser in sorted(listUsers['LIST_USERS']):
             menu.add_command(label=eachUser)
+
+    def seeGroup(self):
+        packet = self.service.seeGroup(self.login)
+
+        if not 'msg' in packet:
+            packet = packet['GRUPO_DE_STREAMING']
+            msg = "ID do Grupo: {}\nProprietário: {}\nMembros: {}\n".format(packet['id'], packet['owner'], packet['members'])
+        else:
+            msg = packet['msg']
+
+        showinfo(title="Informação do Grupo", message=msg)
+
+    def createGroup(self):
+        packet = self.service.createGroup(self.login)
+        self.getAvaliableUsers(self.service.listUsers(self.login))
+
+        if not 'msg' in packet:
+            msg = "GRUPO CRIADO: " + packet['CRIAR_GRUPO_ACK']
+        else:
+            msg = packet['msg']
+        
+        showinfo(title="Sucesso!", message=msg)
 
     # Função que cria o loop da janela
     def start(self):
