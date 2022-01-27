@@ -136,7 +136,8 @@ class ClientGUI:
         menu.delete(0, 'end')
 
         for eachUser in sorted(listUsers['LIST_USERS']):
-            menu.add_command(label=eachUser)
+            
+            menu.add_command(label=eachUser,value=self.selectedUser.set(eachUser))
 
     def seeGroup(self):
         packet = self.service.seeGroup(self.login)
