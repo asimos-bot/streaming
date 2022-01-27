@@ -92,7 +92,7 @@ class ClientGUI:
         self.selectedUserAdd = StringVar()
         self.selectedUserRm = StringVar()
 
-        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers())
+        self.refreshButton = ttk.Button(text="Atualizar Lista de usuários", master=self.window, command=lambda: self.getAvaliableUsers)
         self.refreshButton.pack(side=tkinter.TOP, pady = 20)
 
         self.addUserButton = ttk.Button(text="Adicionar usuário ao Grupo", master=self.window, command=self.addUserToGroup, style="TButton")
@@ -102,17 +102,16 @@ class ClientGUI:
         else:
             self.selectUsersAdd = OptionMenu(self.window, self.selectedUserAdd, *listsUser['LIST_USERS'])
 
-        #self.selectUsersAdd.pack(side=tkinter.TOP, pady = 20)
-        #self.addUserButton.pack(side=tkinter.TOP, pady = 10)
+        self.selectUsersAdd.pack(side=tkinter.TOP, pady = 20)
+        self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
         self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.removeUserFromGroup  ,style="TButton")
         if 'msg' not in groupMembers:
             self.selectUsersRm = OptionMenu(self.window, self.selectedUserRm, *groupMembers['GRUPO_DE_STREAMING']['members'])
         else:
             self.selectUsersRm = OptionMenu(self.window, self.selectedUserRm, "--")
-
-        #self.selectUsersRm.pack(side=tkinter.TOP, pady = 20)
-        #self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
+        self.selectUsersRm.pack(side=tkinter.TOP, pady = 20)
+        self.removeUserButton.pack(side=tkinter.TOP, pady = 10)
 
     def addUserToGroup(self):
         packet = self.service.addUserToGroup(self.login, self.selectedUserAdd.get())
@@ -123,7 +122,7 @@ class ClientGUI:
         else:
             msg = packet['msg']    
 
-        self.selectedUser.set("--")
+        self.selectedUserAdd.set("--")
         self.getAvaliableUsers()
         showinfo(title="Informação do Grupo", message=msg)
 
@@ -137,13 +136,17 @@ class ClientGUI:
         else:
             msg = packet['msg']    
 
+        self.selectedUserAdd.set("--")
+        self.getAvaliableUsers()
         showinfo(title="Informação do Grupo", message=msg)
 
     def getAvaliableUsers(self):
         listUsers = self.service.listUsers(self.login)
         groupMembers = self.service.seeGroup(self.login)
         self.getAvaliableUsersAdd(listUsers['LIST_USERS'])
-        self.getAvaliableUsersRm(groupMembers['GRUPO_DE_STREAMING']['members'])
+
+        if self.selectedUserRm and ('GRUPO_DE_STREAMING' in groupMembers):
+            self.getAvaliableUsersRm(groupMembers['GRUPO_DE_STREAMING']['members'])
 
     def getAvaliableUsersAdd(self,listUsers):
         menu = self.selectUsersAdd["menu"]
@@ -170,7 +173,7 @@ class ClientGUI:
 
     def createGroup(self):
         packet = self.service.createGroup(self.login)
-        # self.getAvaliableUsers()
+        self.getAvaliableUsers()
 
         if not 'msg' in packet:
             msg = "GRUPO CRIADO: " + packet['CRIAR_GRUPO_ACK']
