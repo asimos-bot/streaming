@@ -207,6 +207,8 @@ class ClientService:
         return msg
 
     def removeUserFromGroup(self, userID, name):
+        print("ENTREI")
+        print(name)
         self.service_manager.send( bytes(json.dumps({'id': userID, 'command': 'REMOVE_USUARIO_GRUPO', 'arg':name}), 'utf-8'))
         msg = self.service_manager.recv(ClientService.__BUFFSIZE)
         msg = json.loads(msg)

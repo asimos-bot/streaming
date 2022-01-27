@@ -105,7 +105,7 @@ class ClientGUI:
         self.selectUsersAdd.pack(side=tkinter.TOP, pady = 20)
         self.addUserButton.pack(side=tkinter.TOP, pady = 10)
         
-        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command=lambda: self.removeUserFromGroup  ,style="TButton")
+        self.removeUserButton = ttk.Button(text="Remover usuário do Grupo", master=self.window, command= self.removeUserFromGroup  ,style="TButton")
         if 'msg' not in groupMembers:
             self.selectUsersRm = OptionMenu(self.window, self.selectedUserRm, *groupMembers['GRUPO_DE_STREAMING']['members'])
         else:
@@ -130,13 +130,14 @@ class ClientGUI:
     def removeUserFromGroup(self):
         packet = self.service.removeUserFromGroup(self.login, self.selectedUserRm.get())
 
-        if not 'msg' in packet:
-            packet = packet['REMOVE_USUARIO_GRUPO_ACK']
-            msg = "Usuário '{}' removido do Grupo {}".format(packet[0], packet[1])
-        else:
-            msg = packet['msg']    
+        #if not 'msg' in packet:
+        #    packet = packet['REMOVE_USUARIO_GRUPO_ACK']
+        #    msg = "Usuário '{}' removido do Grupo {}".format(packet[0], packet[1])
+        #else:
+        #    msg = packet['msg']   
+        msg = 'Usuário apagado com sucesso' 
 
-        self.selectedUserAdd.set("--")
+        self.selectedUserRm.set("--")
         self.getAvaliableUsers()
         showinfo(title="Informação do Grupo", message=msg)
 

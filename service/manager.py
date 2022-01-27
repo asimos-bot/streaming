@@ -49,8 +49,8 @@ class ServiceManager:
         # get TCP socket
         srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         srv.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF, ServiceManager.__BUFF_SIZE)
-        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+        #srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        #srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         srv.setblocking(False)
         srv.bind(('', port))
         return srv
