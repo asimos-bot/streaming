@@ -70,7 +70,7 @@ class ClientGerenciador:
         menu.delete(0, 'end')
 
         for filename in sorted(file_list):
-            menu.add_command(label=filename, command=lambda: self.confirmExclusion(filename.split()[0]))
+            menu.add_command(label=filename, command=lambda fn=filename : self.confirmExclusion(fn.split()[0]))
 
     def uploadFile(self):
         cur_dir = os.getcwd()
